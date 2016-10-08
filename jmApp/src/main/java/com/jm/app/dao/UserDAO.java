@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jm.app.bean.Prorder;
 import com.jm.app.bean.User;
 
 /**
@@ -263,6 +264,8 @@ public class UserDAO {
 		else
 			return false;
 	}
+	
+	
 	public static UserDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (UserDAO) ctx.getBean("UserDAO");
 	}

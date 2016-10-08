@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -12,20 +13,92 @@
 <meta charset="UTF-8">
 <title>电影众筹项目_电影投资项目列表 - 91玖马网</title>
 <link rel="stylesheet" type="text/css"
-	href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/buttons.css">
-<link rel="stylesheet" href="circle_progress/css/progress.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="datepicker/css/bootstrap-datepicker3.css">
-<script src="bootstrap-3.3.5-dist/js/jquery.min.js"></script>
-<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-<script src="datepicker/js/bootstrap-datepicker.js"></script>
-<script src="datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+	href="/jmApp/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/jmApp/bootstrap-3.3.5-dist/css/buttons.css">
+<link rel="stylesheet" href="/jmApp/circle_progress/css/progress.css">
+<link rel="stylesheet" href="/jmApp/css/style.css">
+<link rel="stylesheet"
+	href="/jmApp/datepicker/css/bootstrap-datepicker3.css">
+<script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.min.js"></script>
+<script src="/jmApp/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script src="/jmApp/datepicker/js/bootstrap-datepicker.js"></script>
+<script
+	src="/jmApp/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="/jmApp/jquery-uploader/ajaxfileupload.js"></script>
 <script>
 	$('.datepicker').datepicker({
 		language : 'zh-CN',
 		autoclose : true,
 		todayHighlight : true
+	});
+	function upload(){
+	   
+	   $.ajaxFileUpload({
+				url : 'FileUpload.action', //url自己写   
+				secureuri : false, //这个是啥没啥用  
+				type : 'post',
+				fileElementId : 'image',//file标签的id    
+				dataType : 'json',//返回数据的类型    
+				//data:{name:'logan'},//一同上传的数据    
+				success : function(data, status) {
+					              
+					
+					if (data.imageUrl) {
+
+						$('#user_img').attr('src', data.imageUrl+"?tempid="+Math.random());
+						$('#image').replaceWith('<input type="file" id="image" name="image" style="display:none" onChange="upload()"/>');
+						
+					} else {
+						//alert(data.msg);
+						//window.location.href='supplyDataReport';  
+					}
+
+				}/*,   
+				            error: function (data, status, e) {   
+				                alert(e);   
+				            }*/
+			});
+	   
+	};
+	
+	$(document).ready(function() {
+		//点击打开文件选择器    
+		$('#upload_btn').on('click', function() {
+			//选择文件之后执行上传    
+			$("#image").click();
+		});
+       /*
+		$('#image').change(function(e) {
+            
+			$.ajaxFileUpload({
+				url : 'FileUpload.action', //url自己写   
+				secureuri : false, //这个是啥没啥用  
+				type : 'post',
+				fileElementId : 'image',//file标签的id    
+				dataType : 'json',//返回数据的类型    
+				//data:{name:'logan'},//一同上传的数据    
+				success : function(data, status) {
+					              
+					
+					if (data.imageUrl) {
+
+						$('#user_img').attr('src', data.imageUrl);
+						$('#image').replaceWith('<input type="file" id="image" name="image" style="display:none" onChange="alert(\'aaa\')"/>');
+						
+					} else {
+						//alert(data.msg);
+						//window.location.href='supplyDataReport';  
+					}
+
+				}/*,   
+				            error: function (data, status, e) {   
+				                alert(e);   
+				            }
+			});
+    
+		});
+      */
 	});
 </script>
 </head>
@@ -73,21 +146,25 @@
 								<div
 									style="background: #f5f5f5;border: solid 1px #e9e9e9;margin-top: 20px;float: left;width: 45%;text-align: center;margin-left: 20px;">
 									<h5 class="text-muted" style="margin-top: 30px;">
-										财富项目：累计投资0笔<span style="margin-left: 30px;">累计投资:0(元)</span>
+										财富项目：累计投资${totalSumByType[0][0] }笔<span
+											style="margin-left: 30px;">累计投资:${totalSum[0][1] }(元)</span>
 									</h5>
 									<h5 class="text-muted"
 										style="margin-top: 30px;margin-bottom: 20px;">
-										梦想项目：累计投资0笔<span style="margin-left: 30px;">累计投资:0(元)</span>
+										梦想项目：累计投资${totalSumByType[1][0] }笔<span
+											style="margin-left: 30px;">累计投资:${totalSum[1][1] }(元)</span>
 									</h5>
 								</div>
 								<div class=""
 									style="background: #f5f5f5;border: solid 1px #e9e9e9;margin-top: 20px;float: right;width: 45%;text-align: center;margin-right: 20px;">
 									<h5 class="text-muted" style="margin-top: 30px;">
-										（总计）待结算的项目：0笔<span style="margin-left: 30px;">待收本金:0(元)</span>
+										（总计）待结算的项目：${totalSumByEnd[0][0]}笔<span
+											style="margin-left: 30px;">待收本金:${totalSumByEnd[0][1]}(元)</span>
 									</h5>
 									<h5 class="text-muted"
 										style="margin-top: 30px;margin-bottom: 20px;">
-										（总计）已结算的项目：0笔<span style="margin-left: 30px;">累计收益:0(元)</span>
+										（总计）已结算的项目：${totalSumByEnd[1][0]}笔<span
+											style="margin-left: 30px;">累计收益:${totalSumByEnd[1][1]}(元)</span>
 									</h5>
 								</div>
 							</div>
@@ -113,9 +190,21 @@
 													<th style="text-align: center;">购买日期</th>
 													<th style="text-align: center;">回报日期</th>
 													<th style="text-align: center;">状态</th>
-													<th style="text-align: center;">查看</th>
 												</tr>
 											</thead>
+											<tbody>
+												<c:forEach items="${endOrderList}" var="order">
+													<tr>
+														<td>${order.project.title }</td>
+														<td>${order.project.converted}%</td>
+														<td>${order.investment }</td>
+														<td>${order.income}</td>
+														<td>${order.formatBuyDate}</td>
+														<td>${order.project.formatReturn}</td>
+														<td>${order.statusName}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
 										</table>
 									</div>
 									<div role="tabpanel" class="tab-pane" id="nocheckout"
@@ -130,9 +219,21 @@
 													<th style="text-align: center;">购买日期</th>
 													<th style="text-align: center;">回报日期</th>
 													<th style="text-align: center;">状态</th>
-													<th style="text-align: center;">查看</th>
 												</tr>
 											</thead>
+											<tbody>
+												<c:forEach items="${inOrderList}" var="order">
+													<tr>
+														<td>${order.project.title }</td>
+														<td>${order.project.converted}%</td>
+														<td>${order.investment }</td>
+														<td>${order.income}</td>
+														<td>${order.formatBuyDate}</td>
+														<td>${order.project.formatReturn}</td>
+														<td>${order.statusName}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
 										</table>
 									</div>
 								</div>
@@ -258,7 +359,7 @@
 											</div>
 											<div class="col-md-4"
 												style="border: solid 1px #f17a00;margin-top: 60px;margin-bottom: 60px;">
-												<img src="img/bank-tip.png" alt="" />
+												<img src="/jmApp/img/bank-tip.png" alt="" />
 												<p>
 													&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp最多可以添加1张银行卡(暂不支持信用卡)成功绑定一张银行卡即为完成实名认证
 												</p>
@@ -270,78 +371,78 @@
 													<dl>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/ICBC_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/ICBC_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/BOC_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/BOC_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/CCB_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/CCB_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/ABC_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/ABC_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/CMB_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/CMB_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/GDB_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/GDB_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/CMBC_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/CMBC_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/CIB_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/CIB_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/yz.jpg) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/yz.jpg) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/hx.jpg) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/hx.jpg) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/CITIC_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/CITIC_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<!-- <dd>
 											<div class="backbox" style="background: url(/data/bank/pf.jpg) no-repeat center center;"></div>
 										</dd> -->
 														<dd>
 															<div class="backbox"
-																style="background: url(img/SPABANK_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/SPABANK_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/COMM_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/COMM_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/CEB_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/CEB_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/HZCB_OUT.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/HZCB_OUT.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/zs_bank.png) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/zs_bank.png) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/04031000.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/04031000.gif) no-repeat center center;"></div>
 														</dd>
 														<dd>
 															<div class="backbox"
-																style="background: url(img/04012900.gif) no-repeat center center;"></div>
+																style="background: url(/jmApp/img/04012900.gif) no-repeat center center;"></div>
 														</dd>
 													</dl></li>
 											</ul>
@@ -378,6 +479,16 @@
 													<th style="text-align: center;">操作</th>
 												</tr>
 											</thead>
+											<tbody>
+												<c:forEach items="${allOrderList}" var="order">
+													<tr>
+														<td>${order.project.title }</td>
+														<td>${order.investment }</td>
+														<td>${order.statusName}</td>
+														<td></td>
+													</tr>
+												</c:forEach>
+											</tbody>
 										</table>
 									</div>
 									<div role="tabpanel" class="tab-pane" id="no-verified-orders"
@@ -391,6 +502,16 @@
 													<th style="text-align: center;">操作</th>
 												</tr>
 											</thead>
+											<tbody>
+												<c:forEach items="${orderMap[4]}" var="order">
+													<tr>
+														<td>${order.project.title }</td>
+														<td>${order.investment }</td>
+														<td>${order.statusName}</td>
+														<td></td>
+													</tr>
+												</c:forEach>
+											</tbody>
 										</table>
 									</div>
 									<div role="tabpanel" class="tab-pane" id="verified-orders"
@@ -404,6 +525,16 @@
 													<th style="text-align: center;">操作</th>
 												</tr>
 											</thead>
+											<tbody>
+												<c:forEach items="${orderMap[5]}" var="order">
+													<tr>
+														<td>${order.project.title }</td>
+														<td>${order.investment }</td>
+														<td>${order.statusName}</td>
+														<td></td>
+													</tr>
+												</c:forEach>
+											</tbody>
 										</table>
 									</div>
 									<div role="tabpanel" class="tab-pane" id="finish-orders"
@@ -417,6 +548,16 @@
 													<th style="text-align: center;">操作</th>
 												</tr>
 											</thead>
+											<tbody>
+												<c:forEach items="${orderMap[2]}" var="order">
+													<tr>
+														<td>${order.project.title }</td>
+														<td>${order.investment }</td>
+														<td>${order.statusName}</td>
+														<td></td>
+													</tr>
+												</c:forEach>
+											</tbody>
 										</table>
 									</div>
 								</div>
@@ -438,19 +579,30 @@
 								<div class="tab-content">
 									<div role="tabpanel" class="tab-pane active" id="data"
 										style="margin: 20px;">
-										<form class="form-horizontal">
+										
 											<div class="row">
 												<div class="col-md-2">
 													<div class="thumbnail">
-														<img src="img/pic.png">
+													  <c:choose>
+													     <c:when test="${user.picture==null }">
+													         <img id="user_img" src="/jmApp/img/pic.png">
+													     </c:when>
+													     <c:otherwise>
+													         <img id="user_img" src="${user.picture}">
+													     </c:otherwise>
+													  </c:choose>
+														
 														<div class="caption" style="text-align: center;">
 															<p>
-																<a href="#" class="btn btn-default" role="button">上传照片</a>
+																<input type="file" id="image" name="image"
+																	style="display:none" onChange="upload()"/>
+																<button id="upload_btn" class="btn btn-default">上传照片</button>
 															</p>
 														</div>
 													</div>
 												</div>
 												<div class="col-md-5" style="text-align: center;">
+												  <form class="form-horizontal">
 													<div class="form-group">
 														<label for="name" class="col-sm-3 control-label">别名：</label>
 														<div class="col-sm-7">
@@ -477,9 +629,10 @@
 														</div>
 													</div>
 													<button type="submit" class="btn btn-warning">保存更新</button>
+													</form>
 												</div>
 											</div>
-										</form>
+										
 									</div>
 									<div role="tabpanel" class="tab-pane" id="address"
 										style="margin: 20px;">
@@ -540,7 +693,7 @@
 										<div class="row">
 											<div class="media col-md-6" style="margin: 30px;">
 												<div class="media-left">
-													<img class="media-object" src="img/zheng.png">
+													<img class="media-object" src="/jmApp/img/zheng.png">
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">
@@ -554,7 +707,7 @@
 											</div>
 											<div class="media col-md-4" style="margin: 30px;">
 												<div class="media-left">
-													<img class="media-object" src="img/bao.png">
+													<img class="media-object" src="/jmApp/img/bao.png">
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">
@@ -573,7 +726,7 @@
 										<div class="row">
 											<div class="media col-md-6" style="margin: 30px;">
 												<div class="media-left">
-													<img class="media-object" src="img/mail.png">
+													<img class="media-object" src="/jmApp/img/mail.png">
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">
@@ -589,7 +742,7 @@
 											</div>
 											<div class="media col-md-4" style="margin: 30px;">
 												<div class="media-left">
-													<img class="media-object" src="img/phone.png">
+													<img class="media-object" src="/jmApp/img/phone.png">
 												</div>
 												<div class="media-body">
 													<h5 class="media-heading">
@@ -703,7 +856,7 @@
 									style="margin: 20px;">
 									<div class="row">
 										<div
-											style="background: url(img/acount_card.png) no-repeat 4px 5px;border: solid 1px #e9e9e9;margin-top: 20px;float: left;width: 26%;text-align: center;margin-left: 20px;height: 200px;">
+											style="background: url(/jmApp/img/acount_card.png) no-repeat 4px 5px;border: solid 1px #e9e9e9;margin-top: 20px;float: left;width: 26%;text-align: center;margin-left: 20px;height: 200px;">
 											<h4 style="margin-top: 80px;">
 												<font color="#fff"><b>红包余额：￥50</b></font>
 											</h4>

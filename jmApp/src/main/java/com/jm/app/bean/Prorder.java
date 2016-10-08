@@ -1,5 +1,6 @@
 package com.jm.app.bean;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import com.jm.app.util.DateUtil;
 
 /**
  * Prorder entity. @author MyEclipse Persistence Tools
@@ -142,7 +146,41 @@ public class Prorder implements java.io.Serializable {
 	public void setAssign(Integer assign) {
 		this.assign = assign;
 	}
-
-	
-	
+   
+	@Transient
+	public String getFormatBuyDate()
+	{
+		return DateUtil.toString(buyDate, "yyyy/MM/dd");
+	}
+	@Transient
+	public String getStatusName()
+	{
+		String name="";
+		if(this.statuses==null)
+			name="转化中";
+		switch(this.statuses)
+		{
+		   case 0:
+			   name="转化中";
+			   break;
+		   case 1:
+			   name="转让中";
+			   break;
+		   case 2:
+			   name="已转化";
+			   break;
+		   case 3:
+			   name="已转让";
+			   break;
+		   case 4:
+			   name="管理员待确认";
+			   break;
+		   case 5:
+			   name="管理员已确认";
+			   break;
+		   default:
+			   name="转化中";
+ 		}
+		return name;
+	}
 }

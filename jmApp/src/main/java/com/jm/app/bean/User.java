@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * User entity. @author MyEclipse Persistence Tools
@@ -206,5 +207,7 @@ public class User implements java.io.Serializable {
 	public void setProrders(Set<Prorder> prorders) {
 		this.prorders = prorders;
 	}
-
+    
+	
+	
 }

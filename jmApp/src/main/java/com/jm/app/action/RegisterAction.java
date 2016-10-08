@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.jm.app.bean.User;
 import com.jm.app.service.RegisterService;
+import com.jm.app.service.SmService;
 import com.jm.app.util.RandomUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -14,6 +15,8 @@ public class RegisterAction extends ActionSupport {
 private ActionContext context;
 	
 	private RegisterService registerService;
+	
+	private SmService smservice;
 	
 	private String tel;
 	
@@ -53,6 +56,7 @@ private ActionContext context;
 		session.put("tel", tel);
 		System.out.println(newCode);
 		System.out.println(tel);
+		smservice.sendMessage(tel, newCode);
 		return SUCCESS;
 	}
 	
@@ -96,6 +100,16 @@ private ActionContext context;
 
 	public void setRegisterService(RegisterService registerService) {
 		this.registerService = registerService;
+	}
+
+	
+	
+	public SmService getSmservice() {
+		return smservice;
+	}
+
+	public void setSmservice(SmService smservice) {
+		this.smservice = smservice;
 	}
 
 	public String getTel() {

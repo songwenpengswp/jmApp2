@@ -40,6 +40,7 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	<bean id="UserDAO" class="com.jm.app.dao.UserDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -66,6 +67,16 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="SmsDAO" class="com.jm.app.dao.SmsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserAction" class="com.jm.app.action.UserAction">
+	    <property name="userService">
+	        <ref bean="UserService"/>
+	    </property>
+	</bean>
 	<bean id="MainAction" class="com.jm.app.action.MainAction" scope="prototype">
 	   <property name="mainService">
 	       <ref bean="MainService"/>
@@ -84,6 +95,9 @@
 	<bean id="RegisterAction" class="com.jm.app.action.RegisterAction" scope="prototype">
 	   <property name="registerService">
 	      <ref bean="RegisterService"/>
+	   </property>
+	   <property name="smservice">
+	      <ref bean="SmService"/>
 	   </property>
 	</bean>
 	<bean id="LoginAction" class="com.jm.app.action.LoginAction"  scope="prototype">
@@ -117,13 +131,25 @@
 	      <ref bean="UserDAO"/>
 	   </property>
 	</bean>
+	
 	<bean id="LoginService" class="com.jm.app.service.LoginServiceImpl">
 	   <property name="userDao">
 	      <ref bean="UserDAO"/>
 	   </property>
 	</bean>
-	<bean id="SmsDAO" class="com.jm.app.dao.SmsDAO">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean></beans>
+	
+	<bean id="UserService" class="com.jm.app.service.UserServiceImpl">
+	   <property name="userDao">
+	      <ref bean="UserDAO"/>
+	   </property>
+	</bean>
+	<bean id="SmService" class="com.jm.app.service.SmServiceImpl">
+	   <property name="contentTemp" value="尊敬的客户你好，你的验证码是@【玖马娱乐】"/>
+	   <property name="url" value="http://dx.ipyy.net/sms.aspx"/>
+	   <property name="account" value="AA00470"/>
+	   <property name="password" value="AA0047066"/>
+	   <property name="smsDao">
+	       <ref bean="SmsDAO"/>
+	   </property>
+	</bean>
+	</beans>

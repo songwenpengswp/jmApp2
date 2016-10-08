@@ -8,7 +8,7 @@ public interface ProjectService {
 	
 	/**
 	 * 通过项目类型获取项目
-	 * @param type null-所有的项目 0-影视娱乐 1-泛文化
+	 * @param type null-所有的项目 0-财富项目 1-梦想项目
 	 * @param status null-全部 0-即将开始 1-正在众筹 2-众筹结束 3-完成兑付
 	 * @return
 	 */

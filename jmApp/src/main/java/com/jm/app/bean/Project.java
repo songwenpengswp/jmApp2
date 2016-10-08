@@ -289,4 +289,13 @@ public class Project implements java.io.Serializable {
 	{
 		return DateUtil.toString(stop, "yyyy/MM/dd");
 	}
+	
+	 @Transient
+	 public String getFormatReturn()
+	{
+	    Calendar cal=Calendar.getInstance();
+	    cal.setTime(start);
+	    cal.add(Calendar.MONTH, this.period);
+	    return DateUtil.toString(cal.getTime(), "yyyy/MM/dd");
+	}
 }

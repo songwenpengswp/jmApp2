@@ -38,7 +38,7 @@
 								<a href="/jmApp/login.jsp" class="btn btn-warning" role="button">登陆</a>
 							</c:when>
 							<c:otherwise>
-								<a href="/jmApp/user.jsp" class="btn btn-warning" role="button">你好,${user.tel}</a>
+								<a href="/jmApp/jm/UserAction.action" class="btn btn-warning" role="button">你好,${user.tel}</a>
 							</c:otherwise>
 						</c:choose>
 					</div>

@@ -35,5 +35,15 @@
             <result name="login_success" type="redirectAction">MainAction</result>
 			<result name="login_failture">/login.jsp</result>
         </action>
+        <action name="UserAction" class="UserAction">
+            <result name="error" type="redirectAction">MainAction</result>
+            <result name="success">/user.jsp</result>
+        </action>
+        <action name="FileUpload" class="UserAction" method="uploadImage">
+            <result type="json">  
+                <!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->  
+                <param name="root">uploadMap</param>  
+            </result>  
+        </action>
     </package>
 </struts>    
