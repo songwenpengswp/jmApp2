@@ -45,5 +45,10 @@
                 <param name="root">uploadMap</param>  
             </result>  
         </action>
+        <action name="SaveInfo" class="UserAction" method="saveInfo">
+            <result type="json">  
+                 <param name="excludeNullProperties">true</param>  
+              </result>
+        </action>
     </package>
 </struts>    

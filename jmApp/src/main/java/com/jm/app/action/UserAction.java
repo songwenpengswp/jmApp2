@@ -35,6 +35,9 @@ public class UserAction extends ActionSupport {
 	private String imageContentType;// 上传文件的MIME类型
 	private Map<String,String> uploadMap; //文件上传返回信息
 	
+	private String name; //用户的名称
+	private int sex; //用户的性别
+	
 	@Override
 	public String execute() throws Exception {
 
@@ -81,6 +84,18 @@ public class UserAction extends ActionSupport {
 		uploadMap.put("imageUrl", imgurl);
 		
 		userService.updateUserPic(user.getId(),imgurl);
+		user.setPicture(imgurl);
+		return SUCCESS;
+	}
+	
+	public String saveInfo()
+	{
+		context=ActionContext.getContext();
+		session=(Map) context.getSession();
+		User user=(User)session.get("user");
+		userService.updateUser(user.getId(), name,sex);
+		user.setName(name);
+		user.setSex(sex);
 		
 		return SUCCESS;
 	}
@@ -123,6 +138,22 @@ public class UserAction extends ActionSupport {
 
 	public void setUploadMap(Map<String, String> uploadMap) {
 		this.uploadMap = uploadMap;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
 	}
 
 

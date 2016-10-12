@@ -137,4 +137,14 @@ public class UserServiceImpl implements UserService {
 		userDao.attachDirty(user);
 	}
 
+	@Override
+	public void updateUser(int id,String name,int sex) {
+		// TODO Auto-generated method stub
+		User user=(User)userDao.findById(id);
+		user.setName(name);
+		user.setSex(sex);
+		userDao.attachDirty(user);
+		
+	}
+
 }

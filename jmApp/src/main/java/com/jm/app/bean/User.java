@@ -28,6 +28,8 @@ public class User implements java.io.Serializable {
 	private String tel;
 	private String picture;
 	private String realName;
+	private String idCardNum;
+	private String bankCardNum;
 	private Integer sex;
 	private String province;
 	private String city;
@@ -197,6 +199,23 @@ public class User implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	@Column(name = "idCardNum", length = 50)
+	public String getIdCardNum() {
+		return idCardNum;
+	}
+
+	public void setIdCardNum(String idCardNum) {
+		this.idCardNum = idCardNum;
+	}
+	
+	@Column(name = "bankCardNum", length = 50)
+	public String getBankCardNum() {
+		return bankCardNum;
+	}
+
+	public void setBankCardNum(String bankCardNum) {
+		this.bankCardNum = bankCardNum;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")

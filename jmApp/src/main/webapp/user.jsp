@@ -61,44 +61,47 @@
 			});
 	   
 	};
-	
+	function initSex()
+	{
+	     var sex=${user.sex};
+	     if(sex!=null)
+	     {
+	         if(sex==0)
+	         {
+	            $('#fsex').click();
+	         }
+	         else
+	         {
+	            $('#msex').click();
+	         }
+	     }
+	}
 	$(document).ready(function() {
 		//点击打开文件选择器    
 		$('#upload_btn').on('click', function() {
 			//选择文件之后执行上传    
 			$("#image").click();
 		});
-       /*
-		$('#image').change(function(e) {
-            
-			$.ajaxFileUpload({
-				url : 'FileUpload.action', //url自己写   
-				secureuri : false, //这个是啥没啥用  
-				type : 'post',
-				fileElementId : 'image',//file标签的id    
-				dataType : 'json',//返回数据的类型    
-				//data:{name:'logan'},//一同上传的数据    
-				success : function(data, status) {
-					              
-					
-					if (data.imageUrl) {
-
-						$('#user_img').attr('src', data.imageUrl);
-						$('#image').replaceWith('<input type="file" id="image" name="image" style="display:none" onChange="alert(\'aaa\')"/>');
-						
-					} else {
-						//alert(data.msg);
-						//window.location.href='supplyDataReport';  
-					}
-
-				}/*,   
-				            error: function (data, status, e) {   
-				                alert(e);   
-				            }
-			});
-    
+		
+		$('#info_btn').click(function(e) {
+		   
+		    $.ajax({
+		         url:'/jmApp/jm/SaveInfo.action',
+		         type:'post',
+		         dataType:'json',
+		         data:$("#info_frm").serialize(),
+		         beforeSend:function(e){
+		           $('#info_btn').attr('disabled','disabled');
+		         },
+		         success:function(e){
+		           $('#info_btn').removeAttr('disabled');
+		         }
+		    });
+		    
+		  
 		});
-      */
+       
+        initSex();
 	});
 </script>
 </head>
@@ -602,11 +605,11 @@
 													</div>
 												</div>
 												<div class="col-md-5" style="text-align: center;">
-												  <form class="form-horizontal">
+												  <form id="info_frm" class="form-horizontal">
 													<div class="form-group">
 														<label for="name" class="col-sm-3 control-label">别名：</label>
 														<div class="col-sm-7">
-															<input type="text" class="form-control" id="name">
+															<input name="name" type="text" class="form-control" id="name" value="${user.name}">
 														</div>
 													</div>
 													<div class="form-group">
@@ -619,17 +622,18 @@
 													<div class="form-group">
 														<label for="sex" class="col-sm-3 control-label">性别：</label>
 														<div class="col-sm-7" id="sex">
+														   
 															<label class="radio-inline"> <input type="radio"
-																name="inlineRadioOptions" id="inlineRadio1"
-																value="option1"> 男
+																name="sex" id="msex"
+																value="1" checked> 男
 															</label> <label class="radio-inline"> <input type="radio"
-																name="inlineRadioOptions" id="inlineRadio1"
-																value="option1"> 女
+																name="sex" id="fsex"
+																value="0"> 女
 															</label>
 														</div>
 													</div>
-													<button type="submit" class="btn btn-warning">保存更新</button>
-													</form>
+													<button id="info_btn" type="button"  class="btn btn-warning">保存更新</button>
+												 </form>
 												</div>
 											</div>
 										
