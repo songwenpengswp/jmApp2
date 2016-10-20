@@ -64,7 +64,7 @@
 				</div>
 				<div class="col-md-3 pull-right text-right" style="margin-top: 20px">
 					<a role="button" class="btn btn-large btn-warning"
-						href="ProjectAction.action">查看全部 <i
+						href="/jmApp/jm/ProjectAction.action">查看全部 <i
 						class="glyphicon glyphicon-chevron-right"></i></a>
 				</div>
 			</div>
@@ -75,7 +75,7 @@
 					<li class="media" style="background: #fff">
 						<div class="course-list-img">
 							<a class="pull-left"
-								href="DetailAction.action?proId=${project.id}"> <img
+								href="/jmApp/jm/DetailAction.action?proId=${project.id}"> <img
 								class="media-object img_4"
 								src="/jmApp/project/${project.picture}" alt="" width="500px"
 								style="margin: 15px;">
@@ -182,7 +182,7 @@
 				</div>
 				<div class="col-md-3 pull-right text-right" style="margin-top: 20px">
 					<a role="button" class="btn btn-large btn-warning"
-						href="ProjectAction.action?status=2">查看全部 <i
+						href="/jmApp/jm/ProjectAction.action?status=2">查看全部 <i
 						class="glyphicon glyphicon-chevron-right"></i></a>
 				</div>
 			</div>

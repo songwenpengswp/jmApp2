@@ -50,5 +50,10 @@
                  <param name="excludeNullProperties">true</param>  
               </result>
         </action>
+        <action name="SaveAddess" class="UserAction" method="saveAddress">
+            <result type="json">
+               <param name="excludeNullProperties">true</param>  
+            </result>
+        </action>
     </package>
 </struts>    

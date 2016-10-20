@@ -51,4 +51,14 @@ public interface UserService {
 	 * @param user
 	 */
 	void updateUser(int id,String name,int sex);
+	/**
+	 * 更新用户信息
+	 * @param user
+	 */
+	void updateUser(User user);
+	/**
+	 * 通过id获取user对象
+	 * @param id
+	 */
+	User getUser(int id);
 }

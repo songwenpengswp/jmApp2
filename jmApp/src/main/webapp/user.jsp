@@ -26,6 +26,7 @@
 <script
 	src="/jmApp/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 <script src="/jmApp/jquery-uploader/ajaxfileupload.js"></script>
+<script src="/jmApp/cityselect/jquery.cityselect.js"></script>
 <script>
 	$('.datepicker').datepicker({
 		language : 'zh-CN',
@@ -35,7 +36,7 @@
 	function upload(){
 	   
 	   $.ajaxFileUpload({
-				url : 'FileUpload.action', //url自己写   
+				url : '/jmApp/jm/FileUpload.action', //url自己写   
 				secureuri : false, //这个是啥没啥用  
 				type : 'post',
 				fileElementId : 'image',//file标签的id    
@@ -97,11 +98,30 @@
 		           $('#info_btn').removeAttr('disabled');
 		         }
 		    });
-		    
-		  
+		});
+		
+		$('#address_btn').click(function(e) {
+		   
+		    $.ajax({
+		         url:'/jmApp/jm/SaveAddess.action',
+		         type:'post',
+		         dataType:'json',
+		         data:$("#address_frm").serialize(),
+		         beforeSend:function(e){
+		           $('#address_btn').attr('disabled','disabled');
+		         },
+		         success:function(e){
+		           $('#address_btn').removeAttr('disabled');
+		         }
+		    });
 		});
        
         initSex();
+        
+        $("#city_select").citySelect({
+					prov:"${user.province==null?'浙江':user.province}",
+				    city:"${user.city==null?'杭州':user.city}"
+				}); 
 	});
 </script>
 </head>
@@ -641,54 +661,46 @@
 									<div role="tabpanel" class="tab-pane" id="address"
 										style="margin: 20px;">
 										<p>新增收货人地址</p>
-										<form class="form-horizontal">
-											<div class="form-group">
+										<form id="address_frm" class="form-horizontal">
+											<div id="city_select" class="form-group">
 												<label for="local" class="col-sm-2 control-label">所在地:</label>
 												<div class="col-sm-2">
-													<select class="form-control" id="local">
-														<option>请选择</option>
-														<option>北京</option>
-														<option>上海</option>
-														<option>天津</option>
-														<option>重庆</option>
+													<select name="userAddress.province" class="form-control prov">
+														
 													</select>
 												</div>
 												<div class="col-sm-2">
-													<select class="form-control" id="local">
-														<option>请选择</option>
-														<option>北京</option>
-														<option>上海</option>
-														<option>天津</option>
-														<option>重庆</option>
+													<select name="userAddress.city" class="form-control city" disabled="disabled">
+														
 													</select>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="post-code" class="col-sm-2 control-label">邮政编码:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="post-code">
+													<input name="userAddress.postcode" type="text" class="form-control" id="post-code" value="${user.postcode }">
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="get-name" class="col-sm-2 control-label">收货人姓名:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="get-name">
+													<input name="userAddress.consignee" type="text" class="form-control" id="get-name" value="${user.consignee }">
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="tel" class="col-sm-2 control-label">手机号码:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="tel">
+													<input name="userAddress.consignTel" type="text" class="form-control" id="tel" value="${user.consignTel }">
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="tel" class="col-sm-2 control-label">详细地址:</label>
 												<div class="col-sm-4">
-													<input type="text" class="form-control" id="tel">
+													<input name="userAddress.address" type="text" class="form-control" id="tel" value="${user.address }">
 												</div>
 											</div>
 											<div class="col-sm-6" style="text-align: center;">
-												<button type="submit" class="btn btn-warning">保存更新</button>
+												<button id="address_btn" type="button" class="btn btn-warning">保存更新</button>
 											</div>
 										</form>
 									</div>

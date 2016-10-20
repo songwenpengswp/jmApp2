@@ -146,5 +146,17 @@ public class UserServiceImpl implements UserService {
 		userDao.attachDirty(user);
 		
 	}
+	@Override
+	public void updateUser(User user)
+	{
+		userDao.merge(user);
+	}
 
+	@Override
+	public User getUser(int id) {
+
+        User user=userDao.findById(id);
+		return user;
+	}
+    
 }

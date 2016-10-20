@@ -97,11 +97,11 @@
 				<div id="type-group" class="btn-group" role="group" aria-label="...">
 					<a role="button"
 						class="btn btn-default ${(param.type==null || param.type.length()==0)?'btn-info':'' }"
-						href="ProjectAction.action">全部</a> <a role="button"
+						href="/jmApp/jm/ProjectAction.action">全部</a> <a role="button"
 						class="btn btn-default ${(param.type!=null && param.type.length()>0 && param.type.equals('0'))?'btn-info':''}"
-						href="ProjectAction.action?type=0">影视娱乐</a> <a role="button"
+						href="/jmApp/jm/ProjectAction.action?type=0">影视娱乐</a> <a role="button"
 						class="btn btn-default ${(param.type!=null && param.type.length()>0 && param.type.equals('1'))?'btn-info':''}"
-						" href="ProjectAction.action?type=1">泛文化</a>
+						" href="/jmApp/jm/ProjectAction.action?type=1">泛文化</a>
 				</div>
 			</div>
 			<div style="height: 40px;margin-top: 10px">
@@ -110,15 +110,15 @@
 					aria-label="...">
 					<a role="button"
 						class="btn btn-default ${(param.status==null|| param.status.length()==0)?'btn-info':'' }"
-						href="ProjectAction.action">全部</a> <a role="button"
+						href="/jmApp/jm/ProjectAction.action">全部</a> <a role="button"
 						class="btn btn-default ${(param.status!=null && param.status.length()>0 && param.status.equals('0'))?'btn-info':''}"
-						href="ProjectAction.action?status=0">即将开始</a> <a role="button"
+						href="/jmApp/jm/ProjectAction.action?status=0">即将开始</a> <a role="button"
 						class="btn btn-default ${(param.status!=null && param.status.length()>0 && param.status.equals('1'))?'btn-info':''}"
-						href="ProjectAction.action?status=1">正在众筹</a> <a role="button"
+						href="/jmApp/jm/ProjectAction.action?status=1">正在众筹</a> <a role="button"
 						class="btn btn-default ${(param.status!=null && param.status.length()>0 && param.status.equals('2'))?'btn-info':''}"
-						href="ProjectAction.action?status=2">众筹结束</a> <a role="button"
+						href="/jmApp/jm/ProjectAction.action?status=2">众筹结束</a> <a role="button"
 						class="btn btn-default ${(param.status!=null && param.status.length()>0 && param.status.equals('3'))?'btn-info':''}"
-						href="ProjectAction.action?status=3">完成兑付</a>
+						href="/jmApp/jm/ProjectAction.action?status=3">完成兑付</a>
 				</div>
 			</div>
 		</div>

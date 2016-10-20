@@ -28,8 +28,6 @@ public class UserAction extends ActionSupport {
 	
 	private Map<String,Object> session;
 	
-	
-	
 	private File image;//对应的就是表单中文件上传的那个输入域的名称，Struts2框架会封装成File类型的
 	private String imageFileName;//   上传输入域FileName  文件名
 	private String imageContentType;// 上传文件的MIME类型
@@ -37,6 +35,7 @@ public class UserAction extends ActionSupport {
 	
 	private String name; //用户的名称
 	private int sex; //用户的性别
+	private User userAddress=new User(); //用户信息
 	
 	@Override
 	public String execute() throws Exception {
@@ -100,6 +99,23 @@ public class UserAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+    public String saveAddress()
+    {
+    	context=ActionContext.getContext();
+		session=(Map) context.getSession();
+		User user=(User)session.get("user");
+		user=userService.getUser(user.getId());
+		user.setAddress(userAddress.getAddress());
+		user.setProvince(userAddress.getProvince());
+		user.setCity(userAddress.getCity());
+		user.setPostcode(userAddress.getPostcode());
+		user.setConsignee(userAddress.getConsignee());
+		user.setConsignTel(userAddress.getConsignTel());
+		userService.updateUser(user);
+		session.put("user", user);
+		return SUCCESS;
+    }
+	
 	public UserService getUserService() {
 		return userService;
 	}
@@ -156,8 +172,12 @@ public class UserAction extends ActionSupport {
 		this.sex = sex;
 	}
 
+	public User getUserAddress() {
+		return userAddress;
+	}
 
-	
-	
+	public void setUserAddress(User userAddress) {
+		this.userAddress = userAddress;
+	}
 
 }

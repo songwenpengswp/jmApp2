@@ -86,7 +86,7 @@ public class ProjectDAO  {
         log.debug("getting Project instance with id: " + id);
         try {
             Project instance = (Project) getCurrentSession()
-                    .get("Project", id);
+                    .get("com.jm.app.bean.Project", id);
             return instance;
         } catch (RuntimeException re) {
             log.error("get failed", re);
@@ -98,7 +98,7 @@ public class ProjectDAO  {
     public List<Project> findByExample(Project instance) {
         log.debug("finding Project instance by example");
         try {
-            List<Project> results = (List<Project>) getCurrentSession() .createCriteria("Project").add( create(instance) ).list();
+            List<Project> results = (List<Project>) getCurrentSession() .createCriteria("com.jm.app.bean.Project").add( create(instance) ).list();
             log.debug("find by example successful, result size: " + results.size());
             return results;
         } catch (RuntimeException re) {
