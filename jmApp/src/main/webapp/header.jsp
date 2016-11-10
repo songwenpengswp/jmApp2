@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-default navbar-fixed-top"
-	style="background:#FFF; color:#FFF">
+	style="background:#FFF; color:#FFF;">
      <div class="container">
 		<div class="navbar-header"
 			style="margin-top: 10px;margin-bottom: 10px">

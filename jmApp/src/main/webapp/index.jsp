@@ -45,7 +45,7 @@
 			<c:forEach items="${carList}" var="project" varStatus="s">
 				<div class="item ${s.index==0?'active':'' }">
 					<a href="/jmApp/detail.html"><img
-						src="/jmApp/project/${project.carousel}" alt=""></a>
+						src="/jmApp/project/${project.carousel}" alt="" style="height:100%;"></a>
 				</div>
 			</c:forEach>
 		</div>
@@ -60,7 +60,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
-					<h1>玖马聚财</h1>
+					<h1>玖马推荐</h1>
 				</div>
 				<div class="col-md-3 pull-right text-right" style="margin-top: 20px">
 					<a role="button" class="btn btn-large btn-warning"
@@ -137,6 +137,7 @@
 				</c:forEach>
 			</ul>
 		</div>
+	  <%--
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
@@ -158,7 +159,7 @@
 						<th>出让价格(元)</th>
 						<th>预期年化</th>
 						<th>剩余期限</th>
-						<th>状态</th>
+						<th>状态ssssss</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -175,6 +176,8 @@
 				</tbody>
 			</table>
 		</div>
+	  --%>
+	  
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
