@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/progress.css">
-<link rel="stylesheet" href="files/style2.css">
+<link rel="stylesheet" type="text/css" href="/jmApp/css/bootstrap.css">
+<link rel="stylesheet" href="/jmApp/css/progress.css">
+<link rel="stylesheet" href="/jmApp/files/style2.css">
 <style type="text/css">
 .pie_progress {
 	width: 120px;
@@ -20,10 +20,10 @@
 }
 }
 </style>
-<link href="css/foot-basic.css" rel="stylesheet" type="text/css">
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/jquery-asPieProgress.js"></script>
+<link href="/jmApp/css/foot-basic.css" rel="stylesheet" type="text/css">
+<script src="/jmApp/js/jquery.js"></script>
+<script src="/jmApp/js/bootstrap.js"></script>
+<script type="text/javascript" src="/jmApp/s/jquery-asPieProgress.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-button" style="background:#FFF; color:#FFF">
@@ -32,17 +32,17 @@
 <div id="about-lotuseed">
   <div class="about-lotuseed-con">
     <div class="about-con">
-      <a href="/jmApp/about.html">
+      <a href="/jmApp/about.jsp">
       <div class="about-li1">
         <h2>关于九马</h2>
       </div>
       </a>
-      <a href="/jmApp/originator.html">
+      <a href="/jmApp/originator.jsp">
       <div class="about-li2">
         <h2>发起人手册</h2>      
       </div>
       </a>
-      <a href="/jmApp/agreement.html">
+      <a href="/jmApp/agreement.jsp">
       <div class="about-li3">
         <h2>用户协议</h2>       
       </div>

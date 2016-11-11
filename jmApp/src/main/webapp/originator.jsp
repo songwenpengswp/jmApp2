@@ -1,4 +1,5 @@
-
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,46 +25,70 @@
 	</style>
 </head>
 <body>
-	 <nav class="navbar navbar-default navbar-fixed-top" style="background:#FFF; color:#FFF">
-    	<div class="container">
-    		<div class="navbar-header" style="margin-top: 10px;margin-bottom: 10px">
-               <a class="navbar-brand" href="#" style="padding-top: 0">
-                   <img  src="img/91_logo.png">
-               </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
-                   <span class="sr-only">切换导航</span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                </button>
-            </div>
-            
-            <div class="collapse navbar-collapse" id="example-navbar-collapse text-center" style="margin-top: 10px;">
-	            <ul class="nav navbar-nav navbar-left ">
-	            	<li><a href="index.html" style="font-size: 18px">首页</a></li>
-	            	<li><a href="invest.html" style="font-size: 18px">影视投资</a></li>
-	            	<li><a href="projectdelivery.html" style="font-size: 18px">项目投递</a></li>
-	            	<!-- <li><a href="projectissue.html" style="font-size: 18px">发行</a></li> -->
-	            	<li><a href="shangcheng.html" style="font-size: 18px">玖马商城</a></li>
-	            	<li><a href="travel.html" style="font-size: 18px">影视旅游</a></li>
-	            	<li><a href="list.html" style="font-size: 18px">关于</a></li>
-	            </ul>
-	            <ul class="nav navbar-nav navbar-right " >
-	            	<li>
-	            	  	 <div class="btn-group" role="group" aria-label="..." style="margin-top: 10px;margin-right: 20px">
-                            <a href="login.html" class="btn btn-warning" role="button">登陆</a>
-                         </div>
-	            	</li>
+	<nav class="navbar navbar-default navbar-fixed-top"
+	style="background:#FFF; color:#FFF;">
+     <div class="container">
+		<div class="navbar-header"
+			style="margin-top: 10px;margin-bottom: 10px">
+			<a class="navbar-brand" href="#" style="padding-top: 0"> <img
+				src="/jmApp/img/91_logo.png">
+			</a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#example-navbar-collapse">
+				<span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+		</div>
 
-	            	<li>
-	            	     <div class="btn-group" role="group" aria-label="..." style="margin-top: 10px">
-                            <a href="register.html" class="btn btn-default" role="button">注册</a>
-                         </div>
-	            	</li>
-	            </ul>
-	        </div> 
-    </nav>
-    <div style="margin-top:100px;margin-left:200px; margin-right:200px">
+		<div class="collapse navbar-collapse"
+			id="example-navbar-collapse text-center" style="margin-top: 10px">
+			<ul class="nav navbar-nav navbar-left ">
+				<li><a href="/jmApp/jm/MainAction.action"
+					style="font-size: 18px">首页</a></li>
+				<li><a href="/jmApp/jm/ProjectAction.action" style="font-size: 18px">影视投资</a></li>
+				<li><a href="/jmApp/projectdelivery.jsp"
+					style="font-size: 18px">项目投递</a></li>
+				<!-- <li><a href="projectissue.html" style="font-size: 18px">发行</a></li> -->
+				<li><a href="/jmApp/shangcheng.jsp" style="font-size: 18px">九马商城</a></li>
+				<li><a href="/jmApp/travel.jsp" style="font-size: 18px">九马旅游</a></li>
+				<li><a href="/jmApp/list.jsp" style="font-size: 18px">关于</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right ">
+				<li>
+					<div class="btn-group" role="group" aria-label="..."
+						style="margin-top: 10px;margin-right: 20px">
+						<c:choose>
+							<c:when test="${user==null}">
+								<a href="/jmApp/login.jsp" class="btn btn-warning" role="button">登陆</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/jmApp/jm/UserAction.action" class="btn btn-warning" role="button">你好,${user.tel}</a>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</li>
+
+				<li>
+					<div class="btn-group" role="group" aria-label="..."
+						style="margin-top: 10px">
+						<c:choose>
+							<c:when test="${user==null}">
+								<a href="/jmApp/register.jsp" class="btn btn-default"
+									role="button">注册</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/jmApp/login.jsp" class="btn btn-danger" role="button">退出</a>
+							</c:otherwise>
+						</c:choose>
+
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+   <div style="margin-top:100px;margin-left:200px; margin-right:200px">
              <div align=center> <h2>发起人手册</h2></div><br><br>
 <h3>欢迎你们</h3>
 <h4>欢迎来到我们的服务平台，这是一个基于共同的创作态度和做事风格而形成的影人社区。<br>
@@ -126,5 +151,4 @@
 </div>
 </body>
 </html>
- 
  
