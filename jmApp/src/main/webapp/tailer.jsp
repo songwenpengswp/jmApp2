@@ -32,7 +32,7 @@
 <div id="about-lotuseed">
   <div class="about-lotuseed-con">
     <div class="about-con">
-      <a href="#">
+      <a href="/jmApp/list.html">
       <div class="about-li1">
         <h2>关于九马</h2>
       </div>
