@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>91九马众筹用户注册服务协议</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/buttons.css">
 	<link rel="stylesheet" href="circle_progress/css/progress.css">

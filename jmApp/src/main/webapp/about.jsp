@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>关于玖马</title>
 <link rel="stylesheet" type="text/css"
 	href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/buttons.css">
