@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 
 
-<link rel="stylesheet" type="text/css" href="files/bootstrap.css">
-<link rel="stylesheet" href="files/progress.css">
-<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/progress.css">
+<link rel="stylesheet" href="files/style2.css">
 <style type="text/css">
 .pie_progress {
 	width: 120px;
@@ -20,10 +20,10 @@
 }
 }
 </style>
-<link href="files/foot-basic.css" rel="stylesheet" type="text/css">
-<script src="%E7%94%B5%E5%BD%B1%E4%BC%97%E7%AD%B9%E9%A1%B9%E7%9B%AE_%E7%94%B5%E5%BD%B1%E6%8A%95%E8%B5%84%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8%20-%2091%E7%8E%96%E9%A9%AC%E7%BD%91_files/jquery.js"></script>
-<script src="%E7%94%B5%E5%BD%B1%E4%BC%97%E7%AD%B9%E9%A1%B9%E7%9B%AE_%E7%94%B5%E5%BD%B1%E6%8A%95%E8%B5%84%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8%20-%2091%E7%8E%96%E9%A9%AC%E7%BD%91_files/bootstrap.js"></script>
-<script type="text/javascript" src="%E7%94%B5%E5%BD%B1%E4%BC%97%E7%AD%B9%E9%A1%B9%E7%9B%AE_%E7%94%B5%E5%BD%B1%E6%8A%95%E8%B5%84%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8%20-%2091%E7%8E%96%E9%A9%AC%E7%BD%91_files/jquery-asPieProgress.js"></script>
+<link href="css/foot-basic.css" rel="stylesheet" type="text/css">
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-asPieProgress.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-button" style="background:#FFF; color:#FFF">
@@ -32,17 +32,17 @@
 <div id="about-lotuseed">
   <div class="about-lotuseed-con">
     <div class="about-con">
-      <a href="/jmApp/list.html">
+      <a href="/jmApp/about.html">
       <div class="about-li1">
         <h2>关于九马</h2>
       </div>
       </a>
-      <a href="#">
+      <a href="/jmApp/originator.html">
       <div class="about-li2">
         <h2>发起人手册</h2>      
       </div>
       </a>
-      <a href="#">
+      <a href="/jmApp/agreement.html">
       <div class="about-li3">
         <h2>用户协议</h2>       
       </div>
