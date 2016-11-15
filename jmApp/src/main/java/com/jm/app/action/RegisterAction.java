@@ -30,6 +30,8 @@ private ActionContext context;
 	
 	private Map<String,Object> request;
 	
+	
+	
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
@@ -62,11 +64,13 @@ private ActionContext context;
 	
 	public String register()
 	{
+		
 		context=ActionContext.getContext();
 		session=(Map) context.getSession();
 		String orgTel=(String)session.get("tel");
 		String orgCode=(String)session.get("code");
 		request=(Map)context.get("request");
+		
 		if(!orgTel.equals(tel))
 		{
 			request.put("error", 1); //手机号错误
@@ -82,8 +86,9 @@ private ActionContext context;
 		user.setTel(orgTel);
 		user.setPassword(password);
 		registerService.save(user);
+		
 		return "reg_success";
-	
+		
 	}
 	
 	public Map<String, Boolean> getDataMap() {
