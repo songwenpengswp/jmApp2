@@ -17,6 +17,22 @@
     <filter-name>OpenSessionInViewFilter</filter-name>
     <url-pattern>*.action</url-pattern>
   </filter-mapping>
+  <servlet>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <servlet-class>com.jm.app.servlet.VerifyCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <url-pattern>/servlet/VerifyCodeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GetCodeServlet</servlet-name>
+    <servlet-class>com.jm.app.servlet.GetCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCodeServlet</servlet-name>
+    <url-pattern>/servlet/GetCodeServlet</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
