@@ -12,7 +12,7 @@
 <style type="text/css">
 .pie_progress {
 	width: 120px;
-}
+} 
  @media all and (max-width: 768px) {
 .pie_progress {
 	width: 80%;
@@ -61,7 +61,7 @@
     <div class="link-li"> 友情链接： <a href="">运维生存时间</a> <a href="">程序员之家</a> <a href="">jquery学堂</a> <a href="">易百教程</a> <a href="">Golang中国</a> <a href="">游侠安全网</a> <a href="">安畅</a> <a href="">web开发网</a> <a href="">java培训</a> <a href="">ThinkPHP开源框架</a> <a href="">CloudStack中国社区</a> </div>
   </div>
 </div>
-<div id="copyright"> 备案号：浙ICP备16025447号-1 Copyright© 2016-7-13 91jiuma-91九马 &nbsp;<a href="terms.html">法律条款</a> </div>
+<div id="copyright1"> 备案号：浙ICP备16025447号-1 Copyright© 2016-7-13 91jiuma-91九马 &nbsp;<a href="terms.html">法律条款</a> </div>
 
 </body>
 </html>
