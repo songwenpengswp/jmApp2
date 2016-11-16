@@ -1,0 +1,23 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body{ position:relative;}
+#code_mask{ position: absolute; left: 0; top: 0; background: black; opacity: 0.3; filter:Alpha(opacity=30); z-index: 1;   }
+#container_getCaptcha{ position:absolute; left:50%; color:#000; top:50%; width: 482px;height: 275px; margin-top:-89px; margin-left:-241px; background-color:#dfecff; z-index:2; display:none;}
+.container_getCaptcha_title{ height:60px; line-height:60px; color:#000; font-size:18px; background:#c3d4ee; font-family:"微软雅黑"; text-indent:20px;}
+.container_getCaptcha_con{ padding:40px;}
+.container_getCaptcha_title span{ display:inline-block; position:absolute; right:34px; top:24px; *top:4px!important;  cursor:pointer;}
+.code_item{ font-size:14px; padding-bottom:10px;}
+/*.code_item .input01{ text-indent: 15px; width:250px; height:42px; border:1px solid #e1e2e4; margin:0px 10px 0px 10px;}*/
+
+.code_item .input01 {
+    border: 1px solid #E1E2E4;
+    font-size: 14px;
+    height: 34px;
+    line-height: 34px;
+    margin: 0 5px;
+    text-indent: 15px;
+    width: 250px;
+}
+.code_item .input02{ cursor: pointer; border:none; width:126px; height:43px;background-color:#ffcd00; font-size:20px; font-weight:bold; color:#FFF;font-family:"微软雅黑"; margin-left:140px;}
+#container_getCaptcha .msg_hint{ color:#ff0000; padding-left:55px;}
+.padT29{ padding-top:30px;}

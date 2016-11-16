@@ -1,0 +1,73 @@
+﻿.msgparent {
+    background: none repeat scroll 0 0 #fff; padding: 20px;
+}
+
+.msgparent button{
+    font-size:16px; height: 40px;line-height: 20px;min-width: 110px;margin: 0 0 60px 292px;background-color: #7C99C7;border: medium none;border-radius: 0;color: #fff;
+}
+
+.msgcontainer {
+    clear: both; margin-bottom: 30px; overflow: hidden;
+}
+
+.msgcontainer dd{
+    color: #333;font-size: 14px;line-height: 25px; width:400px;
+}
+
+.msgheader {
+    color: #6eaa00;float: left;font-size: 16px;margin: 0 15px 0 260px;min-height: 35px;
+}
+        
+.msgheader i, .msg_error i{
+    background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAFXSURBVDhPY/wPBAxI4NqzTwxzjtxn2H75OcP9N1/BYkqiPAweOhIMKTaKDFpSfGAxGIAb8OvPP4aiVRcZph+4y/AP1Uw4YGJkZEi1U2ToDzdg4GRlBouBDQBp9p50hGHP9ZdgQULASUOMYXu+LQMbCxMDE0igcOUFojWDwL4br8CuBQGmq0A/zzx0D8xBB/9nh4IxNjDj4F0GkF6mOYfvMfz9h93P+ABID0gvo0bN9v83XnyGCpMGNCR4GZjuQaMKG8DnBRAA6QUHIrmAjRkYC0oi3FAu6UBemIuBCZTCyAUumuIMTMnA5MnMxAgVIh6A9KTYKkJSYvbScwzTgEmYFJDloMwwNdoIEoigtA1yDrEAlJRBekAAbAAoTW/Ns2HIdlQBZxhcACSXbq/EsAWoFqQHBDCyMyh5zgYm7R1XXzDce/0VrFABGNogF4L8rCPND1UJAgwMALDwgXBA8G9DAAAAAElFTkSuQmCC') /*/content/bg_icons.png*/ no-repeat;display: inline-block;height: 16px;width: 16px;
+}
+
+
+.msgtitle {
+    color: #333333;font-size: 16px;font-weight: normal;padding-bottom: 15px;
+}
+
+
+.tabs {
+    height: 30px;
+    line-height: 30px;    
+    padding-top: 1px;
+}
+
+.tabs ul{
+    float: left;
+    overflow: hidden;
+    line-height: 30px;
+}
+
+.tabs .tab .curr
+{
+    border: solid #cccccc;
+    border-width: 2px 1px 0;
+	border-top-color:#3e7cd4;
+    height: 30px;
+    background-color: #fff;
+    line-height: 27px;
+    color: #000000;
+    margin-bottom: -1px;
+    position: relative;
+        
+}
+
+
+.tabs .tab li
+{   overflow:hidden;
+    float: left;
+    width:120px;
+    font: 18px/29px "microsoft yahei";
+    border: 1px solid #cccccc;
+    color: #000000;
+	background-color:#eff5fd;
+    cursor: pointer;
+    text-align:center;
+}
+.tabs .tab li a
+{
+    float:left;
+    padding:0 24px;
+}

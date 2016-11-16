@@ -67,7 +67,7 @@
 			     	 	     <span id="password_message"></span>
 			     	 	</div>
 			     	 	 <div class="text-right" style="margin-top: 20px">
-			     	 	 	 <a href="#"><h5><font color="white">忘记密码?</font></h5></a>
+			     	 	 	 <a href="/jmApp/password.jsp"><h5><font color="white">忘记密码?</font></h5></a>
 			     	 	 </div>
 			     	 	 <div style="margin-top: 80px">
 			     	 	 </div>
