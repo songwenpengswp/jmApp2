@@ -99,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="msgcontainer">
         <div class="tabs">
            <ul class="tab">
-                        <li style="margin-left: 5px;class="curr">手机找回</li>                           
+                        <li class="curr">手机找回</li>                           
                 </ul>
                 </div>
             <dl style="border-top: 1px solid #cccccc; padding: 20px 0;">
@@ -123,18 +123,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:choose>
 						</font>
 					</h3>
-                            <div style="padding:10px 0">
-                                <input class="form-control" data-val="true" data-val-required="请输入您的手机号" id="tel" name="tel" placeholder="请输入手机号" type="text" value="" style="width: 250px;height: 40px"/>
+                            <div style="padding:10px">
+                                <input class="form-control" data-val="true" data-val-required="请输入您的手机号" id="Receiver" name="Receiver" placeholder="请输入手机号" type="text" value="" style="width: 250px;height: 40px"/>
                                 <span id="tel_message"></span>
                             </div>
                             
-                           <div style="padding:10px 0">
+                           <div style="padding:10px">
                                 <input class="form-control" data-val="true" data-val-required="请输入验证码" id="CheckCode" name="veryCode" placeholder="请输入验证码" type="text" value="" style="width: 120px;height: 40px" />
-                                <img id="veryCode" src= "" onClick="changeMe()" /><span></span>
+                                <img id="veryCode" src="" onClick="changeMe()" /><span></span>
                             </div>
-                            <a id="submitbtn" class="navbar-brand" href="/jmApp/password1.jsp" style="padding-top: 0">下一步
-                            <!-- <button id="submitbtn" style="margin:0 0 0;"></button> -->
-                            </a>
+                            <a id="submitbtn" class="navbar-brand" href="/jmApp/password1.jsp" style="padding-top: 0">
+                                <button type="button" style="margin:10px;">下一步</button>
+                           </a>
                             </form>
                         </form>
                     </div>
@@ -145,10 +145,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <script type="text/javascript" src="/jmApp/js/jquery.validate.custom.js"></script>
  <script type="text/javascript" src="/jmApp/js/jquery.validate.js"></script>
-    <script type="text/javascript" src="/jmApp/js/jquery.validate.ui.login.js"></script>
-    <script type="text/javascript" src="/jmApp/js/jquery.passwordstrength.js"></script>
-<!-- <script type="text/javascript">
-/* $(document).ready(function() {
+ <script type="text/javascript" src="/jmApp/js/jquery.validate.ui.login.js"></script>
+ <script type="text/javascript" src="/jmApp/js/jquery.passwordstrength.js"></script>
+ <script type="text/javascript">
+ /*$(document).ready(function() {
 		$('#register_frm').bootstrapValidator({
 
 			feedbackIcons : {
@@ -179,8 +179,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				}
 			}
-   }); */
-
+   });*/
+bootstrapValidator
   $(function () {
         showcheckcode();
 
@@ -232,8 +232,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 return false;
             }
         });
-    });
-</script> -->
+      });   
+</script>
    <%-- <jsp:include page="tailer.jsp"></jsp:include> --%>
     <div id="loginfooter">
         <a onmousedown="return AdsClick(121115223,'zhilianjieshao')" target="_blank" href="http://www.91jiuma.com/jmApp/jm/MainAction.action">九马首页</a> |
