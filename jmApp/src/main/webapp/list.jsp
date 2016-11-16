@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	 <jsp:include page="header.jsp"></jsp:include>
-    <div style="background: #f5f5f5;overflow: hidden;margin-top: 70px;">
+    <div style="background: #f5f5f5;overflow: hidden;margin-top: 60px;">
         <div style="float: left;margin: 30px 30px 10px 150px;background: white;border:solid 1px #e9e9e9;">
         	<ul class="nav nav-pills nav-stacked" role="tablist" style="margin-top: 20px;margin-bottom: 20px;text-align: center;font-size: 20px;">
                       <li role="presentation" class="active" style="margin: 20px 10px 20px 10px;"><a href="#media" aria-controls="media" role="tab" data-toggle="tab">媒体报道</a></li>

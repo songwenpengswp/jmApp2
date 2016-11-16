@@ -4,7 +4,7 @@
 	style="background:#FFF; color:#FFF;">
      <div class="container">
 		<div class="navbar-header"
-			style="margin-top: 10px;margin-bottom: 10px">
+			style="margin-top: 0px;margin-bottom: 10px">
 			<a class="navbar-brand" href="#" style="padding-top: 0"> <img
 				src="/jmApp/img/91_logo.png">
 			</a>
@@ -20,7 +20,7 @@
 			<ul class="nav navbar-nav navbar-left ">
 				<li><a href="/jmApp/jm/MainAction.action"
 					style="font-size: 18px">首页</a></li>
-				<li><a href="/jmApp/jm/ProjectAction.action" style="font-size: 18px">影视投资</a></li>
+				<li><a href="/jmApp/jm/ProjectAction.action" style="font-size: 18px">影视众筹</a></li>
 				<li><a href="/jmApp/projectdelivery.jsp"
 					style="font-size: 18px">项目投递</a></li>
 				<!-- <li><a href="projectissue.html" style="font-size: 18px">发行</a></li> -->

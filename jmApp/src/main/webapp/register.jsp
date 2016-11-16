@@ -108,7 +108,7 @@
 					<div class="form-group" style="margin-top: 20px">
 						<div class="col-md-2">
 							<div class="checkbox">
-								<label><input type="checkbox" id="yes"> <font
+								<label><input type="checkbox" checked="false" id="yes"> <font
 									color="white">已阅读并同意</font></label>
 							</div>
 						</div>
@@ -126,7 +126,7 @@ cb.onclick=function(){
 })();
 </script>
 						<div class="col-md-4" style="margin-top: 1%">
-							<a href="#"><font color="yellow">《91玖马金融服务协议》</font></a>
+							<a href="/jmApp/agreement.jsp"><font color="yellow">《91九马众筹用户注册服务协议》</font></a>
 						</div>
 					</div>
 

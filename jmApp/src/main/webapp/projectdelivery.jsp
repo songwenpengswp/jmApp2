@@ -17,11 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" style="background:#FFF; color:#FFF">
+	<!-- <nav class="navbar navbar-default navbar-fixed-top" style="background:#FFF; color:#FFF">
     	<div class="container">
     		<div class="navbar-header" style="margin-top: 10px;margin-bottom: 10px">
                <a class="navbar-brand" href="#" style="padding-top: 0">
-                   <img  src="img/91_logo.png">
+                   <img  src="img/91_logo.gif">
                </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
                    <span class="sr-only">切换导航</span>
@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            	<li><a href="/jmApp/jm/MainAction.action" style="font-size: 18px">首页</a></li>
 	            	<li><a href="/jmApp/jm/ProjectAction.action" style="font-size: 18px">影视投资</a></li>
 	            	<li><a href="projectdelivery.jsp" style="font-size: 18px">项目投递</a></li>
-	            	<!-- <li><a href="projectissue.html" style="font-size: 18px">发行</a></li> -->
+	            	<li><a href="projectissue.html" style="font-size: 18px">发行</a></li>
 	            	<li><a href="shangcheng.jsp" style="font-size: 18px">九马商城</a></li>
 	            	<li><a href="travel.jsp" style="font-size: 18px">九马旅游</a></li>
 	            	<li><a href="list.jsp" style="font-size: 18px">关于</a></li>
@@ -55,7 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            	</li>
 	            </ul>
 	        </div> 
-    </nav>
+    </nav> -->
+    <jsp:include page="header.jsp"></jsp:include>
     <div  style="background: url(img/projectdelivery.jpg) no-repeat top center ;height: 100px;width: 100%;margin-top: 50px;">
     </div>
      <div style="background: #f5f5f5;overflow: hidden">

@@ -70,7 +70,7 @@ private ActionContext context;
 		String orgTel=(String)session.get("tel");
 		String orgCode=(String)session.get("code");
 		request=(Map)context.get("request");
-		if(orgTel!=null&&orgCode!=null)
+	
 		if(!orgTel.equals(tel))
 		{
 			request.put("error", 1); //手机号错误
