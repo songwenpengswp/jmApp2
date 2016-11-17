@@ -18,7 +18,10 @@
 		<action name="Register"
 			class="RegisterAction" method="register">
 			<result name="reg_success" >/login.jsp</result>
+			
 			<result name="reg_failture">/register.jsp</result>
+		<result name="reg_success2" >/password3.jsp</result>
+			
 		</action>
 		<action name="TelValidate" class="RegisterAction" method="validateTel">
             <result type="json">  

@@ -158,5 +158,14 @@ public class UserServiceImpl implements UserService {
         User user=userDao.findById(id);
 		return user;
 	}
+
+	@Override
+	public User findUserByTel(String tel) {
+		// TODO Auto-generated method stub
+		User user = userDao.findByTel(tel).get(0);
+	
+		return user;
+		
+	}
     
 }

@@ -72,7 +72,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//发送请求(数据)
 		xmlHttp.send(null);
 	}
+	
+	
+	
 </script>
+
+
 </head>
 <body onLoad="changeMe()">
      <nav class="navbar navbar-default navbar-fixed-top"

@@ -61,4 +61,6 @@ public interface UserService {
 	 * @param id
 	 */
 	User getUser(int id);
+	
+	User findUserByTel(String tel) ;
 }
