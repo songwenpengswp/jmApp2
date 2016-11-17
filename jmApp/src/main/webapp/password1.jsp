@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="msgcontainer">
             <div class="tabs">
                 <ul class="tab">
-                        <li style="margin-left: 5px;class="curr">手机找回</li>
+                        <li class="curr">手机找回</li>
                 </ul>
             </div>
 
@@ -118,10 +118,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                                                    密码重置验证码已发送到您的手机：<br>
                                                                                                    请在 10分钟 内查收，并在下方填写您收到的验证码。
                                 </p>
-                            <div style="padding:10px 0">
-                                <input class="text" data-val="true" data-val-required="请输入短信验证码" id="SecurityCode" name="SecurityCode" placeholder="请输入短信验证码" type="text" value="" style="width: 100px;height: 40px">
+                            <div style="padding:10px">
+                                <input class="form-control" data-val="true" data-val-required="请输入短信验证码" id="SecurityCode" name="SecurityCode" placeholder="请输入短信验证码" type="text" value="" style="width: 110px;height: 35px">
                                 <input data-val="true" data-val-number="The field ShowTime must be a number." data-val-required="The ShowTime field is required." id="ShowTime" name="ShowTime" type="hidden" value="23">                                    
-                                <input id="sendsms" value="" class="btn_yz f_array" type="button">
 <script type="text/javascript">
 //发送验证码时添加cookie
 function addCookie(name,value,expiresHours){ 
@@ -342,12 +341,12 @@ function isPhoneNum(){
 </script>
                             </div>
                             
-                                <div style="padding:10px 0">
-                                    <input class="text" data-val="true" data-val-required="请输入验证码" id="CheckCode1" name="CheckCode1" placeholder="请输入验证码" type="text" value="" style="width: 100px;height: 40px">
+                                <div style="padding:10px">
+                                    <input class="form-control" data-val="true" data-val-required="请输入验证码" id="CheckCode1" name="CheckCode1" placeholder="请输入验证码" type="text" value="" style="width: 110px;height: 35px">
                                     <img id="veryCode" src= "" onClick="changeMe()" /><span></span>
                                 </div>
-                                <a id="submitbtn" class="navbar-brand" href="/jmApp/password2.jsp" style="padding-top: 0">下一步
-                            <!-- <button id="submitbtn" type="button" style="margin:30px 0 0;">下一步</button> -->
+                                <a id="submitbtn" class="navbar-brand" href="/jmApp/password2.jsp" style="padding-top: 0">
+                                <button type="button" style="margin:10px;">下一步</button>
                            </a>
                         </form>
 

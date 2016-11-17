@@ -72,7 +72,7 @@ height: 100%;
         <div class="msgcontainer">
             <div class="tabs">
                 <ul class="tab">
-                        <li style="margin-left: 5px;class="curr">手机找回</li>
+                        <li class="curr">手机找回</li>
                 </ul>
             </div>
 
@@ -92,19 +92,19 @@ height: 100%;
                                 </b>
                             </p>
 
-                            <div style="padding:5px 0">
-                                <input class="text" data-val="true" data-val-required="请输入密码" id="Password" name="Password" placeholder="请输入密码" type="password" value="" style="width: 250px;height: 40px">
+                            <div style="padding:10px">
+                                <input class="form-control" data-val="true" data-val-required="请输入密码" id="Password" name="Password" placeholder="请输入密码" type="password" value="" style="width: 250px;height: 40px">
                             </div>
                             
-                            <div class="er" id="passwordtips">
+                            <div class="er" id="passwordtips" style="padding:10px">
                                 <span style="float:left;">6-20位数字字母组合</span>
                                 <span style="float:left; margin-left:25px;" id="pwdchk"><table style="float: left; clear: left; color: black; height: 14px; width: 90px; margin-top: 3px; display: none;" id="_pwdcktbl"><tbody><tr><td id="_pwdcktd1" style="background-color: rgb(204, 204, 204);"></td><td id="_pwdcktd2" style="background-color: rgb(204, 204, 204);"></td><td id="_pwdcktd3" style="background-color: rgb(204, 204, 204);"></td></tr></tbody></table></span>
                             </div>
-                            <div style="padding:5px 0">
-                                <input class="text" data-val="true" data-val-equalto="密码输入不一致" data-val-equalto-other="*.Password" data-val-required="请输入密码" id="PasswordConfirm" name="PasswordConfirm" placeholder="请重复输入密码" type="password" value="" style="width: 250px;height: 40px">
+                            <div style="padding:10px">
+                                <input class="form-control" data-val="true" data-val-equalto="密码输入不一致" data-val-equalto-other="*.Password" data-val-required="请输入密码" id="PasswordConfirm" name="PasswordConfirm" placeholder="请重复输入密码" type="password" value="" style="width: 250px;height: 40px">
                             </div>
-                            <a id="submitbtn" class="navbar-brand" href="/jmApp/password3.jsp" style="padding-top: 0">提交
-                            <!-- <button type="button" id="submitbtn" style="margin:30px 0 0;">提交</button> -->
+                            <a id="submitbtn" class="navbar-brand" href="/jmApp/password3.jsp" style="padding-top: 0">
+                            <button type="button" id="submitbtn" style="margin:10px;">提交</button>
                         </a>
                         </form>
                     </div>
