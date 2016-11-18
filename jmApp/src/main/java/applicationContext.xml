@@ -113,6 +113,9 @@
 	  <property name="userService">
 	     <ref bean="UserService"/>
 	  </property>
+	   <property name="smservice">
+	     <ref bean="SmService"/>
+	  </property>
 	</bean>
 	<bean id="MainService" class="com.jm.app.service.MainServiceImpl">
 	    <property name="proDao">
@@ -151,6 +154,12 @@
 	   <property name="userDao">
 	      <ref bean="UserDAO"/>
 	   </property>
+	</bean>
+	<bean id="UpAction" class="com.jm.app.action.UpAction">
+	  
+	  <property name="userService">
+	     <ref bean="UserService"/>
+	  </property>
 	</bean>
 	<bean id="SmService" class="com.jm.app.service.SmServiceImpl">
 	   <property name="contentTemp" value="尊敬的客户你好，你的验证码是@【玖马娱乐】"/>

@@ -20,7 +20,7 @@
 			class="RegisterAction" method="register">
 			<result name="reg_success" >/login.jsp</result>
 			<result name="reg_failture">/register.jsp</result>
-			<!-- <result name="reg_success2" >/password1.jsp</result> -->
+		
 		</action>
 	
 		<action name="TelValidate" class="RegisterAction" method="validateTel">
@@ -60,6 +60,9 @@
         </action>
         <action name="Validat" class="ValidatAction" method="register">
 			<result name="val_success" >/password1.jsp</result>
+		</action>
+		 <action name="Aup" class="UpAction" >
+			<result name="val_success" >/password2.jsp</result>
 		</action>
     </package>
 </struts>    

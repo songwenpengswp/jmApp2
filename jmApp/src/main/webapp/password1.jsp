@@ -69,7 +69,7 @@ height: 100%;
                 </dt>
                 <dd style="width:100%;">
                     <div style="margin:0 auto;overflow: hidden;width:416px;">
-                        <form id="appform" method="post"  novalidate="novalidate">
+                        <form action="/jmApp/jm/Aup.action">
                             <input id="bkurl" name="bkurl" type="hidden" value="">
                             <input data-val="true" data-val-required="错误的帐号参数" id="Receiver" name="Receiver" type="hidden" value="15590062451">
                             <input data-val="true" data-val-required="错误的验证码参数" id="SecurityCode" name="SecurityCode" type="hidden" value="155573">
@@ -100,9 +100,9 @@ height: 100%;
                             <div style="padding:5px 0">
                                 <input class="text" data-val="true" data-val-equalto="密码输入不一致" data-val-equalto-other="*.Password" data-val-required="请输入密码" id="PasswordConfirm" name="PasswordConfirm" placeholder="请重复输入密码" type="password" value="" style="width: 250px;height: 40px">
                             </div>
-                            <a id="submitbtn" class="navbar-brand" href="/jmApp/password2.jsp" style="padding-top: 0">
-                            <button type="button" class="btn btn-primary" style="margin: 10px">下一步</button>
-                            </a>
+                           <!--  <a id="submitbtn" class="navbar-brand" href="/jmApp/password2.jsp" style="padding-top: 0"> -->
+                            <button type="sybmit" class="btn btn-primary" style="margin: 10px">下一步</button>
+                          <!--   </a> -->
                         </form>
                     </div>
                 </dd>

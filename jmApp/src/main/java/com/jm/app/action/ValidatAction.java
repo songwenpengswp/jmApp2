@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -31,8 +32,8 @@ public class ValidatAction extends ActionSupport {
 	private Map<String, Object> request;
 	private HttpServletRequest request2;
 	private String Password;
-
-	
+    private User user;
+   
 	public String validateTel() {
 		dataMap = new HashMap<String, Boolean>();
 		if (registerService.validateTel(tel))
@@ -48,6 +49,7 @@ public class ValidatAction extends ActionSupport {
 		session = (Map) context.getSession();
 		session.put("code", newCode);
 		session.put("tel", tel);
+		session.put("Password", Password);
 		System.out.println(newCode);
 		System.out.println(tel);
 		smservice.sendMessage(tel, newCode);
@@ -55,7 +57,7 @@ public class ValidatAction extends ActionSupport {
 	}
 
 	public String register() {
-
+		request2 = ServletActionContext.getRequest();
 		context = ActionContext.getContext();
 		session = (Map) context.getSession();
 		String orgTel = (String) session.get("tel");
@@ -75,14 +77,19 @@ public class ValidatAction extends ActionSupport {
 		// TODO Auto-generated method stub
 		// PrintWriter pw = response.getWriter();
 		// 通过用户tel重新查找用户
-		User user = userService.findUserByTel(tel);
-
-		user.setPassword(Password);
-		userService.updatPassw(user);
+		 user = userService.findUserByTel(tel);
+			HttpSession session = request2.getSession(true);
+			session.setAttribute("user", user);
+		session.setMaxInactiveInterval(30*60*24);
 		return "val_success";
 
 	}
-
+	/*public String register2() {
+		User user=(User) session.get("user");
+		user.setPassword(Password);
+		userService.updatPassw(user);
+		return "val_success";
+	}*/
 	public UserService getUserService() {
 		return userService;
 	}
