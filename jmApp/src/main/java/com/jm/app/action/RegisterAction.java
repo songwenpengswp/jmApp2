@@ -2,6 +2,7 @@ package com.jm.app.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Hibernate;
 import org.omg.CORBA.portable.ApplicationException;
 
@@ -39,7 +41,7 @@ public class RegisterAction extends ActionSupport {
 	private Map<String, Object> session;
 
 	private Map<String, Object> request;
-
+	private HttpServletRequest request2;
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
@@ -94,20 +96,29 @@ public class RegisterAction extends ActionSupport {
 
 	}
 
-	private String changePassword(HttpServletRequest request,
-			HttpServletResponse response)  {		
+	private String changePassword()  {		
 		//PrintWriter pw = response.getWriter();		
 	    	// 通过用户tel重新查找用户
 		User user = userservice.findUserByTel(tel);
 		// 加载用户所属部门和角色，解决懒加载的问题
-		/*
-		 * Hibernate.initialize(userNow.getDepartment());
-		 * Hibernate.initialize(userNow.getSystemRole());
-		 */
-		String newpwd = request.getParameter("Password");// 新密码
-		String newTpwd = request.getParameter("PasswordConfirm");// 确认新密码
+		
+		/*  Hibernate.initialize(userNow.getDepartment());
+		 * Hibernate.initialize(userNow.getSystemRole());*/
+		request2 = ServletActionContext.getRequest();
+		//客户端请求过来的参数设置成utf-8
+		try {
+			request2.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//客户端请求过来的参数
+		String newpwd = request2.getParameter("Password");
+		String newTpwd = request2.getParameter("PasswordConfirm");
+	
 		if (newpwd.equals(newTpwd)) {
 			user.setPassword(newpwd);
+			return "reg_success2";
 		}
 		return "reg_success2";
 
@@ -160,5 +171,6 @@ public class RegisterAction extends ActionSupport {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 
 }

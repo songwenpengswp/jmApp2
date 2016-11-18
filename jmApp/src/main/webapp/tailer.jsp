@@ -32,23 +32,24 @@
 <div id="about-lotuseed">
   <div class="about-lotuseed-con">
     <div class="about-con">
-      <a href="/jmApp/list.jsp">
-      <div class="about-li1">
+      <a href="/jmApp/list.jsp" >
+      <div   class="about-li1">
         <h2>关于九马</h2>
       </div>
       </a>
-      <a href="/jmApp/list.jsp">
-      <div class="about-li2">
+      <a href="/jmApp/list2.jsp" >
+      <div  class="about-li2">
         <h2>发起人手册</h2>      
       </div>
       </a>
-      <a href="/jmApp/list.jsp">
-      <div class="about-li3">
+      
+      <a href="/jmApp/list3.jsp" >
+      <div  class="about-li3">
         <h2>用户协议</h2>       
       </div>
       </a>
-      <a href="/jmApp/list.jsp">
-      <div class="about-li4">
+      <a href="/jmApp/list4.jsp" >
+      <div  class="about-li4">
         <h2>原则与机制</h2>      
       </div>
       </a>

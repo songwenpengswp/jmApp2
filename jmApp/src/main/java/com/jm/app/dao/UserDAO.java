@@ -265,7 +265,15 @@ public class UserDAO {
 		else
 			return false;
 	}
-	
+	/*public User UdPsByTel(String tel)
+	{
+		String hql="update User user set user.age=20 where user.age=18"; 　　
+		Query queryupdate=session.createQuery(hql); 
+		int ret=queryupdate.executeUpdate(); 
+		trans.commit();
+		
+		
+	}*/
 	
 	public static UserDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (UserDAO) ctx.getBean("UserDAO");

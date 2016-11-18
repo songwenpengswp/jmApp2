@@ -26,7 +26,7 @@
 				<!-- <li><a href="projectissue.html" style="font-size: 18px">发行</a></li> -->
 				<li><a href="/jmApp/shangcheng.jsp" style="font-size: 18px">九马商城</a></li>
 				<li><a href="/jmApp/travel.jsp" style="font-size: 18px">九马旅游</a></li>
-				<li><a href="/jmApp/list.jsp" style="font-size: 18px">关于</a></li>
+				<li><a href="/jmApp/jm/ListAction.action" style="font-size: 18px">关于</a></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right ">
