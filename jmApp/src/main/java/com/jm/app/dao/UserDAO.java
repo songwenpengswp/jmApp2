@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jm.app.bean.Prorder;
 import com.jm.app.bean.User;
 
+
 /**
  * A data access object (DAO) providing persistence and search support for User
  * entities. Transaction control of the save(), update() and delete() operations
@@ -265,15 +266,20 @@ public class UserDAO {
 		else
 			return false;
 	}
-	/*public User UdPsByTel(String tel)
-	{
-		String hql="update User user set user.age=20 where user.age=18"; 　　
-		Query queryupdate=session.createQuery(hql); 
-		int ret=queryupdate.executeUpdate(); 
-		trans.commit();
-		
-		
-	}*/
+	public void updateByTel(String psaawprd,String tel) {
+	    // 开始事物
+	
+		String hql="update User user set user.password=?where user.tel=?";
+		// 获取session中的hql语句
+		Query query = getCurrentSession().createQuery(hql);
+		query.setString(0, psaawprd);
+		query.setString(1, tel);
+	
+		query.executeUpdate();
+      
+        
+        
+    }
 	
 	public static UserDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (UserDAO) ctx.getBean("UserDAO");

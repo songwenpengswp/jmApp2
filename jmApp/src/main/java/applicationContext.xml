@@ -142,9 +142,7 @@
 	   </property>
 	</bean>
 	
-	<bean id="ListAction" class="com.jm.app.action.ListAction">
-	  
-	</bean>
+	
 	
 	<bean id="SmService" class="com.jm.app.service.SmServiceImpl">
 	   <property name="contentTemp" value="尊敬的客户你好，你的验证码是@【玖马娱乐】"/>

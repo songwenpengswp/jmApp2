@@ -114,13 +114,13 @@ public class RegisterAction extends ActionSupport {
 		}
 		//客户端请求过来的参数
 		String newpwd = request2.getParameter("Password");
-		String newTpwd = request2.getParameter("PasswordConfirm");
+		
 	
-		if (newpwd.equals(newTpwd)) {
+		
 			user.setPassword(newpwd);
 			return "reg_success2";
-		}
-		return "reg_success2";
+		
+		
 
 	}
 
