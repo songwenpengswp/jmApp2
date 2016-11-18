@@ -95,7 +95,6 @@ public class UserAction extends ActionSupport {
 		userService.updateUser(user.getId(), name,sex);
 		user.setName(name);
 		user.setSex(sex);
-		
 		return SUCCESS;
 	}
 	

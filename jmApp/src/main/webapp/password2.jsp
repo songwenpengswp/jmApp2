@@ -7,29 +7,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html lang="en"></html>
 <head>
-<title>忘记密码--重置密码</title>
-     <link type="text/css" rel="stylesheet" href="/jmApp/css/myzhaopin.css" />
+<title>提示</title>
+    <link type="text/css" rel="stylesheet" href="/jmApp/css/myzhaopin.css" />
     <link type="text/css" rel="stylesheet" href="/jmApp/css/login.css" />
     <link type="text/css" rel="stylesheet" href="/jmApp/css/codetarget.css" />
     <link type="text/css" rel="stylesheet" href="/jmApp/css/custom.css" />
     <link rel="stylesheet" type="text/css"
 	href="/jmApp/bootstrap-3.3.5-dist/css/bootstrap.min.css">
-    
-    
+	<script src="/jmApp/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" async="" src="/jmApp/js/dc.js"></script>
+    <script type="text/javascript" async="" src="/jmApp/js/dywe.js"></script>
     <!--[if lt IE 10]>
     <script type="text/javascript" src="/scripts/jquery.placeholder.min.js"></script>
     <![endif]-->
-    <script language="javascript" type="text/javascript" src="./忘记密码--重置密码_files/analytics.js"></script>
-    <script language="javascript" type="text/javascript">
-        lastChannelURL_cookie();
-    </script>
-    <script type="text/javascript" src="./忘记密码--重置密码_files/ga.js"></script>
-    
 <style type="text/css">
    
     body {
-    width: 100%;
-height: 100%;
+  
 	background-image: url('/jmApp/img/regnewbodybg.png');
 }
 </style>
@@ -38,8 +32,8 @@ height: 100%;
     <script type="text/javascript" src="/jmApp/js/jquery.passwordstrength.js"></script>
 
 </head>
-<body onLoad="changeMe()">
-<nav class="navbar navbar-default navbar-fixed-top"
+<body>
+ <nav class="navbar navbar-default navbar-fixed-top"
 		style="background:#FFF; color:#FFF">
 		<div class="container">
 			<div class="navbar-header" style="margin-top: 10px; margin-bottom: 10px">
@@ -53,115 +47,59 @@ height: 100%;
 				</button>
 			</div>
 	</nav>
-    
-  <!--   <div id="loginheader">
-        <div class="loginnewhead">
-            <a href="http://www.zhaopin.com/">
-                <img src="./忘记密码--重置密码_files/newlogo1407.png">
-            </a>
-        </div>
-    </div> -->
     <div id="page">
         
 
-<div class="welcomelogin" style="margin-top: 60px">
-    找回密码
-</div>
-<div class="login">
-    <div class="msgparent">
+<div class="welcomelogin"></div>
+<div class="login" style="margin-top: 60px">
+    <div class="msgparent" style="font-family: 微软雅黑,Arial,Helvetica,sans-serif,simsun;">
         <div class="msgcontainer">
-            <div class="tabs">
-                <ul class="tab">
-                        <li class="curr">手机找回</li>
-                </ul>
-            </div>
-
-            <dl style="border-top: 1px solid #cccccc; padding: 20px 0;">
-                <dt class="msgtitle">
+            <dl>
+            <dt class="msgtitle">
                     <img src="/jmApp/img/step03.jpg">
                 </dt>
-                <dd style="width:100%;">
-                    <div style="margin:0 auto;overflow: hidden;width:416px;">
-                        <form id="appform" method="post" novalidate="novalidate">
-                            <input id="bkurl" name="bkurl" type="hidden" value="">
-                            <input data-val="true" data-val-required="错误的帐号参数" id="Receiver" name="Receiver" type="hidden" value="15590062451">
-                            <input data-val="true" data-val-required="错误的验证码参数" id="SecurityCode" name="SecurityCode" type="hidden" value="155573">
-                            <p style="margin:10px 0">
-                                <b style="font-size:20px;font-family:微软雅黑,Arial,Helvetica,sans-serif,simsun">
-                                    验证成功，请重新设置密码
-                                </b>
-                            </p>
+                
+                <dt class="msgtitle" style="font-size:20px;margin-left: auto;margin-right: auto;width:300px;">
+                    <b>恭喜您，新密码设置成功！</b>
+                </dt>
+                                    <dd style="color:#333;margin-left: auto;margin-right: auto;width:300px;">
+                        系统将在<span id="TimerCount">5</span>秒后自动跳转到：<br>
+                        <a href="http://www.91jiuma.com/" style="margin-left: auto;margin-right: auto;width:300px;">
 
-                            <div style="padding:10px">
-                                <input class="form-control" data-val="true" data-val-required="请输入密码" id="Password" name="Password" placeholder="请输入密码" type="password" value="" style="width: 250px;height: 40px">
-                            </div>
-                            
-                            <div class="er" id="passwordtips" style="padding:10px">
-                                <span style="float:left;">6-20位数字字母组合</span>
-                                <span style="float:left; margin-left:25px;" id="pwdchk"><table style="float: left; clear: left; color: black; height: 14px; width: 90px; margin-top: 3px; display: none;" id="_pwdcktbl"><tbody><tr><td id="_pwdcktd1" style="background-color: rgb(204, 204, 204);"></td><td id="_pwdcktd2" style="background-color: rgb(204, 204, 204);"></td><td id="_pwdcktd3" style="background-color: rgb(204, 204, 204);"></td></tr></tbody></table></span>
-                            </div>
-                            <div style="padding:10px">
-                                <input class="form-control" data-val="true" data-val-equalto="密码输入不一致" data-val-equalto-other="*.Password" data-val-required="请输入密码" id="PasswordConfirm" name="PasswordConfirm" placeholder="请重复输入密码" type="password" value="" style="width: 250px;height: 40px">
-                            </div>
-                            <a id="submitbtn" class="navbar-brand" href="/jmApp/password3.jsp" style="padding-top: 0">
-                            <button type="button" id="submitbtn" style="margin:10px;">提交</button>
+                            http://www.91jiuma.com
                         </a>
-                        </form>
-                    </div>
-                </dd>
+                        <script type="text/javascript">
+                            var sec = 5;
+                            var redirectUrl = "http://www.91jiuma.com";
+                            var intervalv;
+                            $(function () {
+                                intervalv = setInterval(function () {
+                                    if (sec <= 1) {
+                                        if(intervalv){
+                                            clearInterval(intervalv);
+                                        }
+                                        window.location.href = redirectUrl;
+                                    }
+                                    sec--;
+                                    $('#TimerCount').html(sec);
+                                }, 1000);
+                            });
+                        </script>
+                    </dd>
             </dl>
+
         </div>
+            <a id="submitbtn" class="navbar-brand" href="http://www.91jiuma.com/" style="padding-top: 0;margin-left: auto;margin-right: auto;width:300px;">
+                立即跳转
+            </a>
     </div>
 </div>
-<script type="text/javascript">
-    jQuery.validator.addMethod("passvalid", function (value, element) {
-        var ret = $('#pwdchk').attr('isValid') == "true";
-        return ret;
-    }, "请输入6-20位的密码，必须包含数字和字母");
 
-    $(function () {
-        $("#Password").keyup(function () {
-            var errdiv = $("#Password").parent("div").next("div.msg_error");
-            if (errdiv.length > 0) {
-                errdiv.remove();
-            }
-            $("#passwordtips").show();
-        });
-
-        $('#pwdchk').pwdchk($('#Password'));
-
-        var vOption = {
-            onkeyup: false,
-            rules: {
-                Password: { required: true, passvalid: true },
-                PasswordConfirm: {required:true, equalTo:"#Password"}
-            },
-            messages: {
-                Password: { required: "请输入密码", passvalid: "请输入6-20位的密码，必须包含数字和字母" },
-                PasswordConfirm: { required: "请输入重复密码", equalTo: "密码输入不一致" }
-            }
-            , errorElement: "div"
-        };
-        window.formvalidator = $("#appform").validate(vOption);
-
-        $("#submitbtn").click(function () {
-            if (formvalidator.form()) {
-                //alert("submit");
-                    ZP.analysis.init_monitor_analy(this, 'rpassword', 'mbsubmit3', '008');
-                document.getElementById('appform').submit();
-            }
-            else {
-                formvalidator.focusInvalid();
-                return false;
-            }
-        });
-    });
-</script>
     </div>
     <!--
     <script src="http://images.zhaopin.com/new2011/bottom/bottom_2011_utf_8.js"></script>-->
     <div id="loginfooter">
-       <a onmousedown="return AdsClick(121115223,'zhilianjieshao')" target="_blank" href="http://www.91jiuma.com/jmApp/jm/MainAction.action">九马首页</a> |
+         <a onmousedown="return AdsClick(121115223,'zhilianjieshao')" target="_blank" href="http://www.91jiuma.com/jmApp/jm/MainAction.action">九马首页</a> |
         <!-- <a target="_blank" href="http://www.zhaopin.com/sitemap.html">网站地图</a> | -->
         <a onmousedown="return AdsClick(121115223,'jiaruzhilian')" target="_blank" href="http://www.91jiuma.com/jmApp/jm/ProjectAction.action">影视投资</a> |
         <a onmousedown="return AdsClick(121115223,'falvshengming')" target="_blank" href="http://www.91jiuma.com/jmApp/projectdelivery.jsp">项目投递</a> |
@@ -170,10 +108,9 @@ height: 100%;
         <a onmousedown="return AdsClick(121115223,'changjianwenti')" target="_blank" href="http://www.91jiuma.com/jmApp/list.jsp">关于</a> 
         <!-- <a onmousedown="return AdsClick(121115223,'touzizheguanxi')" target="_blank" href="http://zhaopin.investorroom.com">Investor Relations</a> -->
     </div>
-    <script type="text/javascript" src="./忘记密码--重置密码_files/index_ads.js"></script>
-    <script type="text/javascript" src="./忘记密码--重置密码_files/global.js"></script>
+    <script type="text/javascript" src="/jmApp/js/index_ads.js"></script>
+    <script type="text/javascript" src="/jmApp/js/global.js"></script>
     
 
 
-</body>
-</html>
+</body></html>

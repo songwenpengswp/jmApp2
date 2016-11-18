@@ -61,6 +61,16 @@ public interface UserService {
 	 * @param id
 	 */
 	User getUser(int id);
-	
+	/**
+	 * 修改密码
+	 * @param tel
+	 * @param password
+	 */
+	void updatPassw(User user);
+	/**
+	 * 通过手机号码获取用户信息
+	 * @param tel
+	 * @return
+	 */
 	User findUserByTel(String tel) ;
 }

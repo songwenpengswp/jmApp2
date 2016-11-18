@@ -266,6 +266,26 @@ public class UserDAO {
 		else
 			return false;
 	}
+	/**
+	 * 更新数据库密码
+	 * @param user
+	 */
+	public void updatePassword(User user) {
+		String hql="update User user set user.password=? where user.tel=?";
+		Query query=getCurrentSession().createQuery(hql);
+		query.setString(0, user.getPassword());
+		query.setString(1,user.getTel());
+		query.executeUpdate();
+	}
+	
+	public User findBtTel(String tel){
+		String hql="select user from User user where user.tel=?";
+		Query query=getCurrentSession().createQuery(hql);
+		query.setString(0, tel);
+		
+		return (User) query.uniqueResult();
+		
+	}
 	public void updateByTel(String psaawprd,String tel) {
 	    // 开始事物
 	
@@ -284,10 +304,15 @@ public class UserDAO {
 	public static UserDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (UserDAO) ctx.getBean("UserDAO");
 	}
-	
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		UserDAO dao= getFromApplicationContext(ac);
 		dao.findById(2);
+		User user=new User();
+		user.setTel("15044671648");
+		user.setPassword("123456");
+		dao.updatePassword(user);
+		//System.out.println(dao.findBtTel("15044671648"));
+		
 	}
 }

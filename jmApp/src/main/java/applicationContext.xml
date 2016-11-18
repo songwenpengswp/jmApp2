@@ -103,6 +103,17 @@
 	     <ref bean="LoginService"/>
 	  </property>
 	</bean>
+	<bean id="ValidatAction" class="com.jm.app.action.ValidatAction"  scope="prototype">
+	  <property name="loginService">
+	     <ref bean="LoginService"/>
+	  </property>
+	  <property name="registerService">
+	     <ref bean="RegisterService"/>
+	  </property>
+	  <property name="userService">
+	     <ref bean="UserService"/>
+	  </property>
+	</bean>
 	<bean id="MainService" class="com.jm.app.service.MainServiceImpl">
 	    <property name="proDao">
 	       <ref bean="ProjectDAO"/>
@@ -141,9 +152,6 @@
 	      <ref bean="UserDAO"/>
 	   </property>
 	</bean>
-	
-	
-	
 	<bean id="SmService" class="com.jm.app.service.SmServiceImpl">
 	   <property name="contentTemp" value="尊敬的客户你好，你的验证码是@【玖马娱乐】"/>
 	   <property name="url" value="http://dx.ipyy.net/sms.aspx"/>

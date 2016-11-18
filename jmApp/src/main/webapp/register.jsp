@@ -246,7 +246,7 @@ cb.onclick=function(){
 			}
 		});
 		$('#code_btn').click(function(event){
-           $(this).attr('disabled','true');
+           $(this).attr('disabled','true');//控制点击
            var fiveSeconds = new Date().getTime() + 2*60*1000;
            $('#code_btn').countdown(fiveSeconds, function(event) {
              $(this).html(event.strftime('%M:%S'));

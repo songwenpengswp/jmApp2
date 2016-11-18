@@ -1,50 +1,88 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE html>
-<html lang="en">
+<html  lang="en"></html>
 <head>
 <meta charset="UTF-8">
-<title>电影众筹项目_电影投资项目列表 - 91玖马网</title>
-<link rel="stylesheet" type="text/css"
-	href="/jmApp/bootstrap-3.3.5-dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="/jmApp/bootstrapvalidator/css/bootstrapValidator.min.css" />
-<link rel="stylesheet" href="/jmApp/circle_progress/css/progress.css">
-<script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.min.js"></script>
-<script src="/jmApp/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-<script src="/jmApp/bootstrapvalidator/js/bootstrapValidator.js"></script>
-<script src="/jmApp/jquery-countdown/jquery.countdown-2.2.0.js"></script>
-<link rel="stylesheet" type="text/css" href="/jmApp/css/bootstrap.css">
-<link rel="stylesheet" href="/jmApp/css/progress.css">
-<link rel="stylesheet" href="/jmApp/files/style2.css">
+ <title>忘记密码--填写账户信息</title>
+   js
+    <link type="text/css" rel="stylesheet" href="/jmApp/css/bootstrapValidator.css" />
+    <link type="text/css" rel="stylesheet" href="/jmApp/css/myzhaopin.css" />
+    <link type="text/css" rel="stylesheet" href="/jmApp/css/login.css" />
+    <link type="text/css" rel="stylesheet" href="/jmApp/css/codetarget.css" />
+    <link type="text/css" rel="stylesheet" href="/jmApp/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/jmApp/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    
+    
+    <!--[if lt IE 10]>
+    <script type="text/javascript" src="/js/jquery.placeholder.min.js"></script>
+    <![endif]-->
+   
+ <!--    <script language="javascript" type="text/javascript">
+       /*  lastChannelURL_cookie(); */
+    </script>     -->
 <style type="text/css">
-.pie_progress {
-	width: 120px;
-} 
- @media all and (max-width: 768px) {
-.pie_progress {
-	width: 80%;
-	max-width: 300px;
+     
+	 body {
+	      background-image: url('/jmApp/img/regnewbodybg.png');
+          }
+    .tabs {
+    height: 30px;
+    line-height: 30px;
+    padding-top: 1px;
 }
-}
+/* #veryCode:hover{
+		cursor:pointer;
+	} */
 </style>
-<link href="/jmApp/css/foot-basic.css" rel="stylesheet" type="text/css">
 
+<script type="text/javascript">
+	var code = "";
+	function changeMe(){
+		var img = document.getElementById('veryCode');
+		img.setAttribute("src", "servlet/VerifyCodeServlet?abc="+new Date().getTime());
+		img.onload = function(){
+			showCheckCode();
+		}
+	}
+	
+	function showCheckCode(){
+		var xmlHttp;
+		if(window.ActiveXObject){
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}else if(window.XMLHttpRequest){
+			xmlHttp = new XMLHttpRequest();
+		}
+		
+		xmlHttp.onreadystatechange = function(){
+			if(xmlHttp.readyState == 4){     
+	            if(xmlHttp.status == 200){
+	           		code = xmlHttp.responseText;
+	           	//	alert(code);
+	            }
+	        }
+		};
+		
+		//设置请求参数
+		xmlHttp.open("post", "servlet/GetCodeServlet", true);
+		d
+		//发送请求(数据)
+		xmlHttp.send(null);
+	}
+</script>
 </head>
-<body>
-	<nav class="navbar navbar-default navbar-fixed-top"
+<body onLoad="changeMe()">
+     <nav class="navbar navbar-default navbar-fixed-top"
 		style="background:#FFF; color:#FFF">
 		<div class="container">
 			<div class="navbar-header"
 				style="margin-top: 10px;margin-bottom: 10px">
-				<a class="navbar-brand" href="#" style="padding-top: 0"> <img
+				<a class="navbar-brand" href="/jmApp/jm/MainAction.action" style="padding-top: 0"> <img
 					src="/jmApp/img/91_logo.png">
 				</a>
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -54,105 +92,76 @@
 				</button>
 			</div>
 	</nav>
-	<div style="background: #f5f5f5">
-		<div class="jumbotron"
-			style="background: url(/jmApp/img/registerBanner.jpg) no-repeat;height: 650px;">
-			<div class="col-md-8 col-md-offset-4 col-center-block"
-				style="margin-top: 30px">
-				<form id="register_frm" class="form-horizontal"
-					action="/jmApp/jm/Register.action" method="post">
-					<h3 class="form-signin-heading">
-						<font color="white"><b>验证手机
-						<c:choose>
-						   <c:when test="${error==1}">
-						      <b>(手机号码错误)</b>
-						   </c:when>
-						   <c:when test="${error==2}">
-						      <b>(验证码错误)</b>
-						   </c:when>
-						</c:choose>
-						</b></font>
-					</h3>
-
-					<div class="form-group" style="margin-top: 20px">
-						<div class="col-md-6">
-							<input type="text" id="tel" name="tel" class="form-control"
-								placeholder="手机号码">
-						</div>
-						<div class="col-md-5">
-							<span id="tel_message" style="font-size: 20px;color: #000"></span>
-						</div>
-					</div>
-					
-					<div class="form-group" style="margin-top: 20px">
-						<div class="col-md-6">
-							<div class="input-group">
-								<input type="text" class="form-control" id="code" name="code"
-									placeholder="短信验证码"> <span class="input-group-btn"><button
-										id="code_btn" type="button" class="btn btn-warning">获取校验码</button>
+    <div id="page">
+<div class="welcomelogin" style="margin-top: 80px">
+    找回密码
+</div>
+<div class="login">
+    <div class="msgparent">
+        <div class="msgcontainer">
+        <div class="tabs">
+           <ul class="tab">
+                        <li class="curr">手机找回</li>                           
+                </ul>
+                </div>
+            <dl style="border-top: 1px solid #cccccc; padding: 20px 0;">
+                <dt class="msgtitle">
+                    <img src="/jmApp/img/step01.jpg">
+                </dt>
+                <dd style="width:100%;">
+                    <div style="margin:0 auto;overflow: hidden;width:416px;">
+                   <input id="bkurl" name="bkurl" type="hidden" value="" />
+                    <div class="container">
+                  <form id="register_frm" role="form" action="/jmApp/jm/Validat.action" method="post"> 
+                            <div style="padding:10px;margin-left: 10px">
+                                <input class="form-control" data-val="true" data-val-required="请输入您的手机号" id="tel" name="tel" placeholder="请输入手机号" type="text" value="" style="width: 250px;height: 40px"/>
+                                <%-- <s:fielderror fieldName="tel" cssStyle="color:red" /> --%>
+                                <span id="tel_message"></span>
+                            </div>
+                            <div style="padding:10px;float:Left;margin-left: 13px ">
+                                <input type="text" class="form-control" id="code" name="code" placeholder="短信验证码" style="width: 110px;height: 40px"> 
+                                <span id="code_message"></span>
+                            </div>
+                            <div>
+                                <span class="input-group-btn">
+                                <button id="code_btn" type="button" class="btn btn-warning " style="margin-top: 10px">获取校验码</button>
 								</span>
 							</div>
-						</div>
-						<div class="col-md-5">
-							<span id="code_message" style="font-size: 20px"></span>
-						</div>
-					</div>
-					
-						
-
-					<div class="form-group">
-						<div class="col-md-6">
-						<a id="submitbtn" class="navbar-brand"
-												href="/jmApp/password1.jsp" style="padding-top: 0">
-							<button id="zhuce" type="submit" class="btn btn-primary col-md-12"
-								style="font-size: 18px;font-weight:bold">提交申请</button>
-								</a>
-						</div>
-					</div>
-					
-				</form>
-			</div>
-		</div>
-		<div class="container" style="margin-top: 50px">
-		 
-<!--技术优势-->
-<div id="about-lotuseed">
-  <div class="about-lotuseed-con">
-    <div class="about-con">
-      <a href="/jmApp/about.jsp">
-      <div class="about-li1">
-        <h2>关于九马</h2>
-      </div>
-      </a>
-      <a href="/jmApp/originator.jsp">
-      <div class="about-li2">
-        <h2>发起人手册</h2>      
-      </div>
-      </a>
-      <a href="/jmApp/agreement.jsp">
-      <div class="about-li3">
-        <h2>用户协议</h2>       
-      </div>
-      </a>
-      <a href="#">
-      <div class="about-li4">
-        <h2>信任安全</h2>      
-      </div>
-      </a>
+							<div>
+							<button type="submit" class="btn btn-primary" style="margin:27px;margin-top: -30px">下一步</button>
+                            </div>
+                         </form>
+                    </div>
+                </dd>
+            </dl>
+        </div>
     </div>
-  </div>
 </div>
-	<div id="link">
-  <div class="link-con">
-    <div class="link-li"> 友情链接： <a href="">运维生存时间</a> <a href="">程序员之家</a> <a href="">jquery学堂</a> <a href="">易百教程</a> <a href="">Golang中国</a> <a href="">游侠安全网</a> <a href="">安畅</a> <a href="">web开发网</a> <a href="">java培训</a> <a href="">ThinkPHP开源框架</a> <a href="">CloudStack中国社区</a> </div>
-  </div>
-</div>
-<div id="copyright1"> 备案号：浙ICP备16025447号-1 Copyright© 2016-7-13 91jiuma-91九马 &nbsp;<a href="terms.html">法律条款</a> </div>
-	
-	</div>
+
+   <%-- <jsp:include page="tailer.jsp"></jsp:include> --%>
+    <div id="loginfooter">
+        <a target="_blank" href="http://www.91jiuma.com/jmApp/jm/MainAction.action">九马首页</a>
+        <a target="_blank" href="http://www.91jiuma.com/jmApp/jm/ProjectAction.action">影视投资</a> |
+        <a target="_blank" href="http://www.91jiuma.com/jmApp/projectdelivery.jsp">项目投递</a> |
+        <a target="_blank" href="http://www.91jiuma.com/jmApp/shangcheng.jsp">九马商城</a> |
+        <a target="_blank" href="http://www.91jiuma.com/jmApp/travel.jsp">九马旅游</a> |
+        <a target="_blank" href="http://www.91jiuma.com/jmApp/list.jsp">关于</a>
+    </div>
+    
 </body>
+<script type="text/javascript" src="/jmApp/js/jquery.validate.custom.js"></script>
+ <script type="text/javascript" src="/jmApp/js/jquery.validate.js"></script>
+ <script type="text/javascript" src="/jmApp/js/jquery.validate.ui.login.js"></script>
+ <script type="text/javascript" src="/jmApp/js/jquery.passwordstrength.js"></script>
+<script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.min.js"></script>
+	<script src="/jmApp/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/jmApp/js/index_ads.js"></script>
+    <script type="text/javascript" src="/jmApp/js/global.js"></script>
+    <script type="text/javascript" src="/jmApp/circle_progress/dist/jquery-asPieProgress.min.js"></script>
+    <script src="/jmApp/bootstrapvalidator/js/bootstrapValidator.js"></script>
+    <script src="/jmApp/jquery-countdown/jquery.countdown-2.2.0.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+ $(document).ready(function() {
 		$('#register_frm').bootstrapValidator({
 
 			feedbackIcons : {
@@ -171,30 +180,18 @@
 						regexp : {
 							regexp : /^1[3|4|5|7|8][0-9]{9}$/,
 							message : '手机号码输入错误'
-						},
+						}/* ,
 						threshold : 11, //有11字符以上才发送ajax请求，（input中输入一个字符，插件会向服务器发送一次，设置限制，6字符以上才开始）
 						remote : {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
 							url : '/jmApp/jm/TelValidate.action',//验证地址
 							message : '手机号码已注册',//提示消息
 							delay : 1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
 							type : 'POST'//请求方式
-						}
+						}  */
 					}
 
 				},
-				password : {
-					container : '#password_message',
-					validators : {
-						notEmpty : {
-							message : '密码不能为空'
-						},
-						regexp : {
-							regexp : /^(\w){6,20}$/,
-							message : '只能输入6-20个字母、数字、下划线'
-						}
-					}
-				},
-				code : {
+					code : {
 					container : '#code_message',
 					validators : {
 						notEmpty : {
@@ -211,10 +208,11 @@
 					}
 				}
 			}
-		});
-		$('#code_btn').click(function(event){
+			
+			});
+			$('#code_btn').click(function(event){
            $(this).attr('disabled','true');
-           var fiveSeconds = new Date().getTime() + 2*60*1000;
+           var fiveSeconds = new Date().getTime() + 1*60*1000;
            $('#code_btn').countdown(fiveSeconds, function(event) {
              $(this).html(event.strftime('%M:%S'));
            }).on('finish.countdown', function(event){
@@ -230,4 +228,5 @@
       });
 	});
 </script>
+
 </html>

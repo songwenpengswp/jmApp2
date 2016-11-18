@@ -41,6 +41,7 @@ public class SmServiceImpl implements SmService {
         String smsUrl=url+"?action=send&userid=&account="+account+"&password="+password+"&mobile="+tel+"&content="+realContent+"&sendTime=&extno=";
         
         new Thread(new SmsRunnable(smsUrl,tel,content)).start();
+        //线程，多线程，继承Runnable接口
 	}
 
 
@@ -152,6 +153,6 @@ public class SmServiceImpl implements SmService {
     public static void main(String[] args) {
 		
     	SmServiceImpl service=new SmServiceImpl();
-    	service.sendMessage("15590078865", "1234");
+    	service.sendMessage("15590062451", "1234");
 	}
 }

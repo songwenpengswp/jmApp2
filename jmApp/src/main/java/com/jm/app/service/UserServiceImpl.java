@@ -160,12 +160,25 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findUserByTel(String tel) {
+	public void updatPassw(User user) {
 		// TODO Auto-generated method stub
-		User user = userDao.findByTel(tel).get(0);
+		userDao.updatePassword(user);
+	}
 	
-		return user;
+	public static void main(String[] args) {
+		UserService  user=new UserServiceImpl();
+		User u=new User();
+		u.setTel("15044671648");	
+		u.setPassword("123456");
+		user.updateUser(u);
 		
 	}
-   
+
+	@Override
+		public User findUserByTel(String tel) {
+		// TODO Auto-generated method stub
+		User user = userDao.findBtTel(tel);
+				return user;
+	}
+    
 }

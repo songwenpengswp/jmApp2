@@ -88,7 +88,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div
-		style="background: url(/jmApp/img/top2.jpg) no-repeat top center ;margin-top:60px;height: 360px;width: 100%">
+		style="background: url(/jmApp/img/top.jpg) no-repeat top center ;height: 360px;width: 100%">
 	</div>
 	<div style="background: #f5f5f5">
 		<div class="container">
@@ -136,7 +136,7 @@
 									</a>
 								</div>
 								<div class="col-md-5">
-									<button class="btn btn-warning" ="button">
+									<button class="btn btn-warning" type="button">
 										转化率 <span class="badge">${project.converted }%</span>
 									</button>
 								</div>

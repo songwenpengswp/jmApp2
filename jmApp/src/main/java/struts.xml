@@ -11,20 +11,18 @@
 			class="ProjectAction">
 			<result>/project.jsp?type=${type}&amp;status=${status}</result>
 		</action>
-		
-		
-		
+
 		<action name="DetailAction"
 			class="DetailAction">
 			<result>/detail.jsp</result>
 		</action>
 		<action name="Register"
 			class="RegisterAction" method="register">
-			<result name="reg_success" >/login.jsp</result>			
+			<result name="reg_success" >/login.jsp</result>
 			<result name="reg_failture">/register.jsp</result>
-		
-			
+			<!-- <result name="reg_success2" >/password1.jsp</result> -->
 		</action>
+	
 		<action name="TelValidate" class="RegisterAction" method="validateTel">
             <result type="json">  
                 <!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->  
@@ -33,7 +31,7 @@
 		</action>
 		<action name="CodeCreate" class="RegisterAction" method="createCode">  
               <result type="json">  
-                 <param name="excludeNullProperties">true</param>  
+                 <param name="excludeNullProperties">true</param> 
               </result>   
         </action>  
         <action name="LoginAction" class="LoginAction">
@@ -60,5 +58,8 @@
                <param name="excludeNullProperties">true</param>  
             </result>
         </action>
+        <action name="Validat" class="ValidatAction" method="register">
+			<result name="val_success" >/password1.jsp</result>
+		</action>
     </package>
 </struts>    

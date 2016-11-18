@@ -71,7 +71,7 @@ public class HttpClientInstance {
 		public static void main(String[] args) {
 			
 			HttpClientInstance instance=new HttpClientInstance();
-			String res=instance.sendGet("http://dx.ipyy.net/sms.aspx?action=send&userid=&account=AA00470&password=AA0047066&mobile=15590078865&content=%E5%B0%8A%E6%95%AC%E7%9A%84%E5%AE%A2%E6%88%B7%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%BD%A0%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81%E6%98%AF1234%E3%80%90%E7%8E%96%E9%A9%AC%E5%A8%B1%E4%B9%90%E3%80%91&sendTime=&extno=");
+			String res=instance.sendGet("http://dx.ipyy.net/sms.aspx?action=send&userid=&account=AA00470&password=AA0047066&mobile=15590062451&content=%E5%B0%8A%E6%95%AC%E7%9A%84%E5%AE%A2%E6%88%B7%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%BD%A0%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81%E6%98%AF1234%E3%80%90%E7%8E%96%E9%A9%AC%E5%A8%B1%E4%B9%90%E3%80%91&sendTime=&extno=");
 			System.out.println(res);
 		}
 

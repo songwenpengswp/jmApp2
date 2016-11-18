@@ -160,7 +160,7 @@ fieldset[disabled] .datepicker table tr td.highlighted.focus {
 .datepicker table tr td.highlighted.disabled,
 .datepicker table tr td.highlighted.disabled:active {
   background: #d9edf7;
-  color: #000000;
+  color: #777777;
 }
 .datepicker table tr td.today {
   color: #000;

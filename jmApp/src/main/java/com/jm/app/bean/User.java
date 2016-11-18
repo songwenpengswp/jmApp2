@@ -20,8 +20,6 @@ import javax.persistence.Transient;
 @Table(name = "user", catalog = "jm")
 public class User implements java.io.Serializable {
 
-	// Fields
-
 	private Integer id;
 	private String name;
 	private String password;
@@ -72,8 +70,6 @@ public class User implements java.io.Serializable {
 		this.email = email;
 		this.prorders = prorders;
 	}
-
-	// Property accessors
 	@Id  @GeneratedValue
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
