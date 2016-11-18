@@ -126,12 +126,12 @@
 			<c:forEach items="${proList}" var="project">
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail  course-list-img">
-						<a href="detail.html"><img class="img_3"
+						<a href="/jmApp/jm/DetailAction.action?proId=${project.id}"><img class="img_3"
 							src="/jmApp/project/${project.picture}"></a>
 						<div class="caption">
 							<div class="row">
 								<div class="col-md-7">
-									<a href="detail.html">
+									<a href="/jmApp/jm/DetailAction.action?proId=${project.id}">
 										<h5>${project.title}</h5>
 									</a>
 								</div>

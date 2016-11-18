@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -170,9 +171,13 @@
 					<!-- Tab panes -->
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane active" id="home"
-							style="margin: 20px;"></div>
+							style="margin: 20px;">
+							
+							</div>
 						<div role="tabpanel" class="tab-pane" id="profile"
-							style="margin: 20px;"></div>
+							style="margin: 20px;">
+							
+							</div>
 						<div role="tabpanel" class="tab-pane" id="messages">
 							<div class="row" style="padding-top: 20px;">
 								<div class="col-md-6" style="padding-left: 35px;">
@@ -352,7 +357,7 @@
 						<div class="media" style="margin: 10px;margin-top: 20px;">
 							<div class="media-left">
 								<a href="www.jzmys.net"> <img class="media-object img-circle"
-									src="/jmApp/project/${project.deliver.logo}"
+									src="/jmApp/jm/project/${project.deliver.logo}"
 									style="height: 60px;width: 60px;">
 								</a>
 							</div>

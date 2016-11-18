@@ -44,7 +44,7 @@
 		<div class="carousel-inner">
 			<c:forEach items="${carList}" var="project" varStatus="s">
 				<div class="item ${s.index==0?'active':'' }">
-					<a href="/jmApp/detail.jsp">
+					<a href="/jmApp/jm/DetailAction.action?proId=${project.id}">
 					<img src="/jmApp/project/${project.carousel}" alt="" style="height:100%;"></a>
 				</div>
 			</c:forEach>
@@ -193,7 +193,7 @@
 				<c:forEach items="${proEndList}" var="project">
 					<div class="col-md-4">
 						<div class="thumbnail course-list-img">
-							<a href="/jmApp/detail.html"><img class="img_3"
+							<a href="/jmApp/jm/DetailAction.action?proId=${project.id}"><img class="img_3"
 								src="/jmApp/project/${project.picture}"></a>
 							<div class="caption text-center">
 								<h3>
