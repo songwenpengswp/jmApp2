@@ -44,7 +44,7 @@
 		<div class="carousel-inner">
 			<c:forEach items="${carList}" var="project" varStatus="s">
 				<div class="item ${s.index==0?'active':'' }">
-					<a href="/jmApp/detail.html">
+					<a href="/jmApp/jm/DetailAction.action?proId=${project.id}">
 					<img src="/jmApp/project/${project.carousel}" alt="" style="height:100%;"></a>
 				</div>
 			</c:forEach>

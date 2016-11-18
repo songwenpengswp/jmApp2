@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
-<title>简洁Tab</title>
+<title>关于</title>
 <style type="text/css">
 
 <!--
