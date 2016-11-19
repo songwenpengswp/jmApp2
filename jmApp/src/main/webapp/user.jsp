@@ -84,7 +84,7 @@
 			$("#image").click();
 		});
 		
-		$('#info_btn').click(function(e) {
+		 $('#info_btn').click(function(e) {
 		   
 		    $.ajax({
 		         url:'/jmApp/jm/SaveInfo.action',
@@ -1054,9 +1054,9 @@
 			</div>
 		</div>
 	</div>
-
+<!-- 
 	<jsp:include page="tailer.jsp"></jsp:include>
-
+ -->
 
 </body>
 <script>
