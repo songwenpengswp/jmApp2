@@ -1,7 +1,9 @@
 package com.jm.app.service;
 
 import java.util.List;
+import java.util.Map;
 
+import com.jm.app.bean.Deliver;
 import com.jm.app.bean.Project;
 
 public interface ProjectService {
@@ -14,4 +16,14 @@ public interface ProjectService {
 	 */
 	List<Project> getProByType(Integer type,Integer status);
 
+	List<Project> findByDeliverId(int id);
+	
+	Deliver findDeliverId(int id);
+	List<Deliver> findAll();
+	
+	List<Project> getAll();
+	
+	Map<Integer, String> getProNameWithId();
+	Map<Integer, String> getDelNameWithId();
+	Project findProiverId(int id);
 }

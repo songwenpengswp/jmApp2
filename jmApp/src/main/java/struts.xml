@@ -16,11 +16,16 @@
 			class="DetailAction">
 			<result>/detail.jsp</result>
 		</action>
+		
+		 <action name="saveAction"
+			class="SaveAction" >
+			<result  type="redirectAction">DetailAction?proId=${proId}</result>
+				 
+		</action> 
 		<action name="Register"
 			class="RegisterAction" method="register">
 			<result name="reg_success" >/login.jsp</result>
-			<result name="reg_failture">/register.jsp</result>
-		
+			<result name="reg_failture">/register.jsp</result>		
 		</action>
 	
 		<action name="TelValidate" class="RegisterAction" method="validateTel">
@@ -37,8 +42,9 @@
         <action name="LoginAction" class="LoginAction">
             <result name="login_success" type="redirectAction">MainAction</result>
 			<result name="login_failture">/login.jsp</result>
+			<result name="adminlogin_success" type="redirectAction">AdminMainAction</result>
         </action>
-        <action name="UserAction" class="UserAction">
+      <action name="UserAction" class="UserAction">
             <result name="error" type="redirectAction">MainAction</result>
             <result name="success">/user.jsp</result>
         </action>
@@ -50,7 +56,9 @@
         </action>
         <action name="SaveInfo" class="UserAction" method="saveInfo">
             <result type="json">  
-                 <param name="excludeNullProperties">true</param>  
+                 <param name="excludeNullProperties">true</param>
+                  <param name="success">/login.jsp</param>
+				
               </result>
         </action>
         <action name="SaveAddess" class="UserAction" method="saveAddress">
@@ -64,5 +72,33 @@
 		 <action name="Aup" class="UpAction" >
 			<result name="val_success" >/password2.jsp</result>
 		</action>
+		 <action name="Bup" class="UpAction" >
+			<result name="val_success" >/changeSuccess.jsp</result>
+		</action>
+		<action name="outAction" class="com.jm.app.action.OutAction" >
+			<result type="redirectAction">MainAction</result>
+		</action>
+		<action name="UserMessageAction" class="UserMessageAction" >
+			<result>/user_message.jsp</result>
+		</action>
+		<action name="ForgotAction" class="ForgotAction" >
+			<result>/changePassword.jsp</result>
+		</action>
+		
+		<action name="MailAction" class="MailAction" >
+			<result  type="redirectAction">UserAction</result>
+		</action>
+		
+			<action name="AdminMainAction" class="AdminMainAction">
+			<result>/admin_index.jsp</result>
+		</action>
+		<action name="AdminProjectAction"
+			class="AdminProjectAction">
+			<result>/admin_project.jsp?type=${type}&amp;status=${status}</result>
+		</action>
+			<action name="AdminAction" class="AdminAction">
+			<result>/admin.jsp</result>
+		</action>
+		
     </package>
-</struts>    
+</struts>

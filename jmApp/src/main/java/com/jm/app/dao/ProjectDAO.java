@@ -16,9 +16,12 @@ import static org.hibernate.criterion.Example.create;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jm.app.bean.Deliver;
 import com.jm.app.bean.Project;
+import com.jm.app.bean.User;
 
 /**
  	* A data access object (DAO) providing persistence and search support for Project entities.
@@ -248,8 +251,30 @@ public class ProjectDAO  {
             throw re;
         }
     }
-
+    public List<Project> findByDeliverId(int id) {
+		String hql = "from Project p where p.deliver.id=?";
+		Query query = getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		
+		return query.list();
+	}
+    public Project findProiverId(int id){
+		String hql="select project  from Project project where project.id=?";
+		Query query=getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		
+		return  (Project) query.uniqueResult();
+		
+	}
+    
 	public static ProjectDAO getFromApplicationContext(ApplicationContext ctx) {
     	return (ProjectDAO) ctx.getBean("ProjectDAO");
+	}
+	public static void main(String[] args) {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ProjectDAO dao= getFromApplicationContext(ac);
+		
+		System.out.println(dao.findByDeliverId(1));
+		
 	}
 }

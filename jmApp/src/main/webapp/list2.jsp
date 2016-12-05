@@ -10,21 +10,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
 <title>关于</title>
-<style type="text/css">
 
-<!--
-body{ padding:0;font:12px "宋体"; }
-#lib_Tab1_sx{margin:0px;padding:0px;margin-bottom:15px; overflow:hidden;}
-/* .lib_tabborder_sx{border:1px solid #95C9E1;} */
-.lib_Menubox_sx { background:#fff; line-height:48px;position:relative; float:left; width:130px; height:240px;}
-.lib_Menubox_sx ul{margin:0px;padding:0px;list-style:none; position:absolute; top:15px; left:5px; margin-left:10px; height:25px;text-align:center;}
-.lib_Menubox_sx li{display:block;cursor:pointer;width:134px;color:#000000;font-weight:bold; height:45px;line-height:25px; background-color:#F5F5F5}
-.lib_Menubox_sx li.hover{padding:0px;background:#33cc99;width:136px;border:1px solid #95C9E1; border-right:0;
-color:#fff;height:45px;line-height:25px;}
-.lib_Contentbox_sx{margin-top:0px; border-top:none;padding:20px; border-left:0; margin-left:300px;margin-right:200px;}
--->
-</style>
 
+
+<link rel="stylesheet" type="text/css" href="/jmApp/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="/jmApp/bootstrap-3.3.5-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/jmApp/bootstrap-3.3.5-dist/css/buttons.css">
 	<link rel="stylesheet" href="/jmApp/circle_progress/css/progress.css">
@@ -32,17 +21,33 @@ color:#fff;height:45px;line-height:25px;}
 	<link rel="stylesheet" href="/jmApp/datepicker/css/bootstrap-datepicker3.css">
 	<script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.min.js"></script>
     <script src="/jmApp/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-    <style type="text/css">
-	.cjwt{line-height:24px;}
-	.cjwt .cjwt-group{border-bottom:1px dashed #ccc;padding:10px 0;font-size:14px;margin-left: 30px;margin-top: 30px;}
-	.cjwt .cjwt-title{font-size:18px;font-weight:bold;cursor:pointer;}
-	.cjwt .cjwt-subtitle{font-size:14px;color:#F25904;}
-	.cjwt .cjwt-group dd{padding:10px 0;}
-	</style>
-	<style type="text/css">
-		.aqbz{text-align: left; font-size: 16px; line-height: 24px;}
-		.aqbz h2{font-size: 18px;line-height:2;}
-	</style>
+    
+    <link rel="stylesheet" type="text/css" href="/jmApp/css/bootstrap.css">
+  
+<style type="text/css">
+
+<!--
+body{ font-family: "Microsoft YaHei";
+background-color:#F5F5F5;
+color: #333;}
+/* #lib_Tab1_sx{margin:0px;padding:0px;margin-bottom:15px; overflow:hidden;} */
+#container{
+	width:980px;
+	height:auto;
+	background:#333;
+	margin:0 auto;
+	}
+
+.lib_Contentbox_sx{width:800px;
+	height:auto;
+	background-color:#FFF;
+	float:left;
+	margin-left:50px;
+	border: solid 1px #eaeaea;
+	margin-bottom:60px;}
+-->
+</style>
+
 </head>
 <script>
 <!--
@@ -59,16 +64,26 @@ function setTab(name,cursel,n){
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<div style="margin-top:100px;margin-left:100px; margin-right:100px;" id="lib_Tab1_sx" class="lib_tabborder_sx">
-<div class="lib_Menubox_sx ">
-<ul>
-  <li id="one1" name="1" onclick="setTab('one',1,4)" >关于九马</li>
-  <li id="one2" name="2" onclick="setTab('one',2,4)" class="hover">发起人手册</li>
-  <li id="one3" name="3" onclick="setTab('one',3,4)" >用户协议</li>  
-  <li id="one4" name="4" onclick="setTab('one',4,4)">原则与机制</li>
-  
-</ul>
-</div>
+<div style="margin-top:100px;margin-left:60px; margin-right:100px;" id="lib_Tab1_sx" class="lib_tabborder_sx">
+<div class="col-md-2"
+			style="border-right: solid 2px #e9e9e9;font-size: 18px;">
+			<ul class="nav nav-pills nav-stacked" role="tablist"
+				style="text-align: center;">
+				<li id="one1" name="1" role="presentation"  onclick="setTab('one',1,4)"
+					class="hover"><a aria-controls="item" role="tab"
+					data-toggle="tab"><span aria-hidden="true"
+						style="margin-right: 10px;"></span>关于九马</a></li>
+				<li id="one2" name="2" role="presentation" class="active" onclick="setTab('one',2,4)"><a
+					aria-controls="account" role="tab" data-toggle="tab"><span
+						aria-hidden="true" style="margin-right: 10px;"></span>发起人手册</a></li>
+				<li id="one3" name="3" role="presentation" onclick="setTab('one',3,4)"><a
+					aria-controls="order" role="tab" data-toggle="tab"><span
+						aria-hidden="true" style="margin-right: 10px;"></span>用户协议</a></li>
+				<li id="one4" name="4" role="presentation" onclick="setTab('one',4,4)"><a
+					aria-controls="persion" role="tab" data-toggle="tab">原则与机制</a></li>
+
+			</ul>
+		</div>
  <div class="lib_Contentbox_sx "> 
   <div id="con_one_1" style="display:none" >
   <div align=center>

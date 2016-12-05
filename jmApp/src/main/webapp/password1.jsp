@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE html>
 <html lang="en"></html>
-<head>
+<head> 
 <title>忘记密码--重置密码</title>
     <link type="text/css" rel="stylesheet" href="/jmApp/css/myzhaopin.css" />
     <link type="text/css" rel="stylesheet" href="/jmApp/css/login.css" />
