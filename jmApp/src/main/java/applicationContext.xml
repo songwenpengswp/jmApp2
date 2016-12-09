@@ -8,7 +8,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/jm"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="root"></property>
+		<property name="password" value="swp123"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -35,7 +35,9 @@
 				<value>com.jm.app.bean.Reply</value>
 				<value>com.jm.app.bean.Comments</value>
 				<value>com.jm.app.bean.Message</value>
-				<value>com.jm.app.bean.UserMessage</value></list>
+				<value>com.jm.app.bean.UserMessage</value>
+				<value>com.jm.app.bean.Payinfo</value>
+			</list>
 		</property>
 	</bean>
 	<bean id="transactionManager"
@@ -176,6 +178,20 @@
 		</property>
 	</bean>
 
+    <bean id="PaymentService" class="com.jm.app.service.PaymentServiceImpl">
+        <property name="pay_url" value="http://112.74.230.8:8081/posp-api/" />
+        <property name="notify_url" value="http://114.55.151.148/servlet/PayResultServlet"/>
+        <property name="prorderDao">
+           <ref bean="ProrderDAO"/>
+        </property>
+        <property name="userDao">
+            <ref bean="UserDAO"/>
+        </property>
+        <property name="projectDao">
+            <ref bean="ProjectDAO"/>
+        </property>
+    </bean>
+    
 	<bean id="UserService" class="com.jm.app.service.UserServiceImpl">
 		<property name="userDao">
 			<ref bean="UserDAO" />
@@ -258,4 +274,19 @@
 			<ref bean="ProjectService" />
 		</property>
 	</bean>
-	</beans>
+	<bean id="PayinfoDAO" class="com.jm.app.dao.PayinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="PayInfoService" class="com.jm.app.service.PayInfoServiceImpl">
+	    <property name="payInfoDao">
+	        <ref bean="PayinfoDAO"/>
+	    </property>
+	</bean>
+	<bean id="ProrderService" class="com.jm.app.service.ProrderServiceImpl">
+	    <property name="prorderDao">
+	       <ref bean="ProrderDAO"/>
+	    </property>
+	</bean>
+</beans>

@@ -84,8 +84,6 @@
 		});
 	});
 </script>
-
-
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div style="background: #f5f5f5">
@@ -123,13 +121,13 @@
 							<div
 								class="progress-bar progress-bar-warning progress-bar-striped"
 								role="progressbar" aria-valuenow="${project.investRate}"
-								aria-valuemin="0" aria-valuemax="100" style="width: ${project.investRate}%">
+								aria-valuemin="0" aria-valuemax="100"
+								style="width: ${project.investRate}%">
 								<span class="sr-only">${project.investRate}% Complete
-									(warning)</span> <br />
-								<span>${project.investRate}%</span>
+									(warning)</span> <br /> <span>${project.investRate}%</span>
 							</div>
 						</div>
-												<div class="timer">
+						<div class="timer">
 							<p class="text-muted" style="font-size:15px;">
 								距离众筹结束还有: <span><em><font color="#f17a00"> <span
 											id="days"></span> 天 <span id="hours"></span> 小时 <span
@@ -137,7 +135,7 @@
 									</font></em></span>
 							</p>
 						</div>
-	                	<div class="investDetailSupport">
+						<div class="investDetailSupport">
 							<ul>
 								<li><img src="/jmApp/img/support.png" alt="支持"> (支持)
 									<span>${project.prorders.size()}</span> 人</li>
@@ -173,189 +171,136 @@
 					<!-- Tab panes -->
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane active" id="home"
-							style="margin: 20px;">
-							
-							</div>
+							style="margin: 20px;"></div>
 						<div role="tabpanel" class="tab-pane" id="profile"
-							style="margin: 20px;">
-							
-							</div>
+							style="margin: 20px;"></div>
 						<div role="tabpanel" class="tab-pane" id="messages">
 							<div class="row" style="padding-top: 20px;">
 								<c:forEach items="${prorder}" var="pror">
-								<div class="col-md-6" style="padding-left: 35px;">
-							
-									<div class="media" style="padding: 20px;background: #f5f5f5;">
-										
-									
-										<div class="media-left">
-											<img class="media-object img-circle"
-												src="/jmApp/img/default.jpg">
-										</div>
-										<div class="media-body">
-											<h3 class="media-heading" style="padding-left: 20px;">
-												<b>${pror.user.name}</b>
-											</h3>
-											<h5 style="padding-top: 10px;padding-left: 20px;">
-												投资金额：<font color="#f17a00">${pror.investment}</font>
-											</h5>
-											<h5 style="padding-left: 20px;">投资时间：${pror.buyDate}</h5>
+									<div class="col-md-6" style="padding-left: 35px;">
+
+										<div class="media" style="padding: 20px;background: #f5f5f5;">
+
+
+											<div class="media-left">
+												<img class="media-object img-circle"
+													src="/jmApp/img/default.jpg">
+											</div>
+											<div class="media-body">
+												<h3 class="media-heading" style="padding-left: 20px;">
+													<b>${pror.user.name}</b>
+												</h3>
+												<h5 style="padding-top: 10px;padding-left: 20px;">
+													投资金额：<font color="#f17a00">${pror.investment}</font>
+												</h5>
+												<h5 style="padding-left: 20px;">投资时间：${pror.buyDate}</h5>
+											</div>
 										</div>
 									</div>
-								</div></c:forEach>
+								</c:forEach>
+
 								
-								<!-- <div class="col-md-6" style="padding-right: 35px;">
-									<div class="media" style="padding: 20px;background: #f5f5f5;">
-										<div class="media-left">
-											<img class="media-object img-circle" src="/jmApp/img/0.jpg"
-												style="height: 100px">
-										</div>
-										<div class="media-body">
-											<h3 class="media-heading" style="padding-left: 20px;">
-												<b>Damon2013</b>
-											</h3>
-											<h5 style="padding-top: 10px;padding-left: 20px;">
-												投资金额：<font color="#f17a00">￥50,000</font>
-											</h5>
-											<h5 style="padding-left: 20px;">投资时间：2016-05-26</h5>
-										</div>
-									</div>
-								</div> -->
 							</div>
-							<!-- <div class="row" style="padding-top: 20px;">
-								<div class="col-md-6" style="padding-left: 35px;">
-									<div class="media" style="padding: 20px;background: #f5f5f5;">
-										<div class="media-left">
-											<img class="media-object img-circle" src="/jmApp/img/1.jpg">
-										</div>
-										<div class="media-body">
-											<h3 class="media-heading" style="padding-left: 20px;">
-												<b>燕燕</b>
-											</h3>
-											<h5 style="padding-top: 10px;padding-left: 20px;">
-												投资金额：<font color="#f17a00">￥50,000</font>
-											</h5>
-											<h5 style="padding-left: 20px;">投资时间：2016-05-26</h5>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6" style="padding-right: 35px;">
-									<div class="media" style="padding: 20px;background: #f5f5f5;">
-										<div class="media-left">
-											<img class="media-object img-circle" src="/jmApp/img/default.jpg"
-												style="height: 100px">
-										</div>
-										<div class="media-body">
-											<h3 class="media-heading" style="padding-left: 20px;">
-												<b>皮皮和妞妞</b>
-											</h3>
-											<h5 style="padding-top: 10px;padding-left: 20px;">
-												投资金额：<font color="#f17a00">￥50,000</font>
-											</h5>
-											<h5 style="padding-left: 20px;">投资时间：2016-05-26</h5>
-										</div>
-									</div>
-								</div>
-							</div> -->
+							
 							<div class="row" style="margin-top: 30px;"></div>
-						</div> 
+						</div>
 						<div role="tabpanel" class="tab-pane" id="settings">
-						<form action="/jmApp/jm/saveAction.action">
-							<div class="container"
-								style="width: 700px;padding-left: 10px;padding-top: 20px;padding-bottom: 30px;">
-								<textarea id="title" name="title" class="form-control" rows="7"></textarea>
-								<button type="submit" class="btn btn-info pull-right"
-									style="margin-top: 10px;width: 150px;">发表</button>
-							</div>
+							<form action="/jmApp/jm/saveAction.action">
+								<div class="container"
+									style="width: 700px;padding-left: 10px;padding-top: 20px;padding-bottom: 30px;">
+									<textarea id="title" name="title" class="form-control" rows="7"></textarea>
+									<button type="submit" class="btn btn-info pull-right"
+										style="margin-top: 10px;width: 150px;">发表</button>
+								</div>
 							</form>
 							<c:forEach items="${com}" var="comments">
-							<div
-								style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
-							<table style="width: 100%">
-								<tr>
-									<td
-										style="background: #f5f5f5;width: 17%;text-align: center;vertical-align: top;">
-										<img src=${comments.user.picture} alt=""
-										style="height: 70px;margin-top: 10px;">
-										<h6 style="text-align: center;">
-											<font color="#f17a00">${comments.user.name }</font>
-										</h6>
-									</td>
-									<td>
-										<div style="min-height: 150px;">
-											<p style="margin-top: 15px;margin-left: 15px;">${comments.content}</p>
-										</div>
-										<div class="row">
-											<div class="col-md-10" style="text-align: right;">
-												<p>${comments.includeDate}</p>
+								<div
+									style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+								<table style="width: 100%">
+									<tr>
+										<td
+											style="background: #f5f5f5;width: 17%;text-align: center;vertical-align: top;">
+											<img src=${comments.user.picture } alt=""
+											style="height: 70px;margin-top: 10px;">
+											<h6 style="text-align: center;">
+												<font color="#f17a00">${comments.user.name }</font>
+											</h6>
+										</td>
+										<td>
+											<div style="min-height: 150px;">
+												<p style="margin-top: 15px;margin-left: 15px;">${comments.content}</p>
 											</div>
-											<div class="col-md-2">
-												<div
-													style="background: #f5f5f5;min-height: 10px;margin-right: 10px;text-align: center;">
-													<a data-toggle="collapse" href="#collapseExample"
-														aria-expanded="false" aria-controls="collapseExample"><p>回复(2)</p></a>
+											<div class="row">
+												<div class="col-md-10" style="text-align: right;">
+													<p>${comments.includeDate}</p>
+												</div>
+												<div class="col-md-2">
+													<div
+														style="background: #f5f5f5;min-height: 10px;margin-right: 10px;text-align: center;">
+														<a data-toggle="collapse" href="#collapseExample"
+															aria-expanded="false" aria-controls="collapseExample"><p>回复(2)</p></a>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="collapse" id="collapseExample">
-											<div class="well"
-												style="margin-left: 15px;margin-right: 10px;">
-												<div class="media">
-													<div class="media-left">
-														<a href="#"> <img class="media-object"
-															src="img\default.jpg" style="height: 50px;">
-														</a>
-													</div>
-													<div class="media-body">
-														<h5 class="media-heading">
-															<font color="#389BEA">1876811****</font>回复<font
-																color="#389BEA">Allen</font>:反正今晚是没机会了。。。
-														</h5>
-														<h5 class="text-muted pull-right">2015-10-30 09:43:28
-															回复</h5>
-													</div>
-												</div>
-												<div
-													style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
-												<div class="media">
-													<div class="media-left">
-														<a href="#"> <img class="media-object" src="img\1.jpg"
-															style="height: 50px;">
-														</a>
-													</div>
-													<div class="media-body">
-														<h5 class="media-heading">
-															<font color="#389BEA">1876811****</font>回复<font
-																color="#389BEA">Allen</font>:反正今晚是没机会了。。。
-														</h5>
-														<h5 class="text-muted pull-right">2015-10-30 09:43:28
-															回复</h5>
-													</div>
-												</div>
-												<div
-													style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
-												<div class="media">
-													<div class="media-body">
-														<a class="btn btn-default pull-right" role="button"
-															data-toggle="collapse" href="#collapseExample2"
-															aria-expanded="false" aria-controls="collapseExample2">我也说一句</a>
-													</div>
-												</div>
-												<div class="collapse" id="collapseExample2"
-													style="margin-top: 10px;">
-													<textarea class="form-control" rows="5"></textarea>
+											<div class="collapse" id="collapseExample">
+												<div class="well"
+													style="margin-left: 15px;margin-right: 10px;">
 													<div class="media">
+														<div class="media-left">
+															<a href="#"> <img class="media-object"
+																src="img\default.jpg" style="height: 50px;">
+															</a>
+														</div>
 														<div class="media-body">
-															<button type="button" class="btn btn-info pull-right">发表</button>
+															<h5 class="media-heading">
+																<font color="#389BEA">1876811****</font>回复<font
+																	color="#389BEA">Allen</font>:反正今晚是没机会了。。。
+															</h5>
+															<h5 class="text-muted pull-right">2015-10-30
+																09:43:28 回复</h5>
 														</div>
 													</div>
+													<div
+														style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+													<div class="media">
+														<div class="media-left">
+															<a href="#"> <img class="media-object"
+																src="img\1.jpg" style="height: 50px;">
+															</a>
+														</div>
+														<div class="media-body">
+															<h5 class="media-heading">
+																<font color="#389BEA">1876811****</font>回复<font
+																	color="#389BEA">Allen</font>:反正今晚是没机会了。。。
+															</h5>
+															<h5 class="text-muted pull-right">2015-10-30
+																09:43:28 回复</h5>
+														</div>
+													</div>
+													<div
+														style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+													<div class="media">
+														<div class="media-body">
+															<a class="btn btn-default pull-right" role="button"
+																data-toggle="collapse" href="#collapseExample2"
+																aria-expanded="false" aria-controls="collapseExample2">我也说一句</a>
+														</div>
+													</div>
+													<div class="collapse" id="collapseExample2"
+														style="margin-top: 10px;">
+														<textarea class="form-control" rows="5"></textarea>
+														<div class="media">
+															<div class="media-body">
+																<button type="button" class="btn btn-info pull-right">发表</button>
+															</div>
+														</div>
+													</div>
+
+
 												</div>
-
-
-											</div>
-									</td>
-								</tr>
-							</table>
+										</td>
+									</tr>
+								</table>
 							</c:forEach>
 						</div>
 					</div>
@@ -367,7 +312,8 @@
 						<div class="line-blue"></div>
 						<div class="media" style="margin: 10px;margin-top: 20px;">
 							<div class="media-left">
-								<a href="//www.jzmys.net"> <img class="media-object img-circle"
+								<a href="//www.jzmys.net"> <img
+									class="media-object img-circle"
 									src="/jmApp/project/${project.deliver.logo}"
 									style="height: 60px;width: 60px;">
 								</a>
@@ -382,22 +328,24 @@
 						</div>
 					</div>
 					<c:forEach items="${project.projectSupports}" var="support">
-						<div style="background: #fff;margin-top: 20px;border-style:solid; border-width:1px; border-color:#D5D5D5">
+						<div id="support"
+							style="background: #fff;margin-top: 20px;border-style:solid; border-width:1px; border-color:#D5D5D5">
 							<p style="margin-top: 20px;margin-left: 10px;">
-								<span style="font-size: 20px;">￥${support.price}</span><span>/份</span><%-- <span
+								<span id="price" style="font-size: 20px;">￥${support.price}</span><span>/份</span>
+								<%-- <span
 									class="pull-right" style="margin-right: 10px;">已支持3份</span> --%>
 							</p>
 							<div class="line-blue"></div>
 							<div style="margin-left: 15px;margin-top: 15px;">
 								<span class="label label-info" style="font-size: 14px;">
-								    <c:choose>
-								       <c:when test="${support.limited==null }">
+									<c:choose>
+										<c:when test="${support.limited==null }">
 								                      无限制
 								       </c:when>
-								       <c:otherwise>
+										<c:otherwise>
 								                      限额${support.limited}元
 								       </c:otherwise>
-								    </c:choose>
+									</c:choose>
 								</span>
 							</div>
 							<p class="text-muted" style="margin-left: 15px;margin-top: 15px;">
@@ -431,17 +379,60 @@
 								</div>
 								<div class="col-md-5 col-md-offset-1"
 									style="vertical-align: middle;">
-									<p style="font-size: 19px;">
-										<font color="FF7300"><em>￥1000</em></font>
-									</p>
+									<p id="total"
+										style="font-size: 19px;color:#FF7300;font-style:italic;">
+										￥${support.price}</p>
 								</div>
 							</div>
 							<div style="text-align: center;margin-bottom: 20px;">
-								<button type="button" class="btn btn-warning"
-									style="width: 150px;">去支持</button>
+							  <c:choose> 
+							    <c:when test="${user==null}">
+								   <button id="suport_btn_unload" type="button" class="btn btn-warning"
+									  style="width: 150px;" data-toggle="modal" data-target=".modal">去支持</button>
+								</c:when>	
+								<c:when test="${user!=null}"> 
+								  <form action="../redirectpay.jsp" method="post">
+								    <input type="hidden" name="pro_id" value="${project.id}">
+								    <input type="hidden" name="pro_title" value="${project.title}">
+								    <input type="hidden" name="pro_rate" value="${project.converted}">
+								    <input type="hidden" name="pro_price" value="${support.price}">
+								    <input id="pro_total" type="hidden" name="pro_total" value="${support.price}">
+								    <input id="pro_num" type="hidden" name="pro_num" value="1">
+								    <button id="suport_btn_loaded" type="submit" class="btn btn-warning"
+									   style="width: 150px;" >去支持</button>
+							      </form>
+								</c:when> 	
+							  </c:choose>
 							</div>
 						</div>
 					</c:forEach>
+
+                    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                 <h4 class="modal-title" id="myLargeModalLabel">登陆</h4>
+                              </div>
+                               <form class="form-horizontal" role="form" action="/jmApp/jm/LoginAction.action">
+                                <div class="modal-body" style="text-align: center;width: 250px;margin: 0 auto">
+                                  
+                                    <div class="form-group" >
+                                        <input id="tel" name="tel" class="form-control" id="exampleInputEmail1" placeholder="手机号码">
+                                    </div>
+                                    <div class="form-group">
+                                         <input id="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="登陆密码">
+                                    </div>
+                                  
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                                   <button id="loading" type="button" class="btn btn-primary">登陆</button>
+                               </div>
+                             </form>
+                           </div>
+                        </div>
+                    </div>
 
 					<div
 						style="background: #fff;margin-top: 20px;border-style:solid; border-width:1px; border-color:#D5D5D5">
@@ -463,77 +454,82 @@
 				</div>
 			</div>
 		</div>
-	    <jsp:include page="tailer.jsp"></jsp:include>
+		<jsp:include page="tailer.jsp"></jsp:include>
 	</div>
-    <script type="text/javascript">
-					$(function() {
-						var action;
-						$(".number-spinner button")
-								.mousedown(
-										function() {
-											btn = $(this);
-											input = btn.closest(
-													'.number-spinner').find(
-													'input');
-											btn.closest('.number-spinner')
-													.find('button').prop(
-															"disabled", false);
+	<script type="text/javascript">
+		$(function() {
+			var action;
+			$(".number-spinner button")
+					.mousedown(
+							function() {
+								btn = $(this);
+								p = btn.closest('.row').next().find('#total');
+								price = btn.closest('#support').find('#price');
+								input = btn.closest('.number-spinner').find(
+										'input');
+								btn.closest('.number-spinner').find('button')
+										.prop("disabled", false);
 
-											if (btn.attr('data-dir') == 'up') {
-												action = setInterval(
-														function() {
-															if (input
-																	.attr('max') == undefined
-																	|| parseInt(input
-																			.val()) < parseInt(input
-																			.attr('max'))) {
-																input
-																		.val(parseInt(input
-																				.val()) + 1);
-															} else {
-																btn
-																		.prop(
-																				"disabled",
-																				true);
-																clearInterval(action);
-															}
-														}, 50);
-											} else {
-												action = setInterval(
-														function() {
-															if (input
-																	.attr('min') == undefined
-																	|| parseInt(input
-																			.val()) > parseInt(input
-																			.attr('min'))) {
-																input
-																		.val(parseInt(input
-																				.val()) - 1);
-															} else {
-																btn
-																		.prop(
-																				"disabled",
-																				true);
-																clearInterval(action);
-															}
-														}, 50);
-											}
-										}).mouseup(function() {
-									clearInterval(action);
-								});
+								if (btn.attr('data-dir') == 'up') {
+									action = setInterval(
+											function() {
+												if (input.attr('max') == undefined
+														|| parseInt(input.val()) < parseInt(input
+																.attr('max'))) {
+													input.val(parseInt(input.val()) + 1);		
+													var priceStr = price.text();
+													var total=input.val() * priceStr.substring(1);
+													p.text('￥'+ total);
+													$('form #pro_total').val(total);
+													$('form #pro_num').val(input.val());
+												} else {
+													btn.prop("disabled", true);
+													clearInterval(action);
+												}
+											}, 50);
+								} else {
+									action = setInterval(
+											function() {
+												if (input.attr('min') == undefined
+														|| parseInt(input.val()) > parseInt(input
+																.attr('min'))) {
+													input.val(parseInt(input.val()) - 1);
+													var priceStr = price.text();
+													var total=input.val() * priceStr.substring(1);
+													p.text('￥'+ total);
+													$('form #pro_total').val(total);
+													$('form #pro_num').val(input.val());
+												} else {
+													btn.prop("disabled", true);
+													clearInterval(action);
+												}
+											}, 50);
+								}
+							}).mouseup(function() {
+						clearInterval(action);
 					});
-				</script>
+		});
+	</script>
+    <script type="text/javascript">
+       $(document).ready(function() {
+          $('#suport_btn_loaded').on('click', function() {
+              
+          });
+       });
+    </script>
+	<script type="text/javascript">
+		$("#home").load("/jmApp/project/${project.homepage}",
+				function(response, status, xhr) {
+					$('#home').html(response);
+				});
 
-                <script type="text/javascript">
-					$("#home").load("/jmApp/project/${project.homepage}",
-							function(response, status, xhr) {
-								$('#home').html(response);
-							});
+		$("#profile").load("/jmApp/project/${project.safepage}",
+				function(response, status, xhr) {
+					$('#profile').html(response);
+				});
+	</script>
+	
+	
+</body>
 
-					$("#profile").load("/jmApp/project/${project.safepage}",
-							function(response, status, xhr) {
-								$('#profile').html(response);
-							});
-				</script></body>
-				
 </html>

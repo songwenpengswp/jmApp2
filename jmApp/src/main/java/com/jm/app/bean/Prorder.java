@@ -1,6 +1,6 @@
 package com.jm.app.bean;
 
-import java.util.Calendar;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -31,10 +31,15 @@ public class Prorder implements java.io.Serializable {
 	private User user;
 	private Integer investment;
 	private Float income;
+	private String traceno;
+	private String orderno;
+	private Integer payType;
+	private Integer payStatus;
 	private Date buyDate;
 	private Date reportDate;
 	private Integer statuses;
 	private Integer assign;
+	
 
 	// Constructors
 
@@ -182,6 +187,43 @@ public class Prorder implements java.io.Serializable {
 			   name="转化中";
  		}
 		return name;
+	}
+
+	
+	@Column(name = "traceno")
+	public String getTraceno() {
+		return traceno;
+	}
+
+	public void setTraceno(String traceno) {
+		this.traceno = traceno;
+	}
+
+	@Column(name = "orderno")
+	public String getOrderno() {
+		return orderno;
+	}
+
+	public void setOrderno(String orderno) {
+		this.orderno = orderno;
+	}
+
+	@Column(name = "payType")
+	public Integer getPayType() {
+		return payType;
+	}
+
+	public void setPayType(Integer payType) {
+		this.payType = payType;
+	}
+
+	@Column(name = "payStatus")
+	public Integer getPayStatus() {
+		return payStatus;
+	}
+
+	public void setPayStatus(Integer payStatus) {
+		this.payStatus = payStatus;
 	}
 
 	@Override

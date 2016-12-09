@@ -19,7 +19,12 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="comments" catalog="jm">
+	<table name="comments" catalog="jm">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="payinfo" catalog="jm" class="com.jm.app.bean.Payinfo">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>
