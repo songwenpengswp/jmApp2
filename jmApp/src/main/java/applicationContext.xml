@@ -37,7 +37,7 @@
 				<value>com.jm.app.bean.Message</value>
 				<value>com.jm.app.bean.UserMessage</value>
 				<value>com.jm.app.bean.Payinfo</value>
-			</list>
+				</list>
 		</property>
 	</bean>
 	<bean id="transactionManager"
@@ -274,6 +274,7 @@
 			<ref bean="ProjectService" />
 		</property>
 	</bean>
+
 	<bean id="PayinfoDAO" class="com.jm.app.dao.PayinfoDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -289,4 +290,7 @@
 	       <ref bean="ProrderDAO"/>
 	    </property>
 	</bean>
+
+
+
 </beans>
