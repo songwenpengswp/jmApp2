@@ -8,8 +8,7 @@ import java.io.FileOutputStream;
 import org.apache.tools.ant.Project;   
 import org.apache.tools.ant.taskdefs.Expand;   
   
-import de.innosystec.unrar.Archive;   
-import de.innosystec.unrar.rarfile.FileHeader;   
+
   
 public class DeCompressUtil {   
    /**  
@@ -40,11 +39,11 @@ public class DeCompressUtil {
     * 对应的是java-unrar-0.3.jar，但是java-unrar-0.3.jar又会用到commons-logging-1.1.1.jar  
     */  
    private static void unrar(String sourceRar,String destDir) throws Exception{   
-       Archive a = null;   
+       com.github.junrar.Archive a = null;   
        FileOutputStream fos = null;   
        try{   
-           a = new Archive(new File(sourceRar));   
-           FileHeader fh = a.nextFileHeader();   
+           a = new com.github.junrar.Archive(new File(sourceRar));   
+           com.github.junrar.rarfile.FileHeader fh = a.nextFileHeader();   
            while(fh!=null){   
                if(!fh.isDirectory()){   
                    //1 根据不同的操作系统拿到相应的 destDirName 和 destFileName   
