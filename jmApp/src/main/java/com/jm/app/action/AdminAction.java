@@ -77,7 +77,6 @@ public class AdminAction extends ActionSupport {
 
 		List<ProjectSupport> list = pssService.getAll(proId);
 		request.put("list", list);
-
 		session = (Map) context.getSession();
 		session.put("proId", proId);
 		session.put("delId", delId);

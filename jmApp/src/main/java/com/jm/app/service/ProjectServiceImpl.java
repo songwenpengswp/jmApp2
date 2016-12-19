@@ -155,6 +155,14 @@ public class ProjectServiceImpl implements ProjectService {
 		proDao.updateById2(pro);
 		
 	}
+	@Override
+	public void updateProPic(int id, String pic) {
+		// TODO Auto-generated method stub
+		Project pro=proDao.findById(id);
+		pro.setPicture(pic);
+		proDao.attachDirty(pro);
+		
+	}
 
 
 

@@ -61,4 +61,10 @@ public interface ProjectService {
 	 * @param pro
 	 */
 	void addPro(Project pro);
+	/**
+	 * 更新项目图片路径
+	 * @param user
+	 */
+	void updateProPic(int id,String pic);
+	
 	}

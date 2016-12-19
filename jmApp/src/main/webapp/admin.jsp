@@ -38,14 +38,41 @@
 	
 	
 <script type="text/javascript">
-	$(document).ready(function() {
+$(document).ready(function() {
 		$('.input-daterange').datepicker({
 			language : "zh-CN",
-			autoclose : true
+			autoclose : true,
+		    todayHighlight : true
 		});
-
+		   function upload() {
+     alert("123123123123")
+		         $	.ajaxFileUpload({
+					url : '/jmApp/jm/PicAction.action', //url自己写   
+					secureuri : false, //这个是啥没啥用  
+					type : 'post',
+					fileElementId : 'picture',//file标签的id    
+					dataType : 'json',//返回数据的类型    
+					//data:{name:'logan'},//一同上传的数据   
+					success : function(data, status) {
+						if (data.imageUrl) {
+						    $('#pro_img').attr('src',data.imageUrl + "?tempid=" + Math.random());
+							$('#picture')	.replaceWith(	'<input type="file" id="picture" name="picture" style="display:none" onChange="upload()"/>');
+						
+						} else {
+						alert("qwewqewqewqe")
+						}
+					}
+				});
+	};
+ $(document).ready(function() {
+		//点击打开文件选择器    
+		$('#upload_btn').on('click', function() {
+			//选择文件之后执行上传    
+			$("#picture").click();
+		});
 	});
-
+	 	
+});
 </script>
 <script type="text/javascript">
 $(document).ready(
@@ -225,10 +252,21 @@ $(document).ready(
 									<!-- <div class="form-group"> -->
 										<label for="pic" class="col-sm-2 control-label">项目图片</label>
 										<div class="col-sm-10">
-											<input  value="${pro.picture}" type="file" class="form-control" id="pic" name="pic" ></input>
+										<div class="col-md-10">
+										 <c:choose>
+											<c:when test="${pro.picture==null }">
+								               <!--  <img id="pro_img" src="/jmApp/img/pic.png"> -->
+											</c:when>
+											<c:otherwise>
+											     <img id="pro_img" src="${pro.picture}"  style="width: 70%;height: 70%">
+											</c:otherwise>
+											</c:choose>
+											<div style="text-align: left;">
+											<input type="file" class="form-control" id="picture" name="picture" style="display:none"  onChange="upload()"></input>
+										    <button id="upload_btn" class="button" onclick="return ajaxFileUpload();">上传照片</button>
 										</div>
-									<!-- </div> -->
-									
+									</div> 
+									</div>
 								 	<div class="form-group">
 										<label for="target_money" class="col-sm-2 control-label">金额</label>
 										<div class="col-sm-10">
