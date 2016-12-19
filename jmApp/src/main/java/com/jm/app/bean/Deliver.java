@@ -2,7 +2,6 @@ package com.jm.app.bean;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,6 +29,7 @@ public class Deliver implements java.io.Serializable {
 	private Integer projectType;
 	private Integer pass;
 	private String logo;
+	private String code;
 	private Set<Project> projects = new HashSet<Project>(0);
 
 	// Constructors
@@ -39,15 +39,14 @@ public class Deliver implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Deliver(Integer id) {
-		this.id = id;
+	public Deliver(String code) {
+		this.code = code;
 	}
 
 	/** full constructor */
-	public Deliver(Integer id, String name, String email, String tel,
-			Integer money, String projectName, Integer projectType,
-			Integer pass, String logo, Set<Project> projects) {
-		this.id = id;
+	public Deliver(String name, String email, String tel, Integer money,
+			String projectName, Integer projectType, Integer pass, String logo,
+			String code, Set<Project> projects) {
 		this.name = name;
 		this.email = email;
 		this.tel = tel;
@@ -56,11 +55,13 @@ public class Deliver implements java.io.Serializable {
 		this.projectType = projectType;
 		this.pass = pass;
 		this.logo = logo;
+		this.code = code;
 		this.projects = projects;
 	}
 
 	// Property accessors
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return this.id;
@@ -142,6 +143,15 @@ public class Deliver implements java.io.Serializable {
 		this.logo = logo;
 	}
 
+	@Column(name = "code", nullable = false, length = 100)
+	public String getCode() {
+		return this.code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "deliver")
 	public Set<Project> getProjects() {
 		return this.projects;
@@ -149,6 +159,14 @@ public class Deliver implements java.io.Serializable {
 
 	public void setProjects(Set<Project> projects) {
 		this.projects = projects;
+	}
+
+	@Override
+	public String toString() {
+		return "Deliver [id=" + id + ", name=" + name + ", email=" + email
+				+ ", tel=" + tel + ", money=" + money + ", projectName="
+				+ projectName + ", projectType=" + projectType + ", pass="
+				+ pass + ", logo=" + logo + ", code=" + code + "]";
 	}
 
 }

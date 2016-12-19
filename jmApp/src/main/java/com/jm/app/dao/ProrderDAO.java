@@ -232,7 +232,7 @@ public class ProrderDAO {
 		}
 	}
     public List findByProId(int proId ) {   
-    		String hql = "from Prorder p where p.project.id=? group by p.user.id";
+    	    String hql = "from Prorder p where p.project.id=?";
     		Query query = getCurrentSession().createQuery(hql);
     		query.setInteger(0, proId);   		
     		return query.list();

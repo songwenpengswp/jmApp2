@@ -1,7 +1,9 @@
 package com.jm.app.action;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -9,13 +11,13 @@ import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.jm.app.bean.Deliver;
 import com.jm.app.bean.Project;
-import com.jm.app.dao.DeliverDAO;
+import com.jm.app.bean.ProjectSupport;
+
 import com.jm.app.service.ProjectService;
 import com.jm.app.service.ProjectSupportService;
 import com.opensymphony.xwork2.ActionContext;
@@ -23,7 +25,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminAction extends ActionSupport {
 
-	
 	private ActionContext context;
 	private Map<String, Object> request;
 	private ProjectService proService;
@@ -35,6 +36,7 @@ public class AdminAction extends ActionSupport {
 	private Project pro;
 	private Integer proId;
 	private Integer proId2;
+
 	private Integer main_page;
 	private Map<String, Object> session;
 	private ProjectSupportService pssService;
@@ -47,29 +49,42 @@ public class AdminAction extends ActionSupport {
 	private Integer cycle;// 回报周期
 	private Date start;
 	private Date end;
+	private File pic2;
+
 	@Override
 	public String execute() throws Exception {
-		delMap=  proService.getDelNameWithId();
+		delMap = proService.getDelNameWithId();
 		if (delId == null) {
 			for (Entry<Integer, String> entry : delMap.entrySet()) {
 				delId = entry.getKey();
 				break;
 			}
 		}
-		del=proService.findDeliverId(delId);
-		
-		
+		del = proService.findDeliverId(delId);
 		proMap = proService.getProNameWithIdByDelId(delId);
+
 		if (proId == null) {
 			for (Entry<Integer, String> entry : proMap.entrySet()) {
 				proId = entry.getKey();
 				break;
 			}
-		}	
-		pro=proService.findProiverId(proId);
-		
+		}
+		if (proId != null) {
+			pro = proService.findProiverId(proId);
+		}
+		context = ActionContext.getContext();
+		request = (Map) context.get("request");
+
+		List<ProjectSupport> list = pssService.getAll(proId);
+		request.put("list", list);
+
+		session = (Map) context.getSession();
+		session.put("proId", proId);
+		session.put("delId", delId);
+
 		return super.execute();
 	}
+
 	public String updatePro() throws UnsupportedEncodingException {
 
 		String a = "c_jzm/mvtg2_20161001/project.png";
@@ -134,70 +149,172 @@ public class AdminAction extends ActionSupport {
 		this.proService = proService;
 	}
 
-
 	public Map<Integer, String> getDelMap() {
 		return delMap;
 	}
-
 
 	public void setDelMap(Map<Integer, String> delMap) {
 		this.delMap = delMap;
 	}
 
-
 	public Integer getDelId() {
 		return delId;
 	}
-
 
 	public void setDelId(Integer delId) {
 		this.delId = delId;
 	}
 
-
 	public Deliver getDel() {
 		return del;
 	}
-
 
 	public void setDel(Deliver del) {
 		this.del = del;
 	}
 
-
 	public Map<Integer, String> getProMap() {
 		return proMap;
 	}
-
 
 	public void setProMap(Map<Integer, String> proMap) {
 		this.proMap = proMap;
 	}
 
-
 	public Project getPro() {
 		return pro;
 	}
-
 
 	public void setPro(Project pro) {
 		this.pro = pro;
 	}
 
-
 	public Integer getProId() {
 		return proId;
 	}
 
-
 	public void setProId(Integer proId) {
 		this.proId = proId;
 	}
-	
 
+	public Integer getDelId2() {
+		return delId2;
+	}
 
-	
+	public void setDelId2(Integer delId2) {
+		this.delId2 = delId2;
+	}
 
-	
-	
+	public Map<String, Object> getRequest() {
+		return request;
+	}
+
+	public void setRequest(Map<String, Object> request) {
+		this.request = request;
+	}
+
+	public Integer getMain_page() {
+		return main_page;
+	}
+
+	public void setMain_page(Integer main_page) {
+		this.main_page = main_page;
+	}
+
+	public ProjectSupportService getPssService() {
+		return pssService;
+	}
+
+	public void setPssService(ProjectSupportService pssService) {
+		this.pssService = pssService;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getSub_title() {
+		return sub_title;
+	}
+
+	public void setSub_title(String sub_title) {
+		this.sub_title = sub_title;
+	}
+
+	public File getPic() {
+		return pic;
+	}
+
+	public void setPic(File pic) {
+		this.pic = pic;
+	}
+
+	public Integer getTarget_money() {
+		return target_money;
+	}
+
+	public void setTarget_money(Integer target_money) {
+		this.target_money = target_money;
+	}
+
+	public Date getStart() {
+		return start;
+	}
+
+	public void setStart(Date start) {
+		this.start = start;
+	}
+
+	public Date getEnd() {
+		return end;
+	}
+
+	public void setEnd(Date end) {
+		this.end = end;
+	}
+
+	public File getPic2() {
+		return pic2;
+	}
+
+	public void setPic2(File pic2) {
+		this.pic2 = pic2;
+	}
+
+	public Integer getProId2() {
+		return proId2;
+	}
+
+	public void setProId2(Integer proId2) {
+		this.proId2 = proId2;
+	}
+
+	public Float getPercent() {
+		return percent;
+	}
+
+	public void setPercent(Float percent) {
+		this.percent = percent;
+	}
+
+	public Integer getCycle() {
+		return cycle;
+	}
+
+	public void setCycle(Integer cycle) {
+		this.cycle = cycle;
+	}
+
 }

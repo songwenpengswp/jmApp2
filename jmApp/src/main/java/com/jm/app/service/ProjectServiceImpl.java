@@ -9,7 +9,6 @@ import java.util.Map;
 
 import com.jm.app.bean.Deliver;
 import com.jm.app.bean.Project;
-import com.jm.app.bean.User;
 import com.jm.app.dao.DeliverDAO;
 import com.jm.app.dao.ProjectDAO;
 
@@ -38,7 +37,6 @@ public class ProjectServiceImpl implements ProjectService {
 			}
 			return map;
 		}
-		
 		/**
 		 * 获取所有名称的项目和标题
 		 */
@@ -166,15 +164,6 @@ public class ProjectServiceImpl implements ProjectService {
 		proDao.save(pro);
 		
 	}
-
-@Override
-public void updateProPic(int id, String pic) {
-	// TODO Auto-generated method stub
-	Project pro=proDao.findById(id);
-	pro.setPicture(pic);
-	proDao.attachDirty(pro);
-	
-}
 
 
 

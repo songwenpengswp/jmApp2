@@ -59,7 +59,7 @@
 					style="font-size: 18px">项目管理</a></li>
 				<!-- <li><a href="projectissue.html" style="font-size: 18px">发行</a></li> -->
 				<li><a href="#" style="font-size: 18px">统计分析</a></li>
-				<li><a href="#" style="font-size: 18px">发布消息</a></li>
+				<li><a href="/jmApp/release.jsp" style="font-size: 18px">发布消息</a></li>
 				
 			</ul>
 

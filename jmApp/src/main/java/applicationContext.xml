@@ -3,12 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
 	xmlns:tx="http://www.springframework.org/schema/tx">
-<import resource="classpath*:spring/**/*.xml" />
+	<import resource="classpath*:spring/**/*.xml" />
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/jm"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="wuwenjie"></property>
+		<property name="password" value="root"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -37,7 +37,7 @@
 				<value>com.jm.app.bean.Message</value>
 				<value>com.jm.app.bean.UserMessage</value>
 				<value>com.jm.app.bean.Payinfo</value>
-				</list>
+			</list>
 		</property>
 	</bean>
 	<bean id="transactionManager"
@@ -85,12 +85,7 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="ImagesAction" class="com.jm.app.action.ImagesAction" scope="prototype">
-		<property name="proService">
-			<ref bean="ProjectService" />
-		</property>
-	</bean>
-		<bean id="UserAction" class="com.jm.app.action.UserAction">
+	<bean id="UserAction" class="com.jm.app.action.UserAction">
 		<property name="userService">
 			<ref bean="UserService" />
 		</property>
@@ -146,6 +141,19 @@
 			<ref bean="SmService" />
 		</property>
 	</bean>
+	<bean id="PaymentService" class="com.jm.app.service.PaymentServiceImpl">
+        <property name="pay_url" value="http://112.74.230.8:8081/posp-api/" />
+        <property name="notify_url" value="http://114.55.151.148/servlet/PayResultServlet"/>
+        <property name="prorderDao">
+           <ref bean="ProrderDAO"/>
+        </property>
+        <property name="userDao">
+            <ref bean="UserDAO"/>
+        </property>
+        <property name="projectDao">
+            <ref bean="ProjectDAO"/>
+        </property>
+    </bean>
 	<bean id="MainService" class="com.jm.app.service.MainServiceImpl">
 		<property name="proDao">
 			<ref bean="ProjectDAO" />
@@ -183,20 +191,6 @@
 		</property>
 	</bean>
 
-    <bean id="PaymentService" class="com.jm.app.service.PaymentServiceImpl">
-        <property name="pay_url" value="http://112.74.230.8:8081/posp-api/" />
-        <property name="notify_url" value="http://114.55.151.148/servlet/PayResultServlet"/>
-        <property name="prorderDao">
-           <ref bean="ProrderDAO"/>
-        </property>
-        <property name="userDao">
-            <ref bean="UserDAO"/>
-        </property>
-        <property name="projectDao">
-            <ref bean="ProjectDAO"/>
-        </property>
-    </bean>
-    
 	<bean id="UserService" class="com.jm.app.service.UserServiceImpl">
 		<property name="userDao">
 			<ref bean="UserDAO" />
@@ -250,19 +244,25 @@
 			<ref bean="CommentsDAO" />
 		</property>
 	</bean>
-	
+	<bean id="ReplyService" class="com.jm.app.service.ReplyServiceImpl">
+		<property name="replyDao">
+			<ref bean="ReplyDAO" />
+		</property>
+	</bean>
+
 	<bean id="UserMessageAction" class="com.jm.app.action.UserMessageAction">
-		 <property name="userService">
+		<property name="userService">
 			<ref bean="UserService" />
-		</property> 
+		</property>
 	</bean>
-	
+
 	<bean id="MailAction" class="com.jm.app.action.MailAction">
-		 <property name="us">
+		<property name="us">
 			<ref bean="UserService" />
-		</property> 
+		</property>
 	</bean>
-	<bean id="AdminMainAction" class="com.jm.app.action.AdminMainAction" scope="prototype">
+	<bean id="AdminMainAction" class="com.jm.app.action.AdminMainAction"
+		scope="prototype">
 		<property name="mainService">
 			<ref bean="MainService" />
 		</property>
@@ -273,10 +273,41 @@
 			<ref bean="ProjectService" />
 		</property>
 	</bean>
-<bean id="AdminAction" class="com.jm.app.action.AdminAction"
+
+	<bean id="AdminAction" class="com.jm.app.action.AdminAction"
 		scope="prototype">
 		<property name="proService">
 			<ref bean="ProjectService" />
+		</property>
+		<property name="pssService">
+			<ref bean="ProjectSupportService" />
+		</property>
+	</bean>
+
+	<bean id="ReplyAction" class="com.jm.app.action.ReplyAction"
+		scope="prototype">
+		<property name="replyService">
+			<ref bean="ReplyService" />
+		</property>
+	</bean>
+
+	<bean id="ReleaseAction" class="com.jm.app.action.ReleaseAction">
+		<property name="us">
+			<ref bean="UserService" />
+		</property>
+	</bean>
+	<bean id="ProjectSupportService" class="com.jm.app.service.ProjectSupportServiceImpl">
+		<property name="projectSupportDao">
+			<ref bean="ProjectSupportDAO" />
+		</property>
+		<property name="projectDao">
+			<ref bean="ProjectDAO" />
+		</property>
+	</bean>
+	<bean id="ProjectSupportOptAction" class="com.jm.app.action.ProjectSupportOptAction"
+		scope="prototype">
+		<property name="pssService">
+			<ref bean="ProjectSupportService" />
 		</property>
 	</bean>
 
@@ -295,7 +326,4 @@
 	       <ref bean="ProrderDAO"/>
 	    </property>
 	</bean>
-
-
-
 </beans>

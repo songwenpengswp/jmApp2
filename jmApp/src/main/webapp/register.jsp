@@ -106,10 +106,10 @@
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<div class="col-md-2">
+						<div style="float: left">
 							<div class="checkbox">
-								<label><input type="checkbox" checked="false" id="yes"> <font
-								>已阅读并同意</font></label>
+								<label><input type="checkbox" checked="false" id="yes" style="margin-top: 10px"> 
+								<font style="color:#FFF">已阅读并同意</font></label>
 							</div>
 						</div>
 						<script type="text/javascript">

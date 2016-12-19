@@ -39,7 +39,8 @@ public class SaveAction extends ActionSupport {
 		}
 		
 
-		Comments comments = new Comments();		
+		Comments comments = new Comments();
+		//String titl = new String(title.getBytes("ISO-8859-1"),"UTF-8");
 		comments.setContent(title);
 		comments.setProject(project);
 		comments.setIncludeDate(new Date());

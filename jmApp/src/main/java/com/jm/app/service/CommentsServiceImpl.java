@@ -21,6 +21,17 @@ public class CommentsServiceImpl implements CommentsService {
 		commentsDao.save(comments);
 
 	}
+	@Override
+	public Comments getComments(int commentsId) {
+		// TODO Auto-generated method stub
+		Comments c=commentsDao.findById(commentsId);
+		return c;
+	}
+	@Override
+	public List countBy(int proId) {
+		// TODO Auto-generated method stub
+		return commentsDao.countBy(proId);
+	}
 
 	public CommentsDAO getCommentsDao() {
 		return commentsDao;

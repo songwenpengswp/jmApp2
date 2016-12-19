@@ -62,6 +62,17 @@ public class CommentsDAO {
 			throw re;
 		}
 	}
+	/**
+	 * 统计评论条数
+	 * @param proId 根据项目ID
+	 * @return
+	 */
+	public List countBy(int proId){
+    	String hql="select count(c.id) from Comments c where c.project.id=?";
+    	Query query=getCurrentSession().createQuery(hql);
+    	query.setInteger(0, proId);
+    	return query.list();
+    }
 
 	public void delete(Comments persistentInstance) {
 		log.debug("deleting Comments instance");
@@ -182,9 +193,9 @@ public class CommentsDAO {
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		CommentsDAO dao= getFromApplicationContext(ac);
-		System.out.println(dao.findAll());
-		
-		System.out.println(dao.findByProId(1));
-		
+		//System.out.println(dao.findAll());
+//		System.out.println(dao.findById(1));
+		//System.out.println(dao.findByProId(1));
+		System.out.println(dao.countBy(2));
 	}
 }

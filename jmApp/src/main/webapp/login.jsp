@@ -63,7 +63,7 @@
 			     	       <span id="tel_message"></span>
 			     	    </div>
 			     	 	<div class="form-group">
-			     	 	     <input id="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="登陆密码">
+			     	 	     <input type="password" id="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="登陆密码">
 			     	 	     <span id="password_message"></span>
 			     	 	</div>
 			     	 	 <div class="text-right" style="margin-top: 20px">

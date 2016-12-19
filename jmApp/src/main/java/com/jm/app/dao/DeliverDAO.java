@@ -219,7 +219,7 @@ public class DeliverDAO {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		DeliverDAO dao= getFromApplicationContext(ac);
 		
-		System.out.println(dao.findAll());
+		System.out.println(dao.findById(1));
 		
 	}
 }

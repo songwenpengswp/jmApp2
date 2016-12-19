@@ -20,7 +20,6 @@
 <link rel="stylesheet" href="/jmApp/css/spinner.css">
 <link rel="stylesheet"
 	href="/jmApp/font-awesome-4.5.0/css/font-awesome.min.css">
-
 <style type="text/css">
 .pie_progress {
 	width: 120px;
@@ -33,13 +32,14 @@
 	}
 }
 </style>
+<script src="/jmApp/jquery-uploader/ajaxfileupload.js"></script>
 <script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.min.js"></script>
 <script src="/jmApp/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 <script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.backstretch.min.js"></script>
 <script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.countdown.js"></script>
 <script src="/jmApp/circle_progress/dist/jquery-asPieProgress.min.js"></script>
 <script src="/jmApp/js/spinner.js"></script>
-
+<script src="/jmApp/bootstrap-3.3.5-dist/js/scripts.js"></script>
 <script type="text/javascript" language="javascript">
 	function iFrameHeight() {
 		var ifm = document.getElementById("iframepage");
@@ -91,9 +91,9 @@
 			<div class="container"
 				style="background: #fff;width: 80%;margin-top: 100px;margin-bottom: 20px">
 				<h4 style="font-weight:bold;">${project.title}</h4>
-				<p class="text-muted" style="font-size: 15px">${project.formatStart}-${project.formatStop}</p>
+				<p class="text-muted"="font-size: 15px">${project.formatStart}-${project.formatStop}</p>
 				<div class="media"
-					style="border:solid 1px #e9e9e9;margin-bottom: 30px">
+					style="borde r:solid 1px #e9e9e9;margin-bottom: 30px">
 					<div class="media-left">
 						<img class="media-object" src="/jmApp/project/${project.picture}"
 							style="height: 493px;width: 600px">
@@ -163,9 +163,11 @@
 						<li role="presentation"><a href="#messages"
 							aria-controls="messages" role="tab" data-toggle="tab"
 							style="font-size: 17px">支持者</a></li>
-						<li role="presentation"><a href="#settings"
-							aria-controls="settings" role="tab" data-toggle="tab"
-							style="font-size: 17px">评论()</a></li>
+						<c:forEach items="${count}" var="count">
+							<li role="presentation"><a href="#settings"
+								aria-controls="settings" role="tab" data-toggle="tab"
+								style="font-size: 17px">评论(${count})</a></li>
+						</c:forEach>
 					</ul>
 
 					<!-- Tab panes -->
@@ -174,6 +176,8 @@
 							style="margin: 20px;"></div>
 						<div role="tabpanel" class="tab-pane" id="profile"
 							style="margin: 20px;"></div>
+
+
 						<div role="tabpanel" class="tab-pane" id="messages">
 							<div class="row" style="padding-top: 20px;">
 								<c:forEach items="${prorder}" var="pror">
@@ -184,7 +188,7 @@
 
 											<div class="media-left">
 												<img class="media-object img-circle"
-													src="/jmApp/img/default.jpg">
+													style="height:80px;width:80px;" src="${pror.user.picture}">
 											</div>
 											<div class="media-body">
 												<h3 class="media-heading" style="padding-left: 20px;">
@@ -198,30 +202,38 @@
 										</div>
 									</div>
 								</c:forEach>
-
-								
 							</div>
-							
+
 							<div class="row" style="margin-top: 30px;"></div>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="settings">
-							<form action="/jmApp/jm/saveAction.action">
+							<form id="info_frm" action="/jmApp/jm/saveAction.action" method="post">
 								<div class="container"
 									style="width: 700px;padding-left: 10px;padding-top: 20px;padding-bottom: 30px;">
 									<textarea id="title" name="title" class="form-control" rows="7"></textarea>
-									<button type="submit" class="btn btn-info pull-right"
+									<button id="info_btn" type="submit" class="btn btn-info pull-right"
 										style="margin-top: 10px;width: 150px;">发表</button>
 								</div>
 							</form>
-							<c:forEach items="${com}" var="comments">
+							<%-- <c:forEach items="${com}" var="comments"> --%>
+							<s:iterator value="#request.com" id="comments">
 								<div
 									style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
 								<table style="width: 100%">
 									<tr>
 										<td
 											style="background: #f5f5f5;width: 17%;text-align: center;vertical-align: top;">
-											<img src=${comments.user.picture } alt=""
-											style="height: 70px;margin-top: 10px;">
+											<%-- <img src=${comments.user.picture } alt=""
+											style="height: 70px;margin-top: 10px;"> --%> <c:choose>
+												<c:when test="${comments.user.picture==null }">
+													<img class="media-object" src="/jmApp/img/pic.png"
+														style="height: 70px;width:130px;margin-top: 10px;">
+												</c:when>
+												<c:otherwise>
+													<img class="media-object" src="${comments.user.picture}"
+														style="height: 100px;width:130px;margin-top: 10px;">
+												</c:otherwise>
+											</c:choose>
 											<h6 style="text-align: center;">
 												<font color="#f17a00">${comments.user.name }</font>
 											</h6>
@@ -237,71 +249,81 @@
 												<div class="col-md-2">
 													<div
 														style="background: #f5f5f5;min-height: 10px;margin-right: 10px;text-align: center;">
-														<a data-toggle="collapse" href="#collapseExample"
-															aria-expanded="false" aria-controls="collapseExample"><p>回复(2)</p></a>
+														<a data-toggle="collapse" href="#${comments.id}"
+															aria-expanded="false" aria-controls="collapseExample"><p>回复</p></a>
 													</div>
 												</div>
 											</div>
-											<div class="collapse" id="collapseExample">
+											<div class="collapse" id="${comments.id}">
+
 												<div class="well"
 													style="margin-left: 15px;margin-right: 10px;">
-													<div class="media">
-														<div class="media-left">
-															<a href="#"> <img class="media-object"
-																src="img\default.jpg" style="height: 50px;">
-															</a>
+													<s:iterator value="#comments.replies" id="reply">
+														<div class="media">
+
+															<div class="media-left">
+																<!-- <a href="#"> <img class="media-object"
+																	src="img\default.jpg" style="height: 50px;">
+																</a> -->
+																<c:choose>
+																	<c:when test="${reply.user.picture==null}">
+																		<img class="media-object" src="/jmApp/img/pic.png"
+																			style="height:50px;width:50px">
+																	</c:when>
+																	<c:otherwise>
+																		<img class="media-object" src="${reply.user.picture}"
+																			style="height:50px;width:50px">
+																	</c:otherwise>
+																</c:choose>
+															</div>
+															<div class="media-body">
+																<h5 class="media-heading">
+																	<font color="#389BEA"> <s:property
+																			value="#reply.user.name" /></font>回复<font color="#389BEA">${comments.user.name }</font>:
+																	<s:property value="#reply.content" />
+																</h5>
+																<h5 class="text-muted pull-right">
+																	<s:property value="#reply.includeDate" />
+																	回复
+																</h5>
+															</div>
 														</div>
-														<div class="media-body">
-															<h5 class="media-heading">
-																<font color="#389BEA">1876811****</font>回复<font
-																	color="#389BEA">Allen</font>:反正今晚是没机会了。。。
-															</h5>
-															<h5 class="text-muted pull-right">2015-10-30
-																09:43:28 回复</h5>
-														</div>
+
+														<div
+															style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+													</s:iterator>
+												</div>
+												<div
+													style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
+												<div class="media">
+													<div class="media-body">
+														<a class="btn btn-default pull-right" role="button"
+															data-toggle="collapse" href="#${comments.id}1"
+															aria-expanded="false" aria-controls="collapseExample2">我也说一句</a>
 													</div>
-													<div
-														style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
-													<div class="media">
-														<div class="media-left">
-															<a href="#"> <img class="media-object"
-																src="img\1.jpg" style="height: 50px;">
-															</a>
-														</div>
-														<div class="media-body">
-															<h5 class="media-heading">
-																<font color="#389BEA">1876811****</font>回复<font
-																	color="#389BEA">Allen</font>:反正今晚是没机会了。。。
-															</h5>
-															<h5 class="text-muted pull-right">2015-10-30
-																09:43:28 回复</h5>
-														</div>
-													</div>
-													<div
-														style="width:100%;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;"></div>
-													<div class="media">
-														<div class="media-body">
-															<a class="btn btn-default pull-right" role="button"
-																data-toggle="collapse" href="#collapseExample2"
-																aria-expanded="false" aria-controls="collapseExample2">我也说一句</a>
-														</div>
-													</div>
-													<div class="collapse" id="collapseExample2"
+												</div>
+												<form action="/jmApp/jm/replyAction.action">
+													<div class="collapse" id="${comments.id}1"
 														style="margin-top: 10px;">
-														<textarea class="form-control" rows="5"></textarea>
+														<textarea id="title" name="title" class="form-control"
+															rows="5"></textarea>
+														<input id="commentsId" name="commentsId" type="hidden"
+															value="${comments.id}">
 														<div class="media">
 															<div class="media-body">
-																<button type="button" class="btn btn-info pull-right">发表</button>
+																<button id="commentsId=${comments.id}" type="submit"
+																	class="btn btn-info pull-right">发表</button>
 															</div>
 														</div>
 													</div>
+												</form>
 
-
-												</div>
+											</div>
 										</td>
 									</tr>
 								</table>
-							</c:forEach>
+								<%-- </c:forEach> --%>
+							</s:iterator>
 						</div>
 					</div>
 				</div>
@@ -385,54 +407,65 @@
 								</div>
 							</div>
 							<div style="text-align: center;margin-bottom: 20px;">
-							  <c:choose> 
-							    <c:when test="${user==null}">
-								   <button id="suport_btn_unload" type="button" class="btn btn-warning"
-									  style="width: 150px;" data-toggle="modal" data-target=".modal">去支持</button>
-								</c:when>	
-								<c:when test="${user!=null}"> 
-								  <form action="../redirectpay.jsp" method="post">
-								    <input type="hidden" name="pro_id" value="${project.id}">
-								    <input type="hidden" name="pro_title" value="${project.title}">
-								    <input type="hidden" name="pro_rate" value="${project.converted}">
-								    <input type="hidden" name="pro_price" value="${support.price}">
-								    <input id="pro_total" type="hidden" name="pro_total" value="${support.price}">
-								    <input id="pro_num" type="hidden" name="pro_num" value="1">
-								    <button id="suport_btn_loaded" type="submit" class="btn btn-warning"
-									   style="width: 150px;" >去支持</button>
-							      </form>
-								</c:when> 	
-							  </c:choose>
+								<c:choose>
+									<c:when test="${user==null}">
+										<button id="suport_btn_unload" type="button"
+											class="btn btn-warning" style="width: 150px;"
+											data-toggle="modal" data-target=".modal">去支持</button>
+									</c:when>
+									<c:when test="${user!=null}">
+										<form action="../redirectpay.jsp" method="post">
+											<input type="hidden" name="pro_id" value="${project.id}">
+											<input type="hidden" name="pro_title"
+												value="${project.title}"> <input type="hidden"
+												name="pro_rate" value="${project.converted}"> <input
+												type="hidden" name="pro_price" value="${support.price}">
+											<input id="pro_total" type="hidden" name="pro_total"
+												value="${support.price}"> <input id="pro_num"
+												type="hidden" name="pro_num" value="1">
+											<button id="suport_btn_loaded" type="submit"
+												class="btn btn-warning" style="width: 150px;">去支持</button>
+										</form>
+									</c:when>
+								</c:choose>
 							</div>
 						</div>
 					</c:forEach>
 
-                    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm">
-                           <div class="modal-content">
-                              <div class="modal-header">
-                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                 <h4 class="modal-title" id="myLargeModalLabel">登陆</h4>
-                              </div>
-                               <form class="form-horizontal" role="form" action="/jmApp/jm/LoginAction.action">
-                                <div class="modal-body" style="text-align: center;width: 250px;margin: 0 auto">
-                                  
-                                    <div class="form-group" >
-                                        <input id="tel" name="tel" class="form-control" id="exampleInputEmail1" placeholder="手机号码">
-                                    </div>
-                                    <div class="form-group">
-                                         <input id="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="登陆密码">
-                                    </div>
-                                  
-                               </div>
-                               <div class="modal-footer">
-                                   <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
-                                   <button id="loading" type="button" class="btn btn-primary">登陆</button>
-                               </div>
-                             </form>
-                           </div>
-                        </div>
-                    </div>
+					<div class="modal fade" tabindex="-1" role="dialog"
+						aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+									</button>
+									<h4 class="modal-title" id="myLargeModalLabel">登陆</h4>
+								</div>
+								<form class="form-horizontal" role="form"
+									action="/jmApp/jm/LoginAction.action">
+									<div class="modal-body"
+										style="text-align: center;width: 250px;margin: 0 auto">
+
+										<div class="form-group">
+											<input id="tel" name="tel" class="form-control"
+												id="exampleInputEmail1" placeholder="手机号码">
+										</div>
+										<div class="form-group">
+											<input id="password" name="password" class="form-control"
+												id="exampleInputEmail1" placeholder="登陆密码">
+										</div>
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">返回</button>
+										<button id="loading" type="button" class="btn btn-primary">登陆</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 
 					<div
 						style="background: #fff;margin-top: 20px;border-style:solid; border-width:1px; border-color:#D5D5D5">
@@ -469,19 +502,23 @@
 										'input');
 								btn.closest('.number-spinner').find('button')
 										.prop("disabled", false);
-
 								if (btn.attr('data-dir') == 'up') {
 									action = setInterval(
 											function() {
 												if (input.attr('max') == undefined
 														|| parseInt(input.val()) < parseInt(input
 																.attr('max'))) {
-													input.val(parseInt(input.val()) + 1);		
+													input.val(parseInt(input
+															.val()) + 1);
 													var priceStr = price.text();
-													var total=input.val() * priceStr.substring(1);
-													p.text('￥'+ total);
-													$('form #pro_total').val(total);
-													$('form #pro_num').val(input.val());
+													var total = input.val()
+															* priceStr
+																	.substring(1);
+													p.text('￥' + total);
+													$('form #pro_total').val(
+															total);
+													$('form #pro_num').val(
+															input.val());
 												} else {
 													btn.prop("disabled", true);
 													clearInterval(action);
@@ -493,12 +530,17 @@
 												if (input.attr('min') == undefined
 														|| parseInt(input.val()) > parseInt(input
 																.attr('min'))) {
-													input.val(parseInt(input.val()) - 1);
+													input.val(parseInt(input
+															.val()) - 1);
 													var priceStr = price.text();
-													var total=input.val() * priceStr.substring(1);
-													p.text('￥'+ total);
-													$('form #pro_total').val(total);
-													$('form #pro_num').val(input.val());
+													var total = input.val()
+															* priceStr
+																	.substring(1);
+													p.text('￥' + total);
+													$('form #pro_total').val(
+															total);
+													$('form #pro_num').val(
+															input.val());
 												} else {
 													btn.prop("disabled", true);
 													clearInterval(action);
@@ -510,13 +552,7 @@
 					});
 		});
 	</script>
-    <script type="text/javascript">
-       $(document).ready(function() {
-          $('#suport_btn_loaded').on('click', function() {
-              
-          });
-       });
-    </script>
+
 	<script type="text/javascript">
 		$("#home").load("/jmApp/project/${project.homepage}",
 				function(response, status, xhr) {
@@ -528,8 +564,23 @@
 					$('#profile').html(response);
 				});
 	</script>
-	
-	
+	<script type="text/javascript">
+		$('#info_btn').click(function(e) {
+
+			$.ajax({
+				url : '/jmApp/jm/SaveInfo.action',
+				type : 'post',
+				dataType : 'json',
+				data : $("#info_frm").serialize(),
+				beforeSend : function(e) {
+					$('#info_btn').attr('disabled', 'disabled');
+				},
+				success : function(e) {
+					$('#info_btn').removeAttr('disabled');
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>

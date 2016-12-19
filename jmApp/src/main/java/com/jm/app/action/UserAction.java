@@ -14,7 +14,7 @@ import org.apache.struts2.ServletActionContext;
 import com.jm.app.bean.Prorder;
 import com.jm.app.bean.User;
 import com.jm.app.bean.UserMessage;
-import com.jm.app.dao.UserDAO;
+
 import com.jm.app.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;

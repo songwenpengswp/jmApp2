@@ -6,6 +6,7 @@ import java.util.Map;
 import com.jm.app.bean.Message;
 import com.jm.app.bean.Prorder;
 import com.jm.app.bean.User;
+import com.jm.app.bean.UserMessage;
 
 public interface UserService {
 
@@ -75,9 +76,19 @@ public interface UserService {
 	 */
 	User findUserByTel(String tel) ;
 	
-
+    
 	List findByUser(int id);
 	
+	/**
+	 * 通过用户Id发现消息
+	 * @param id
+	 * @return
+	 */
 	Message findById(int id);
+	//添加消息
+     void add(Message message);
 	
+     
+     void addUserMessage(UserMessage userMessage);
+     List<User> findAll();
 }

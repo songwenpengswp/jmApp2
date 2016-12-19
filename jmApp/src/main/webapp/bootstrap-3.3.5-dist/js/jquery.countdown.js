@@ -101,7 +101,6 @@
           case "seconds":
           case "minutes":
           case "hours":
-        	  
             event.value = event.value < 10 ? '0'+event.value.toString() : event.value.toString();
             break;
           default:

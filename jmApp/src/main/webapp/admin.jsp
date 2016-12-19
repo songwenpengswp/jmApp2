@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 	String path = request.getContextPath();
@@ -7,62 +6,46 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <head>
 <meta charset="UTF-8">
 <title>Document</title>
-<link rel="stylesheet" type="text/css"  href="/jmApp/bootstrap-3.3.5-dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"  href="/jmApp/datepicker/css/bootstrap-datepicker3.css">
-<link rel="stylesheet" type="text/css"  href="/jmApp/bootstrap-fileinput-master/css/fileinput.min.css"charset="utf-8">
-<link rel="stylesheet" type="text/css"  href="/jmApp/sweetalert/dist/sweetalert.css">
-<link rel="stylesheet" href="/jmApp/bootstrap-3.3.5-dist/css/buttons.css">
-<link rel="stylesheet" href="/jmApp/circle_progress/css/progress.css">
-<link rel="stylesheet" href="/jmApp/css/style.css">
-<script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.min.js"	charset="utf-8" type="text/javascript"></script>
-<script src="/jmApp/bootstrap-3.3.5-dist/js/bootstrap.min.js"	charset="utf-8" type="text/javascript"></script>
-<script src="/jmApp/datepicker/js/bootstrap-datepicker.js"charset="utf-8" type="text/javascript"></script>
-<script src="/jmApp/datepicker/locales/bootstrap-datepicker.zh-CN.min.js" charset="utf-8" type="text/javascript"></script>
-<script src="/jmApp/bootstrap-fileinput-master/js/fileinput.min.js" charset="utf-8" type="text/javascript"></script>
-<script src="/jmApp/bootstrap-fileinput-master/js/locales/zh.js"  charset="utf-8" type="text/javascript"></script>
-<script src="/jmApp/jquery-uploader/ajaxfileupload.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="/jmApp/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/jmApp/datepicker/css/bootstrap-datepicker3.css">
+<link rel="stylesheet" type="text/css"
+	href="/jmApp/bootstrap-fileinput-master/css/fileinput.min.css"
+	charset="utf-8">
+<script src="/jmApp/bootstrap-3.3.5-dist/js/jquery.min.js"
+	charset="utf-8" type="text/javascript"></script>
+<script src="/jmApp/bootstrap-3.3.5-dist/js/bootstrap.min.js"
+	charset="utf-8" type="text/javascript"></script>
+<script src="/jmApp/datepicker/js/bootstrap-datepicker.js"
+	charset="utf-8" type="text/javascript"></script>
+<script
+	src="/jmApp/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"
+	charset="utf-8" type="text/javascript"></script>
+<script src="/jmApp/bootstrap-fileinput-master/js/fileinput.min.js"
+	charset="utf-8" type="text/javascript"></script>
+<script src="/jmApp/bootstrap-fileinput-master/js/locales/zh.js"
+	charset="utf-8" type="text/javascript"></script>
+	
+	<link rel="stylesheet" type="text/css"
+	href="/jmApp/sweetalert/dist/sweetalert.css">
 <script src="/jmApp/sweetalert/dist/sweetalert.min.js"></script>
-<script src="/jmApp/cityselect/jquery.cityselect.js"></script>
+	
+	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.input-daterange').datepicker({
 			language : "zh-CN",
-			autoclose : true,
-		    todayHighlight : true
+			autoclose : true
 		});
-		   function upload() {
-     alert("123123123123")
-		         $	.ajaxFileUpload({
-					url : '/jmApp/jm/PicAction.action', //url自己写   
-					secureuri : false, //这个是啥没啥用  
-					type : 'post',
-					fileElementId : 'picture',//file标签的id    
-					dataType : 'json',//返回数据的类型    
-					//data:{name:'logan'},//一同上传的数据   
-					success : function(data, status) {
-						if (data.imageUrl) {
-						    $('#pro_img').attr('src',data.imageUrl + "?tempid=" + Math.random());
-							$('#picture')	.replaceWith(	'<input type="file" id="picture" name="picture" style="display:none" onChange="upload()"/>');
-						
-						} else {
-						alert("qwewqewqewqe")
-						}
-					}
-				});
-	};
- $(document).ready(function() {
-		//点击打开文件选择器    
-		$('#upload_btn').on('click', function() {
-			//选择文件之后执行上传    
-			$("#picture").click();
-		});
+
 	});
-	 	
-});
+
 </script>
 <script type="text/javascript">
 $(document).ready(
@@ -71,16 +54,13 @@ $(document).ready(
 					$('tbody a').removeClass('active');
 					$(this).addClass('active');
 				});
-				
-		 /* $(document).ready(function() {
-		//点击打开文件选择器    
-		$('#upload_btn').on('click', function() {
-		        $("#picture").click();
-			    $('form#xiangmu').attr("action","/jmApp/jm/Pic.action"); 
-      	        $('#xiangmu').submit();
-        }); 
-        }); */
-  
+
+/* $('#tijiao').click(function (e) {
+		$('form#xiangmu').attr("action", "/jmApp/jm/UpdatePro.action");
+      		$('#xiangmu').submit();
+        });  */
+
+
  $('#btn_add').click(
 						function(e) {
 							$('input#code').val("");
@@ -91,7 +71,11 @@ $(document).ready(
 							$('input#cycle').val("");
 							$('input#start').val("");
 							$('input#end').val("");
+
+							/* var action=$('form#frm_std').attr("action");
+							 $('form#frm_std').attr("action",action+"?opt=add");*/
 							$('form#xiangmu').attr("action","/jmApp/jm/proAdd.action");
+							
 						});
 });
 </script>
@@ -100,8 +84,8 @@ $(document).ready(
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script type="text/javascript" src="/jmApp/js/jquery-1.7.2.min.js" ></script>
-	<script type="text/javascript" src="/jmApp/js/jquery-1.7.2.js" ></script>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+	<script type="text/javascript" src="js/jquery-1.7.2.js" ></script>
 	
 </head>
 <body>
@@ -130,7 +114,9 @@ $(document).ready(
 				<!-- <li><a href="projectissue.html" style="font-size: 18px">发行</a></li> -->
 				<li><a href="#" style="font-size: 18px">统计分析</a></li>
 				<li><a href="/jmApp/release.jsp" style="font-size: 18px">发布消息</a></li>
+
 			</ul>
+
 			<ul class="nav navbar-nav navbar-right ">
 				<li>
 					<div class="btn-group" role="group" aria-label="..."
@@ -146,6 +132,7 @@ $(document).ready(
 				<li>
 					<div class="btn-group" role="group" aria-label="..."
 						style="margin-top: 10px">
+
 						<form method="post" action="/jmApp/jm/outAction.action">
 							<button type="submit" class="btn btn-danger"
 								style="margin-right: 20px; margin-left: 20px">退出</button>
@@ -158,6 +145,7 @@ $(document).ready(
 	</div>
 	</nav>
 	<div class="container-fluid" style="margin-top:80px">
+		
 		<div class="row">
 			<div class="col-md-3">
 				<div class="panel-group" id="accordion" role="tablist"
@@ -170,7 +158,9 @@ $(document).ready(
 										href="/jmApp/jm/AdminAction.action?delId=<s:property value='key'/>"
 										class="list-group-item  <s:property value='key==#request.del.id?"active":"" '/> ">
 										<s:property value='value' />
+										
 									</a>
+									
 								</s:iterator>
 							</h4>
 						</div>
@@ -189,6 +179,7 @@ $(document).ready(
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -206,12 +197,12 @@ $(document).ready(
 						<!-- Tab panes -->
 						<div class="tab-content" style="margin-top: 10px;">
 							<div role="tabpanel" class="tab-pane active" id="content">
-                                <!-- /jmApp/jm/UpdatePro.action -->
-								<form  id="xiangmu" action="/jmApp/jm/UpdatePro.action" class="form-horizontal" method="post" >
+<!-- /jmApp/jm/UpdatePro.action -->
+								<form  id="xiangmu" action="/jmApp/jm/UpdatePro.action" class="form-horizontal" >
 								<input id="proId2" name="proId2" type="hidden" value="${pro.id}">
 								<%-- <input id="delId2" name="delId2" type="hidden" value="${del.id}"> --%>
 								<div class="form-group">
-									<label for="code" class="col-sm-2 control-label">编号</label>
+										<label for="code" class="col-sm-2 control-label">编号</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id="code" name="code" value="${pro.code}"
 												placeholder="项目编号">
@@ -221,7 +212,7 @@ $(document).ready(
 										<label for="title" class="col-sm-2 control-label">标题</label>
 										<div class="col-sm-10">
 											<input type="text" class="form-control" id="title" name="title" value="${pro.title}"
-												placeholder="项目标题"/>
+												placeholder="项目标题">
 										</div>
 									</div>
 									<div class="form-group">
@@ -234,22 +225,10 @@ $(document).ready(
 									<!-- <div class="form-group"> -->
 										<label for="pic" class="col-sm-2 control-label">项目图片</label>
 										<div class="col-sm-10">
-										<div class="col-md-10">
-										 <c:choose>
-											<c:when test="${pro.picture==null }">
-								               <!--  <img id="pro_img" src="/jmApp/img/pic.png"> -->
-											</c:when>
-											<c:otherwise>
-											     <img id="pro_img" src="${pro.picture}"  style="width: 70%;height: 70%">
-											</c:otherwise>
-											</c:choose>
-											<div style="text-align: left;">
-											<input type="file" class="form-control" id="picture" name="picture" style="display:none"  onChange="upload()"></input>
-										    <button id="upload_btn" class="button" onclick="return ajaxFileUpload();">上传照片</button>
+											<input  value="${pro.picture}" type="file" class="form-control" id="pic" name="pic" ></input>
 										</div>
-										
-										</div>
-                                        </div> 
+									<!-- </div> -->
+									
 								 	<div class="form-group">
 										<label for="target_money" class="col-sm-2 control-label">金额</label>
 										<div class="col-sm-10">
@@ -287,6 +266,23 @@ $(document).ready(
 											</div>
 										</div>
 									</div>  
+<%-- 									<div class="input-daterange input-group" id="datepicker">
+										<div class="form-group">
+											<label for="start" class="col-sm-2 control-label">起始日</label>
+											<div class="col-sm-10">
+											<input 	type="date" class=" form-control" id="start" name="start" value="${pro.start }" style="text-align:left;"/>
+								              <s:fielderror fieldName="start"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="end" class="col-sm-2 control-label">结束日</label>
+											<div class="col-sm-10">
+											<input 	type="date" class="form-control" id="stop" name="stop" value="${pro.stop}" style="text-align:left; "/>
+								             <s:fielderror fieldName="stop"/>
+											</div>
+										</div>
+										</div> --%>
+									
 									<div class="form-group">
 										<label for="pic2" class="col-sm-2 control-label">轮播图片</label>
 										<div class="col-sm-10">
@@ -300,10 +296,13 @@ $(document).ready(
 										</div>
 									</div>
 								</form>
+
 							</div>
 							<div  role="tabpanel" class="tab-pane" id="introduction">
 							  <!--  <form  role="form"> -->
+							  
 								<form id="myform" name="myform" action="<%=path %>/upload" method="post" enctype="multipart/form-data" target="uploadIfr"  >
+									
 									<div class="form-group">
 										<label for="main_page" class="col-sm-2 control-label">主页压缩文件</label>
 										<div class="col-sm-10">
@@ -322,14 +321,19 @@ $(document).ready(
 											<input id="safe_page" name="myfile" type="file" class="form-control file" >
 										</div>
 									</div>
+									
+							
 									<div class="form-group">
 										<div class="col-md-offset-10 col-md-2">
 											<button  class="btn btn-default">上传</button>
 										</div>
 									</div>
 									</form>
+						
+							
 							</div>
 							<div role="tabpanel" class="tab-pane" id="invertion">
+
 								<div class="btn-group pull-right" role="group">
 									<div id="btn_pro_add" class="btn-group" role="group">
 										<button type="button" class="btn btn-default"
@@ -363,9 +367,12 @@ $(document).ready(
 										</c:forEach>
 									</tbody>
 								</table>
+
 							</div>
+
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div><!--学生删除表单-->
@@ -404,6 +411,7 @@ $(document).ready(
 									name="projectSupport.description" type="text"
 									class="form-control" id="pdescription"></input>
 							</div>
+
 						</div>
 						<div class="modal-footer">
 							<button id="resetBtn" type="button" class="btn btn-default"
@@ -415,6 +423,7 @@ $(document).ready(
 				</div>
 			</div>
 		</div>
+		
 </body>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -467,14 +476,14 @@ $(document).ready(
 	});
 </script>
 <script type="text/javascript">
-	/* $('#pic').fileinput({
+	$('#pic').fileinput({
         language: 'zh',
         showUpload:false,
         allowedFileExtensions : ['jpg', 'png','gif'],
         initialPreview:[
              "<img src='/jmApp/project/${pro.picture }' width='500px' class='file-preview-image' alt='Desert' title='Desert'>"
         ]
-    }); */
+    });
     $('#pic2').fileinput({
         language: 'zh',
         showUpload:false,
