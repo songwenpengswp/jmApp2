@@ -8,7 +8,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/jm"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="swp123"></property>
+		<property name="password" value="wuwenjie"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -83,6 +83,11 @@
 	<bean id="UserMessageDAO" class="com.jm.app.dao.UserMessageDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ImagesAction" class="com.jm.app.action.ImagesAction" scope="prototype">
+		<property name="proService">
+			<ref bean="ProjectService" />
 		</property>
 	</bean>
 		<bean id="UserAction" class="com.jm.app.action.UserAction">

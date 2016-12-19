@@ -173,7 +173,23 @@ public class ProjectSupportDAO {
 			throw re;
 		}
 	}
-
+	/**
+     * 通过id删除
+     * @param id
+     */
+    public void delete(int id){
+    	String hql=" delete from ProjectSupport ps where ps.id=?";
+    	Query query=getCurrentSession().createQuery(hql);
+    	query.setInteger(0, id);
+    	query.executeUpdate();
+    	    	
+    }
+    public List findByProId(int proId) {
+		String hql = "from ProjectSupport p where p.project.id=?";
+		Query query = getCurrentSession().createQuery(hql);
+		query.setInteger(0, proId);
+		return query.list();
+	}
 	public static ProjectSupportDAO getFromApplicationContext(
 			ApplicationContext ctx) {
 		return (ProjectSupportDAO) ctx.getBean("ProjectSupportDAO");

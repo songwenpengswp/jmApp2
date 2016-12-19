@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.jm.app.bean.Deliver;
 import com.jm.app.bean.Project;
+import com.jm.app.bean.User;
 import com.jm.app.dao.DeliverDAO;
 import com.jm.app.dao.ProjectDAO;
 
@@ -21,21 +22,23 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	
 	
+	
 	/**
 	 * 获取所有名称的项目和标题
 	 */
 		@Override
-		public Map<Integer, String> getProNameWithId() {
+		public Map<Integer, String> getProNameWithIdByDelId(int id) {
 			// TODO Auto-generated method stub
 			Map<Integer,String> map=new LinkedHashMap<Integer, String>();
 //			获取所有班级的数据
-			List<Project> list=proDao.findAll();
+			List<Project> list=proDao.findByDeliverId(id);
 			for(Project c:list)
 			{
 				map.put(c.getId(), c.getTitle());
 			}
 			return map;
 		}
+		
 		/**
 		 * 获取所有名称的项目和标题
 		 */
@@ -51,6 +54,7 @@ public class ProjectServiceImpl implements ProjectService {
 				}
 				return map;
 			}
+			
 	@Override
 	public List<Project> getProByType(Integer type,Integer status) {
 		
@@ -142,6 +146,36 @@ public class ProjectServiceImpl implements ProjectService {
 		// TODO Auto-generated method stub
 		return proDao.findAll();
 	}
+	@Override
+	public void updatePro(Project p) {
+		// TODO Auto-generated method stub
+		proDao.updateById(p);
+	}
+	@Override
+	public void updateProject(Project pro) {
+		// TODO Auto-generated method stub
+		proDao.updateById2(pro);
+		
+	}
 
+
+
+@Override
+	public void addPro(Project pro) {
+		
+		proDao.save(pro);
+		
+	}
+
+@Override
+public void updateProPic(int id, String pic) {
+	// TODO Auto-generated method stub
+	Project pro=proDao.findById(id);
+	pro.setPicture(pic);
+	proDao.attachDirty(pro);
 	
+}
+
+
+
 }

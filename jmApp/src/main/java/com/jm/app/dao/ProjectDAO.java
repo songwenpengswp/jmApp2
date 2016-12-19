@@ -23,6 +23,7 @@ import com.jm.app.bean.Deliver;
 import com.jm.app.bean.Project;
 import com.jm.app.bean.User;
 
+
 /**
  	* A data access object (DAO) providing persistence and search support for Project entities.
  			* Transaction control of the save(), update() and delete() operations 
@@ -266,15 +267,50 @@ public class ProjectDAO  {
 		return  (Project) query.uniqueResult();
 		
 	}
+    /**
+	 * 通过id修改信息
+	 * @param pro
+	 */
+	
+	public void updateById(Project pro){
+    	String hql="update Project pro set pro.homepage=?,pro.safepage=?,pro.grCode=? where pro.id=?";
+    	Query qu=getCurrentSession().createQuery(hql);
+    	qu.setString(0, pro.getHomepage());
     
+    	qu.setString(1, pro.getSafepage());
+    	qu.setString(2, pro.getGrCode());
+    	qu.setInteger(3, pro.getId());
+    
+    	qu.executeUpdate();
+    }
 	public static ProjectDAO getFromApplicationContext(ApplicationContext ctx) {
     	return (ProjectDAO) ctx.getBean("ProjectDAO");
 	}
+	
+	public void updateById2(Project pro){
+    	String hql="update Project pro set pro.code=?,pro.title=?,pro.subtitle=?,pro.target=?,pro.converted=?,pro.period=?,pro.start=?,pro.stop=?,pro.picture=?,pro.carousel=? where pro.id=?";
+    	Query qu=getCurrentSession().createQuery(hql);
+    	qu.setString(0, pro.getCode());
+    	qu.setString(1, pro.getTitle());
+    	qu.setString(2, pro.getSubtitle());
+    	qu.setInteger(3, pro.getTarget());
+    	qu.setFloat(4, pro.getConverted());
+    	qu.setInteger(5, pro.getPeriod());
+    	qu.setDate(6, pro.getStart());
+    	qu.setDate(7, pro.getStop());
+    	qu.setString(8, pro.getPicture());
+    	qu.setString(9, pro.getCarousel());
+    	qu.setInteger(10, pro.getId());
+    	qu.executeUpdate();
+    }
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		ProjectDAO dao= getFromApplicationContext(ac);
-		
-		System.out.println(dao.findByDeliverId(1));
-		
+		Project p=new Project();
+		p.setId(3);
+		p.setHomepage("aaaaa");
+		p.setSafepage("bbbb");
+		p.setGrCode("shs");
+		dao.updateById(p);		
 	}
 }

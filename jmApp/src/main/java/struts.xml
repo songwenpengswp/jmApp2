@@ -107,5 +107,14 @@
 		<action name="UpdatePro" class="AdminAction"  method="updatePro">
 	      <result type="redirectAction"  name="success">AdminAction?proId=${proId}</result>
         </action>
+        <action name="Pic" class="ImagesAction">
+			<result type="redirectAction">AdminAction</result>
+		</action>
+		<action name="PicAction" class="ImagesAction">
+			<result type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<param name="root">uploadMap</param>
+				</result>
+		</action>
     </package>
 </struts>

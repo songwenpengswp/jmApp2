@@ -46,31 +46,79 @@ public class Project implements java.io.Serializable {
 	private Integer onlookers;
 	private String carousel;
 	private Integer type;
+	private String code;
 	private Set<Prorder> prorders = new HashSet<Prorder>(0);
 	private Set<ProjectSupport> projectSupports = new HashSet<ProjectSupport>(0);
+	private Set<Comments> commentses = new HashSet<Comments>(0);
+
+	// Constructors
 
 	//已投资金额
 	@Transient
 	private Integer investSum;
 	
-	// Constructors
-
+	
+	@Transient
+	public Integer getInvestSum() {
+		return investSum;
+	}
+	@Transient
+	public void setInvestSum(Integer investSum) {
+		this.investSum = investSum;
+	}
+	@Transient
+	public Integer getInvestRate()
+	{
+		if(investSum==null)
+			return 0;
+		else
+		{
+			float rate=((float)investSum/target)*100;
+			return (int)rate;
+		}
+	}
+	@Transient
+	public String getFormatStart()
+	{
+		return DateUtil.toString(start, "yyyy/MM/dd");
+	}
+	@Transient
+	public String getFormatStop()
+	{
+		return DateUtil.toString(stop, "yyyy/MM/dd");
+	}
+	
+	 @Transient
+	 public String getFormatReturn()
+	{
+	    Calendar cal=Calendar.getInstance();
+	    cal.setTime(start);
+	    cal.add(Calendar.MONTH, this.period);
+	    return DateUtil.toString(cal.getTime(), "yyyy/MM/dd");
+	}
+	 
+	 @Transient 
+		public int getRemainTime()
+		{
+			Date now=new Date();
+			return (int)((stop.getTime()-now.getTime())/(1000*60*60*24));
+		}
 	/** default constructor */
 	public Project() {
 	}
 
 	/** minimal constructor */
-	public Project(Integer id) {
-		this.id = id;
+	public Project(String code) {
+		this.code = code;
 	}
 
 	/** full constructor */
-	public Project(Integer id, Deliver deliver, String title, String subtitle,
+	public Project(Deliver deliver, String title, String subtitle,
 			Integer target, Float converted, Integer period, Date start,
 			Date stop, String picture, String homepage, String safepage,
-			String grCode, Integer onlookers, Set<Prorder> prorders,
-			Set<ProjectSupport> projectSupports) {
-		this.id = id;
+			String grCode, Integer onlookers, String carousel, Integer type,
+			String code, Set<Prorder> prorders,
+			Set<ProjectSupport> projectSupports, Set<Comments> commentses) {
 		this.deliver = deliver;
 		this.title = title;
 		this.subtitle = subtitle;
@@ -84,12 +132,17 @@ public class Project implements java.io.Serializable {
 		this.safepage = safepage;
 		this.grCode = grCode;
 		this.onlookers = onlookers;
+		this.carousel = carousel;
+		this.type = type;
+		this.code = code;
 		this.prorders = prorders;
 		this.projectSupports = projectSupports;
+		this.commentses = commentses;
 	}
 
 	// Property accessors
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return this.id;
@@ -215,26 +268,35 @@ public class Project implements java.io.Serializable {
 		return this.onlookers;
 	}
 
+	public void setOnlookers(Integer onlookers) {
+		this.onlookers = onlookers;
+	}
+
 	@Column(name = "carousel", length = 100)
 	public String getCarousel() {
-		return carousel;
+		return this.carousel;
 	}
 
 	public void setCarousel(String carousel) {
 		this.carousel = carousel;
 	}
 
-	public void setOnlookers(Integer onlookers) {
-		this.onlookers = onlookers;
-	}
-
 	@Column(name = "type")
 	public Integer getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	@Column(name = "code", nullable = false, length = 100)
+	public String getCode() {
+		return this.code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "project")
@@ -254,48 +316,14 @@ public class Project implements java.io.Serializable {
 	public void setProjectSupports(Set<ProjectSupport> projectSupports) {
 		this.projectSupports = projectSupports;
 	}
-	@Transient 
-	public int getRemainTime()
-	{
-		Date now=new Date();
-		return (int)((stop.getTime()-now.getTime())/(1000*60*60*24));
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "project")
+	public Set<Comments> getCommentses() {
+		return this.commentses;
 	}
-	@Transient
-	public Integer getInvestSum() {
-		return investSum;
+
+	public void setCommentses(Set<Comments> commentses) {
+		this.commentses = commentses;
 	}
-	@Transient
-	public void setInvestSum(Integer investSum) {
-		this.investSum = investSum;
-	}
-	@Transient
-	public Integer getInvestRate()
-	{
-		if(investSum==null)
-			return 0;
-		else
-		{
-			float rate=((float)investSum/target)*100;
-			return (int)rate;
-		}
-	}
-	@Transient
-	public String getFormatStart()
-	{
-		return DateUtil.toString(start, "yyyy/MM/dd");
-	}
-	@Transient
-	public String getFormatStop()
-	{
-		return DateUtil.toString(stop, "yyyy/MM/dd");
-	}
-	
-	 @Transient
-	 public String getFormatReturn()
-	{
-	    Calendar cal=Calendar.getInstance();
-	    cal.setTime(start);
-	    cal.add(Calendar.MONTH, this.period);
-	    return DateUtil.toString(cal.getTime(), "yyyy/MM/dd");
-	}
+
 }
