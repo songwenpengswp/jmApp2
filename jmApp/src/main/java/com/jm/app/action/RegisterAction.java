@@ -115,6 +115,7 @@ private ActionContext context;
 		User user=new User();
 		user.setTel(orgTel);
 		user.setPassword(password);
+		user.setSex(1);
 		registerService.save(user);
 		
 
