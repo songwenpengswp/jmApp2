@@ -59,7 +59,7 @@ public class PaymentServiceImpl implements PaymentService {
 		}
 		try {
 			reqParam.put("signature",
-					PayUtil.signature(reqParam, "0123456789ABCDEF0123456789ABCDEF"));
+					PayUtil.signature(reqParam, payInfo.getPay_key()));
 			String url = PayUtil.buildUrl(pay_url,"passivePay", reqParam);
 			String result = PayUtil.receiveBySend(url, "GBK");
 			JSONObject jsonObject = JSONObject.fromObject( result ); 

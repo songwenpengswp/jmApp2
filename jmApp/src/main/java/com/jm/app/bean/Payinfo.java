@@ -25,6 +25,7 @@ public class Payinfo implements java.io.Serializable {
 	private String bankName;
 	private String bankType;
 	private Integer fee;
+	private String pay_key;
 
 	// Constructors
 
@@ -35,7 +36,7 @@ public class Payinfo implements java.io.Serializable {
 	/** full constructor */
 	public Payinfo(String merchNo, String certNo, String mobile,
 			String accountNo, String accountName, String bankNo,
-			String bankName, String bankType, Integer fee) {
+			String bankName, String bankType, Integer fee,String pay_key) {
 		this.merchNo = merchNo;
 		this.certNo = certNo;
 		this.mobile = mobile;
@@ -45,6 +46,7 @@ public class Payinfo implements java.io.Serializable {
 		this.bankName = bankName;
 		this.bankType = bankType;
 		this.fee = fee;
+		this.pay_key=pay_key;
 	}
 
 	// Property accessors
@@ -140,4 +142,13 @@ public class Payinfo implements java.io.Serializable {
 		this.fee = fee;
 	}
 
+	public String getPay_key() {
+		return pay_key;
+	}
+
+	public void setPay_key(String pay_key) {
+		this.pay_key = pay_key;
+	}
+
+	
 }
